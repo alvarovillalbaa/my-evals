@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "format-demo",
+  "version": "1.0.0",
+  "split": "validation",
+  "decision": {
+    "question": "Format demonstration only; replace with representative owned tasks before comparing models.",
+    "minimumPairedTasks": 10,
+    "minimumImprovement": 0.05,
+    "maxCriticalRegressions": 0
+  },
+  "dataPolicy": {
+    "classification": "authored",
+    "permission": "owned",
+    "containsPersonalData": false
+  },
+  "tasks": [
+    {
+      "id": "demo-text",
+      "path": "demo-text",
+      "files": ["task.toml", "instruction.md", "environment/Dockerfile", "tests/test.sh", "tests/verify.py"],
+      "critical": true,
+      "rewardKey": "reward",
+      "successThreshold": 1
+    }
+  ]
+}
