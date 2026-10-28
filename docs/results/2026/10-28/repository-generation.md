@@ -1,6 +1,6 @@
 # Repository-connected generation handoff source
 
-Date: 2026-10-28. Status: authored source and static checks only; no runtime
+Date: 2026-10-28. Status: published source and static checks only; no runtime
 test, provider call or generated-task execution is claimed.
 
 ## Product requirement advanced
@@ -65,6 +65,16 @@ Independent source review refined overbroad credential-name rejection, preserved
 multiline owner instructions, checked process ownership/lazy-fetch suppression,
 and moved owner/path validation before draft file reads. This is source evidence,
 not successful native Git/app/runtime acceptance.
+
+## Publication
+
+The source, examples, three test files and separate check proposal were published
+in [`424c81fd033b8c1211e6f81044888dcd00297aaf`](https://github.com/alvarovillalbaa/my-evals/commit/424c81fd033b8c1211e6f81044888dcd00297aaf).
+The connected GitHub branch readback matched that commit, and all 45 remote
+file entries matched the local committed path, mode and blob SHA. The other
+26 existing blobs were preserved. The working tree was clean after publication.
+This publication follow-up changes documentation only; all functional checks
+remain unexecuted under their separate pending scopes.
 
 ## Remaining outcome
 
