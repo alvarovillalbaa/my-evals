@@ -33,7 +33,8 @@ for path in [root / "README.md", root / "AGENTS.md", *(root / "docs").rglob("*.m
         if not (path.parent / unquote(target.split("#", 1)[0])).exists():
             raise SystemExit(f"broken_local_link:{path.name}")
         links += 1
-json.loads((root / "examples/suite.json").read_text(encoding="utf-8"))
+for path in (root / "examples").rglob("*.json"):
+    json.loads(path.read_text(encoding="utf-8"))
 tomllib.loads((root / "examples/demo-text/task.toml").read_text(encoding="utf-8"))
 print(json.dumps({"pythonVersion": sys.version.split()[0], "pythonExecutable": sys.executable, "modulesParsed": len(files),
                   "localMarkdownLinks": links, "authoredUnexecutedCases": cases, "totalAuthoredCases": sum(cases.values()),

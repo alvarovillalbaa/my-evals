@@ -3,16 +3,32 @@
 Portable personal evaluations for deciding whether a new model or provider works
 better on your own tasks, using the real Harbor framework.
 
-**Initial local CLI source.** This implementation seals selected task files,
-exports a downloadable bundle, prepares Harbor commands and imports/compares
-result evidence. No Harbor/container/model execution has been performed for
-this delivery. Provider/repository-driven generation and PR delivery remain
-unfinished requirements in the [owning brief](docs/spec.md).
+**Local CLI source.** This implementation captures explicitly selected committed
+repository files, prepares a generation handoff, validates supplied tasks for
+owner review, seals portable task bundles and imports/compares Harbor evidence.
+No provider is called by the handoff commands. Live provider integration and PR
+delivery remain unfinished requirements in the [owning brief](docs/spec.md).
 
 Python 3.12+ on macOS/Linux; the local artifact tools use only the standard
-library. No package installation, server, database or web hosting is required.
+library; repository capture also uses the existing Git executable. No package
+installation, server, database or web hosting is required.
 Harbor and its container/agent dependencies are separate: this tool does not
 install, replace or silently execute them.
+
+## Build tasks from selected repository source
+
+The [repository generation workflow](docs/references/generation.md) captures an
+explicit revision and file selection, freezes source/task/grader metadata into a
+request, imports a supplied response as a review-required draft, and seals it
+only through explicit owner acceptance. Working-tree changes are preserved;
+source capture reads the selected committed bytes. No remote connection, model
+call, credential lookup or PR creation is implicit.
+
+The request is a provider-neutral local interchange artifact. It does not claim
+native provider integration, authentic provider output or semantically correct
+graders. Generated files remain subject to owner review and real execution
+acceptance. This is progress on the repository path, not a completed live
+generation service.
 
 ## Own the task population
 
@@ -98,12 +114,17 @@ git diff --check
 ```
 
 This parses source and checks references without importing product modules or
-executing tests, tasks, Harbor or Docker. The [focused check proposal](docs/proposals/local-checks.md)
-keeps the authored unit cases separate from real framework/provider acceptance.
-The [delivery receipt](docs/results/2026/10-28/initial-source.md) records actual
-checks, publication and proof limits.
+executing tests, tasks, Harbor or Docker. The [initial check proposal](docs/proposals/local-checks.md)
+keeps its 76 authored cases pinned to the initial source; it does not authorize
+the subsequent repository/generation scope. Both remain separate from real
+framework/provider acceptance. The [repository/generation proposal](docs/proposals/repository-generation-checks.md)
+separately scopes its 52 new authored cases, which are also unexecuted.
+The [initial receipt](docs/results/2026/10-28/initial-source.md) and
+[repository handoff receipt](docs/results/2026/10-28/repository-generation.md)
+record actual checks, publication and proof limits.
 
 - `personal_evals/suite.py`: explicit selection, task/manifest identity and bundle verification.
+- `personal_evals/repository.py`, `generation.py`: committed source capture, generation handoff and explicit draft review.
 - `personal_evals/planning.py`, `harbor.py`: real framework plans and provenance-bound imports.
 - `personal_evals/comparison.py`: paired evidence and inconclusive decisions.
 - `personal_evals/archive.py`, `jsonio.py`, `cli.py`: portable output and local commands.

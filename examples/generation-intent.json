@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "model": "provider/model",
+  "suite": {"id": "generated-format-demo", "version": "1.0.0"},
+  "split": "validation",
+  "decision": {
+    "question": "Format demonstration only; replace with representative authorized tasks before comparing models.",
+    "minimumPairedTasks": 10,
+    "minimumImprovement": 0.05,
+    "maxCriticalRegressions": 0
+  },
+  "tasks": [
+    {
+      "id": "demo-generated",
+      "name": "personal/demo-generated",
+      "version": "1.0.0",
+      "sourcePaths": ["examples/demo-text/instruction.md"],
+      "goal": "Create a Harbor task that checks the exact artifact described by this selected authored instruction.",
+      "graderRequirements": [
+        "Grade the actual artifact bytes with a deterministic verifier, without asking a model to grade itself.",
+        "Supply every required Harbor file; do not invent a successful run or grading result."
+      ],
+      "critical": true,
+      "rewardKey": "reward",
+      "successThreshold": 1
+    }
+  ]
+}

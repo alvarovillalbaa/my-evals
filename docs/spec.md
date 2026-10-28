@@ -23,9 +23,12 @@ no dedicated My Evals owner; this repository begins that separate source.
 | Coding-harness use | Owner decision remains open; do not impose a coding-only product identity |
 
 The initial implementation covers local suite sealing, framework run planning
-and evidence comparison/import. It is not completion of the provider/repository
-generation or PR flow. No model result is fabricated and no live account,
-container, framework execution or deployment is implied by source publication.
+and evidence comparison/import. Its subsequent repository handoff captures
+committed selected source, freezes a generation request, validates supplied task
+files and requires owner review before sealing. This is not completion of the
+live provider/repository generation or PR flow. No model result is fabricated
+and no live account, container, framework execution or deployment is implied by
+source publication.
 
 ## Evaluation decision
 
@@ -43,9 +46,10 @@ model or rewrite graders/thresholds after results are known.
 
 ## Operational limits
 
-Only explicit bounded local files are read. No repository scan, remote fetch,
-provider call, hidden model reasoning, account connection or credential discovery
-is implicit. No paid service or provider run is authorized by this source work.
+Only explicit bounded local files and committed selected Git blobs are read.
+No repository scan, remote fetch, provider call, hidden model reasoning, account
+connection or credential discovery is implicit. No paid service or provider run
+is authorized by this source work.
 Harbor/container installation and execution require their own reviewed scope.
 There is no web service, database or shared Auth need for the initial local CLI;
 Vercel/Supabase provisioning would add no runtime capability to this slice.

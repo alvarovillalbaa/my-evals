@@ -1,4 +1,4 @@
-"""Local artifact commands. No implicit network, process, provider or task run."""
+"""Local artifacts and explicit committed Git reads; no provider or task run."""
 
 import argparse
 from pathlib import Path
@@ -8,9 +8,11 @@ import sys
 from .archive import write_archive
 from .comparison import compare_runs
 from .errors import UserError
+from .generation import accept_draft, build_request, import_response
 from .harbor import import_job
 from .jsonio import MAX_REPORT_BYTES, canonical, read_json, write_json
 from .planning import build_plan, render_command
+from .repository import capture_repository
 from .suite import prepare_suite, verify_bundle, write_bundle
 
 
@@ -22,6 +24,25 @@ class Parser(argparse.ArgumentParser):
 def parser():
     root = Parser(prog="personal-evals", description="Seal personal Harbor tasks and compare imported evidence locally.")
     commands = root.add_subparsers(dest="command", required=True)
+    snapshot = commands.add_parser("snapshot", help="Capture only explicitly selected committed repository files")
+    snapshot.add_argument("--repo", required=True, type=Path)
+    snapshot.add_argument("--revision", required=True)
+    snapshot.add_argument("--file", required=True, action="append", dest="files")
+    snapshot.add_argument("--label", required=True)
+    snapshot.add_argument("--policy", required=True, type=Path)
+    snapshot.add_argument("--out", required=True, type=Path)
+    request = commands.add_parser("generation-request", help="Prepare a provider-neutral handoff without sending it")
+    request.add_argument("snapshot", type=Path)
+    request.add_argument("--intent", required=True, type=Path)
+    request.add_argument("--out", required=True, type=Path)
+    imported = commands.add_parser("generation-import", help="Validate supplied task files into a review-required draft")
+    imported.add_argument("request", type=Path)
+    imported.add_argument("--response", required=True, type=Path)
+    imported.add_argument("--out", required=True, type=Path)
+    accepted = commands.add_parser("generation-accept", help="Seal a draft only after explicit owner review")
+    accepted.add_argument("draft", type=Path)
+    accepted.add_argument("--reviewed", action="store_true")
+    accepted.add_argument("--out", required=True, type=Path)
     validate = commands.add_parser("validate", help="Validate an explicit suite without writing or running tasks")
     validate.add_argument("suite", type=Path)
     bundle = commands.add_parser("bundle", help="Create an exclusive portable task bundle")
@@ -53,7 +74,20 @@ def parser():
 def main(argv=None):
     try:
         args = parser().parse_args(argv)
-        if args.command == "validate":
+        if args.command == "snapshot":
+            snapshot = capture_repository(args.repo, args.revision, args.files, label=args.label, data_policy=read_json(args.policy))
+            write_json(args.out, snapshot)
+            result = {"snapshotId": snapshot["snapshotId"], "commit": snapshot["repository"]["commit"], "files": len(snapshot["files"])}
+        elif args.command == "generation-request":
+            request = build_request(read_json(args.snapshot, MAX_REPORT_BYTES), read_json(args.intent))
+            write_json(args.out, request)
+            result = {"requestId": request["requestId"], "snapshotId": request["snapshot"]["snapshotId"], "tasks": len(request["tasks"]), "sent": False}
+        elif args.command == "generation-import":
+            review = import_response(read_json(args.request, MAX_REPORT_BYTES), args.response, args.out)
+            result = {key: review[key] for key in ("reviewId", "requestId", "snapshotId", "status")}
+        elif args.command == "generation-accept":
+            result = accept_draft(args.draft, args.out, reviewed=args.reviewed)
+        elif args.command == "validate":
             manifest, _files = prepare_suite(args.suite)
             result = {"bundleId": manifest["bundleId"], "tasks": len(manifest["tasks"]), "writes": False}
         elif args.command == "bundle":

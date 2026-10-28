@@ -4,6 +4,13 @@ Date: 2026-10-28. Status: **76 authored cases; execution approval pending**.
 This document records a concrete source-level scope, not a passing result or
 permission to install/run Harbor, execute tasks or call a model/provider.
 
+This initial scope is frozen at
+[`1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c`](https://github.com/alvarovillalbaa/my-evals/tree/1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c)
+with the [initial source fingerprints](../results/2026/10-28/source-manifest.json).
+The subsequent repository/generation source and its new checks are outside this
+pending request. Execute this scope using its exact pinned source, rather than
+silently substituting a changed CLI from a later commit.
+
 ## Exact command
 
 Use the existing Python 3.12+ installation, from this repository:

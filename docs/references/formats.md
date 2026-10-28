@@ -5,6 +5,11 @@ The [owning brief](../spec.md) and [pinned framework contract](harbor.md) preser
 the product and runtime boundaries. Hashes identify exact local evidence, not
 the honesty of its author or a provider attestation.
 
+Repository snapshots and generation request/review artifacts have separate
+contracts in the [Git reference](git.md) and [generation workflow](generation.md).
+They feed explicitly reviewed task source into the bundle format below; they do
+not change the meaning of an accepted evaluation manifest or activate a task.
+
 ## Explicit suite input
 
 The suite is strict JSON: duplicate keys, non-finite numbers, surrogate Unicode,
