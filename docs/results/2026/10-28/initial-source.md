@@ -60,6 +60,17 @@ The [focused proposal](../../../proposals/local-checks.md) scopes **76 authored
 unexecuted cases** (20 suite, 20 importer, 20 comparison, 16 local/CLI). Runtime
 execution needs separate approval under the supplied verification rules.
 
+## Source publication
+
+The dedicated public personal repository was created as
+[`alvarovillalbaa/my-evals`](https://github.com/alvarovillalbaa/my-evals), and the
+initial source was published at
+[`1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c`](https://github.com/alvarovillalbaa/my-evals/commit/1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c).
+The connected GitHub branch readback matched that commit, and the complete
+33-file remote tree matched local path, mode and blob SHA entries. No existing
+product repository or source was replaced. The working tree was clean after
+publication. This receipt follow-up changes documentation only.
+
 ## Remaining delivery requirements
 
 Real Harbor installation/execution and a framework/task/container round trip are
