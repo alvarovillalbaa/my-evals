@@ -72,6 +72,22 @@ No installation, build, server, browser, database,
 CI, model call, real account lookup or product GitHub write occurred. Publishing
 this application's source is separate from publishing an evaluation bundle.
 
+## Source publication
+
+Published source commit
+[`c7197bc69665e334c0d6b18b32e4e54f5693358f`](https://github.com/alvarovillalbaa/my-evals/commit/c7197bc69665e334c0d6b18b32e4e54f5693358f)
+was pushed to the personal repository's `main`. Connected GitHub readback
+confirmed that branch identity and all 56 file paths, modes, object types and
+blob SHAs against the local recursive Git tree; the response was not truncated.
+That proves this source publication, including the inactive review package.
+It does not execute the product's GitHub integration or publish any task bundle.
+
+A separate approval request links the immutable proposal at that commit and
+offers either exact activation plus 44 fixtures, just the 20 offline fixtures,
+or leaving both pending. No approval has been inferred from the active portfolio
+goal or La Porra's separate 38-case approval. This receipt-only follow-up keeps
+the frozen source and candidate hashes unchanged.
+
 ## Remaining work
 
 Explicitly approved source activation/fixture checks, destination-specific live
