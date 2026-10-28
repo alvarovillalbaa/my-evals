@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "target": {
+    "repository": "your-owner/your-evals",
+    "repositoryId": 1,
+    "visibility": "private",
+    "baseBranch": "main",
+    "baseCommit": "0000000000000000000000000000000000000000",
+    "newBranch": "personal-evals/example",
+    "pathPrefix": "evals/personal/example"
+  },
+  "actor": {"login": "your-login", "id": 1},
+  "createdAt": "2026-10-28T00:00:00Z",
+  "pullRequest": {
+    "title": "Add a reviewed personal eval bundle",
+    "body": "Format demonstration only. Replace target, actor and base metadata before preparing a real delivery.",
+    "draft": true
+  },
+  "purpose": "Authored format demonstration; no real repository or account is selected."
+}

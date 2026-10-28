@@ -9,6 +9,10 @@ Repository snapshots and generation request/review artifacts have separate
 contracts in the [Git reference](git.md) and [generation workflow](generation.md).
 They feed explicitly reviewed task source into the bundle format below; they do
 not change the meaning of an accepted evaluation manifest or activate a task.
+Repository delivery plans have their own [delivery contract](delivery.md): they
+embed the exact accepted bundle, destination/account/base metadata and sharing
+consent. They do not include source snapshots or generation/review artifacts,
+and preparing them performs no account lookup or remote publication.
 
 ## Explicit suite input
 
@@ -69,8 +73,9 @@ policy, grader, split, task order or decision cannot reuse the same bundle ID.
 algorithm over the exact emitted task files. It is not the suite hash or legacy
 `task_checksum`. The downloadable ZIP preserves canonical manifest/files, stable
 archive order/timestamps and private regular-file modes. Archive generation
-rechecks bytes and refuses existing output. No archive extraction command or
-automatic repository publication is implemented.
+rechecks bytes and refuses existing output. No archive extraction command is
+implemented. Repository delivery is offline planning only; its authenticated
+publisher remains an inactive proposal.
 
 File reads/writes operate in explicitly selected trusted local directories.
 They reject links and nonregular inputs at the checked boundaries, but do not

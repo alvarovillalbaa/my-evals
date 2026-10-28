@@ -1,0 +1,688 @@
+"""INACTIVE review candidate. Not imported or registered by the application.
+
+Activation needs its reviewed patch and separate account/external-write approval.
+The default transport reuses gh credentials without extracting or printing them.
+"""
+
+from datetime import datetime
+import fcntl
+import hashlib
+import os
+from pathlib import Path
+import re
+import selectors
+import shutil
+import signal
+import stat
+import subprocess
+import time
+import unicodedata
+from urllib.parse import quote, urlencode
+from uuid import uuid4
+
+from .delivery import validate_delivery_plan
+from .errors import UserError
+from .jsonio import canonical, digest, parse_json
+
+API_VERSION = "2026-03-10"
+MAX_HTTP_BYTES = 8 * 1024 * 1024
+MAX_TREE_ENTRIES = 20000
+MAX_EVENTS = 25000
+MAX_EVENT_BYTES = 4096
+MAX_JOURNAL_BYTES = 64 * 1024 * 1024
+_SHA = re.compile(r"[0-9a-f]{40}\Z")
+_HASH = re.compile(r"[0-9a-f]{64}\Z")
+_CODES = frozenset({
+    "github_execution_not_enabled", "github_request_invalid", "github_auth_unavailable",
+    "github_request_failed", "github_http_error", "github_protocol_invalid",
+    "github_timeout", "github_output_too_large", "github_cleanup_failed",
+    "github_destination_changed", "github_base_changed", "github_path_conflict",
+    "github_remote_conflict", "github_outcome_uncertain", "github_object_mismatch",
+    "github_journal_invalid", "github_journal_locked", "github_journal_unwritable",
+    "github_journal_exists", "github_actor_changed", "github_pr_mismatch",
+})
+_EVENT_KEYS = {"schemaVersion", "kind", "planId", "sequence", "previousEventId", "event", "data", "eventId"}
+_EVENT_FIELDS = {
+    "started": {"bundleId"},
+    "blob_pending": {"objectSha", "payloadHash"}, "blob_verified": {"objectSha"},
+    "tree_pending": {"objectSha", "payloadHash"}, "tree_verified": {"objectSha"},
+    "commit_pending": {"payloadHash"},
+    "commit_verified": {"objectSha", "treeSha", "parentSha", "payloadHash"},
+    "branch_pending": {"objectSha"}, "branch_verified": {"objectSha"},
+    "pr_pending": {"objectSha", "payloadHash"},
+    "pr_verified": {"objectSha", "number", "state", "draft"},
+    "stopped": {"code", "status"},
+}
+
+
+class GitHubError(UserError):
+    def __init__(self, status=0, code="github_request_failed"):
+        super().__init__(code if type(code) is str and code in _CODES else "github_request_failed")
+        self.status = status if type(status) is int and 0 <= status <= 599 else 0
+
+
+def _fail(code="github_protocol_invalid", status=0):
+    raise GitHubError(status, code)
+
+
+def _oid(value):
+    if type(value) is not str or not _SHA.fullmatch(value):
+        _fail()
+    return value
+
+
+def _integer(value):
+    if type(value) is not int or not 1 <= value <= 2**53 - 1:
+        _fail()
+    return value
+
+
+def _mapping(value):
+    if type(value) is not dict:
+        _fail()
+    return value
+
+
+def _fold(value):
+    return unicodedata.normalize("NFC", value).casefold()
+
+
+def _tree_sha(entries):
+    """Git tree ordering treats directories as names with a trailing slash."""
+    allowed = {"100644": "blob", "100755": "blob", "120000": "blob", "040000": "tree", "160000": "commit"}
+    parsed, names = [], set()
+    for value in entries:
+        row = _mapping(value)
+        name, mode, kind = row.get("path"), row.get("mode"), row.get("type")
+        if type(name) is not str or not name or len(name) > 4096 or "/" in name or "\0" in name or type(mode) is not str or mode not in allowed or kind != allowed[mode] or name in names:
+            _fail()
+        try:
+            encoded = name.encode("utf-8", errors="strict")
+        except UnicodeError:
+            _fail()
+        names.add(name)
+        parsed.append((encoded + (b"/" if kind == "tree" else b"\0"), encoded, mode, _oid(row.get("sha"))))
+    body = b"".join(("40000" if mode == "040000" else mode).encode("ascii") + b" " + name + b"\0" + bytes.fromhex(oid)
+                    for _sort, name, mode, oid in sorted(parsed))
+    return hashlib.sha1(b"tree " + str(len(body)).encode("ascii") + b"\0" + body).hexdigest()
+
+
+def _tree_entry(path, sha):
+    return {"path": path, "mode": "040000", "type": "tree", "sha": sha}
+
+
+def _read_tree(api, root, sha):
+    row = _mapping(api.request("GET", root + "/git/trees/" + _oid(sha)))
+    if row.get("sha") != sha or row.get("truncated") is not False or type(row.get("tree")) is not list or len(row["tree"]) > MAX_TREE_ENTRIES:
+        _fail()
+    entries = [{key: item.get(key) for key in ("path", "mode", "type", "sha")} for item in row["tree"] if type(item) is dict]
+    if len(entries) != len(row["tree"]) or _tree_sha(entries) != sha:
+        _fail("github_object_mismatch")
+    return entries
+
+
+def _artifact_tree(files, prefix):
+    tree = {}
+    for file in files:
+        parts = file["path"][len(prefix) + 1:].split("/")
+        node = tree
+        for part in parts[:-1]:
+            child = node.setdefault(part, {})
+            if type(child) is not dict:
+                _fail("github_request_invalid")
+            node = child
+        if parts[-1] in node:
+            _fail("github_request_invalid")
+        node[parts[-1]] = (file["mode"], file["gitBlob"])
+
+    def seal(node):
+        entries = []
+        for name, child in node.items():
+            entries.append(_tree_entry(name, seal(child)) if type(child) is dict else {"path": name, "mode": child[0], "type": "blob", "sha": child[1]})
+        return _tree_sha(entries)
+
+    return seal(tree)
+
+
+def _expected_root(api, root, base_tree, files, prefix):
+    parts, ancestors = prefix.split("/"), []
+    current, artifact = base_tree, _artifact_tree(files, prefix)
+    for index, segment in enumerate(parts):
+        entries = _read_tree(api, root, current)
+        matches = [entry for entry in entries if _fold(entry["path"]) == _fold(segment)]
+        if matches:
+            if len(matches) != 1 or matches[0]["path"] != segment or index == len(parts) - 1 or matches[0]["type"] != "tree":
+                _fail("github_path_conflict")
+            ancestors.append((entries, segment))
+            current = matches[0]["sha"]
+            continue
+        new = artifact
+        for descendant in reversed(parts[index + 1:]):
+            new = _tree_sha([_tree_entry(descendant, new)])
+        new = _tree_sha(entries + [_tree_entry(segment, new)])
+        for siblings, name in reversed(ancestors):
+            new = _tree_sha([_tree_entry(name, new) if entry["path"] == name else entry for entry in siblings])
+        return new
+    _fail("github_path_conflict")
+
+
+class _Journal:
+    def __init__(self, path, plan, resume):
+        self.path, self.plan, self.resume = Path(path), plan, resume
+        self.directory = self.lock = None
+        self.events = []
+
+    def __enter__(self):
+        try:
+            parent = self.path.parent.resolve(strict=True)
+            self.path = parent / self.path.name
+            if self.path.name in ("", ".", ".."):
+                _fail("github_journal_invalid")
+            if not self.resume:
+                try:
+                    os.mkdir(self.path, 0o700)
+                except FileExistsError:
+                    _fail("github_journal_exists")
+            self.directory = os.open(self.path, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+            info = os.fstat(self.directory)
+            if info.st_uid != os.geteuid() or info.st_mode & 0o077:
+                _fail("github_journal_invalid")
+            self.lock = os.open(".lock", os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW, 0o600, dir_fd=self.directory)
+            info = os.fstat(self.lock)
+            if not stat.S_ISREG(info.st_mode) or info.st_uid != os.geteuid() or info.st_mode & 0o077 or info.st_nlink != 1 or info.st_size:
+                _fail("github_journal_invalid")
+            try:
+                fcntl.flock(self.lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                _fail("github_journal_locked")
+            self._load()
+            if not self.events:
+                if self.resume:
+                    _fail("github_journal_invalid")
+                self.append("started", {"bundleId": self.plan["bundleId"]})
+            return self
+        except GitHubError:
+            self._close()
+            raise
+        except (OSError, ValueError, RuntimeError):
+            self._close()
+            _fail("github_journal_unwritable")
+
+    def _read(self, name):
+        descriptor = None
+        try:
+            descriptor = os.open(name, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK, dir_fd=self.directory)
+            info = os.fstat(descriptor)
+            if not stat.S_ISREG(info.st_mode) or info.st_uid != os.geteuid() or info.st_mode & 0o077 or info.st_size > MAX_EVENT_BYTES:
+                _fail("github_journal_invalid")
+            with os.fdopen(descriptor, "rb") as stream:
+                descriptor = None
+                data = stream.read(MAX_EVENT_BYTES + 1)
+            if len(data) > MAX_EVENT_BYTES:
+                _fail("github_journal_invalid")
+            return data
+        finally:
+            if descriptor is not None:
+                os.close(descriptor)
+
+    def _load(self):
+        names, total, scanned = [], 0, 0
+        with os.scandir(self.directory) as entries:
+            for entry in entries:
+                scanned += 1
+                if scanned > MAX_EVENTS + 1000:
+                    _fail("github_journal_invalid")
+                if entry.is_symlink() or not entry.is_file(follow_symlinks=False):
+                    _fail("github_journal_invalid")
+                if entry.name == ".lock" or re.fullmatch(r"\.event-[0-9a-f]{32}", entry.name):
+                    continue  # Never remove an earlier interrupted private temporary file.
+                if not re.fullmatch(r"[0-9]{8}\.json", entry.name):
+                    _fail("github_journal_invalid")
+                names.append(entry.name)
+                if len(names) > MAX_EVENTS:
+                    _fail("github_journal_invalid")
+        for sequence, name in enumerate(sorted(names), 1):
+            if name != f"{sequence:08d}.json":
+                _fail("github_journal_invalid")
+            raw = self._read(name)
+            total += len(raw)
+            if total > MAX_JOURNAL_BYTES:
+                _fail("github_journal_invalid")
+            try:
+                event = parse_json(raw, maximum=MAX_EVENT_BYTES)
+            except UserError:
+                _fail("github_journal_invalid")
+            self._validate(event, sequence)
+            self.events.append(event)
+        if self.events and (self.events[0]["event"] != "started" or self.events[0]["data"] != {"bundleId": self.plan["bundleId"]}):
+            _fail("github_journal_invalid")
+
+    def _validate(self, row, sequence):
+        if type(row) is not dict or set(row) != _EVENT_KEYS or row["schemaVersion"] != 1 or type(row["schemaVersion"]) is not int or row["kind"] != "personal-evals-delivery-event" or row["planId"] != self.plan["planId"] or type(row["sequence"]) is not int or row["sequence"] != sequence:
+            _fail("github_journal_invalid")
+        previous = self.events[-1]["eventId"] if self.events else None
+        name, data = row["event"], row["data"]
+        if type(name) is not str or name not in _EVENT_FIELDS or type(data) is not dict or set(data) != _EVENT_FIELDS[name] or row["previousEventId"] != previous:
+            _fail("github_journal_invalid")
+        for key, value in data.items():
+            if key in ("bundleId", "payloadHash") and (type(value) is not str or not _HASH.fullmatch(value)):
+                _fail("github_journal_invalid")
+            if key in ("objectSha", "treeSha", "parentSha") and (type(value) is not str or not _SHA.fullmatch(value)):
+                _fail("github_journal_invalid")
+        if name == "stopped" and (type(data["code"]) is not str or data["code"] not in _CODES or type(data["status"]) is not int or not 0 <= data["status"] <= 599):
+            _fail("github_journal_invalid")
+        if name == "pr_verified" and (type(data["number"]) is not int or not 1 <= data["number"] <= 2**53 - 1 or type(data["state"]) is not str or data["state"] not in ("open", "closed", "merged") or type(data["draft"]) is not bool):
+            _fail("github_journal_invalid")
+        if row["eventId"] != digest({key: value for key, value in row.items() if key != "eventId"}):
+            _fail("github_journal_invalid")
+
+    def append(self, name, data):
+        if len(self.events) >= MAX_EVENTS:
+            _fail("github_journal_invalid")
+        sequence = len(self.events) + 1
+        row = {"schemaVersion": 1, "kind": "personal-evals-delivery-event", "planId": self.plan["planId"],
+               "sequence": sequence, "previousEventId": self.events[-1]["eventId"] if self.events else None,
+               "event": name, "data": dict(data)}
+        row["eventId"] = digest(row)
+        self._validate(row, sequence)
+        encoded = canonical(row) + b"\n"
+        if len(encoded) > MAX_EVENT_BYTES:
+            _fail("github_journal_invalid")
+        temporary, descriptor = ".event-" + uuid4().hex, None
+        try:
+            descriptor = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600, dir_fd=self.directory)
+            with os.fdopen(descriptor, "wb") as stream:
+                descriptor = None
+                stream.write(encoded)
+                stream.flush()
+                os.fsync(stream.fileno())
+            os.link(temporary, f"{sequence:08d}.json", src_dir_fd=self.directory, dst_dir_fd=self.directory, follow_symlinks=False)
+            os.unlink(temporary, dir_fd=self.directory)
+            os.fsync(self.directory)
+            self.events.append(row)
+        except OSError:
+            _fail("github_journal_unwritable")
+        finally:
+            if descriptor is not None:
+                os.close(descriptor)
+            try:
+                os.unlink(temporary, dir_fd=self.directory)
+            except FileNotFoundError:
+                pass
+
+    def last(self, name):
+        return next((event["data"] for event in reversed(self.events) if event["event"] == name), None)
+
+    def has(self, name):
+        return self.last(name) is not None
+
+    def _close(self):
+        if self.lock is not None:
+            os.close(self.lock)
+            self.lock = None
+        if self.directory is not None:
+            os.close(self.directory)
+            self.directory = None
+
+    def __exit__(self, *_arguments):
+        self._close()
+
+
+def _preflight(api, plan, root):
+    actor = _mapping(api.request("GET", "/user"))
+    if actor.get("id") != plan["actor"]["id"] or type(actor.get("id")) is not int or actor.get("login") != plan["actor"]["login"]:
+        _fail("github_actor_changed")
+    repo = _mapping(api.request("GET", root))
+    target = plan["target"]
+    if (type(repo.get("id")) is not int or repo["id"] != target["repositoryId"] or repo.get("full_name") != target["repository"]
+            or repo.get("visibility") != target["visibility"] or type(repo.get("private")) is not bool
+            or repo["private"] != (target["visibility"] == "private") or repo.get("archived") is not False
+            or repo.get("disabled") is not False or type(repo.get("permissions")) is not dict or repo["permissions"].get("push") is not True):
+        _fail("github_destination_changed")
+    if _mapping(api.request("GET", root + "/hash-algorithm")).get("hash_algorithm") != "sha1":
+        _fail("github_destination_changed")
+
+
+def _ref(api, root, branch):
+    try:
+        row = _mapping(api.request("GET", root + "/git/ref/heads/" + quote(branch, safe="")))
+    except GitHubError as error:
+        if error.status == 404:
+            return None
+        raise
+    object_ = _mapping(row.get("object"))
+    if row.get("ref") != "refs/heads/" + branch or object_.get("type") != "commit":
+        _fail()
+    return _oid(object_.get("sha"))
+
+
+def _base(api, plan, root):
+    target = plan["target"]
+    if _ref(api, root, target["baseBranch"]) != target["baseCommit"]:
+        _fail("github_base_changed")
+
+
+def _commit_payload(plan, tree):
+    actor = plan["actor"]
+    person = {"name": actor["login"], "email": f"{actor['id']}+{actor['login']}@users.noreply.github.com", "date": plan["createdAt"]}
+    return {"tree": tree, "parents": [plan["target"]["baseCommit"]],
+            "message": f"Add Personal Evals bundle {plan['bundleId']}\n\nPersonal-Evals-Delivery: {plan['planId']}\n",
+            "author": person, "committer": dict(person)}
+
+
+def _verify_commit(api, root, sha, payload):
+    row = _mapping(api.request("GET", root + "/git/commits/" + _oid(sha)))
+    parents, tree = row.get("parents"), row.get("tree")
+    if (row.get("sha") != sha or type(tree) is not dict or tree.get("sha") != payload["tree"]
+            or type(parents) is not list or len(parents) != 1 or type(parents[0]) is not dict
+            or parents[0].get("sha") != payload["parents"][0] or row.get("message") != payload["message"]):
+        _fail("github_object_mismatch")
+    for key in ("author", "committer"):
+        actual = _mapping(row.get(key))
+        if any(actual.get(field) != value for field, value in payload[key].items()):
+            _fail("github_object_mismatch")
+
+
+def _pr_body(plan):
+    return plan["pullRequest"]["body"] + "\n\n<!-- personal-evals-delivery:" + plan["planId"] + " -->\n"
+
+
+def _verify_pr(row, plan, commit):
+    row = _mapping(row)
+    target = plan["target"]
+    number = _integer(row.get("number"))
+    url = f"https://github.com/{target['repository']}/pull/{number}"
+    if row.get("html_url") != url or row.get("title") != plan["pullRequest"]["title"] or row.get("body") != _pr_body(plan):
+        _fail("github_pr_mismatch")
+    for field, branch in (("head", target["newBranch"]), ("base", target["baseBranch"])):
+        item = _mapping(row.get(field))
+        repo = _mapping(item.get("repo"))
+        if item.get("ref") != branch or type(repo.get("id")) is not int or repo["id"] != target["repositoryId"] or repo.get("full_name") != target["repository"]:
+            _fail("github_pr_mismatch")
+    actor = _mapping(row.get("user"))
+    if row["head"].get("sha") != commit or actor.get("id") != plan["actor"]["id"] or type(actor.get("id")) is not int or actor.get("login") != plan["actor"]["login"]:
+        _fail("github_pr_mismatch")
+    if row.get("state") not in ("open", "closed") or type(row.get("draft")) is not bool:
+        _fail()
+    merged_at = row.get("merged_at")
+    if merged_at is not None:
+        try:
+            if type(merged_at) is not str or len(merged_at) > 64 or datetime.fromisoformat(merged_at.replace("Z", "+00:00")).utcoffset() is None:
+                _fail()
+        except ValueError:
+            _fail()
+    merged = merged_at is not None
+    if "merged" in row and (type(row["merged"]) is not bool or row["merged"] != merged):
+        _fail()
+    if merged and row["state"] != "closed":
+        _fail()
+    state = "merged" if merged else row["state"]
+    if state == "open" and row["draft"] != plan["pullRequest"]["draft"]:
+        _fail("github_pr_mismatch")
+    return {"number": number, "url": url, "draft": row["draft"], "state": state}
+
+
+def _find_pr(api, root, plan, commit):
+    owner = plan["target"]["repository"].split("/", 1)[0]
+    found = []
+    for page in range(1, 11):
+        query = urlencode({"state": "all", "head": owner + ":" + plan["target"]["newBranch"], "base": plan["target"]["baseBranch"], "per_page": 100, "page": page})
+        rows = api.request("GET", root + "/pulls?" + query)
+        if type(rows) is not list or len(rows) > 100:
+            _fail()
+        for row in rows:
+            found.append(_verify_pr(row, plan, commit))
+        if len(found) > 1:
+            _fail("github_remote_conflict")
+        if len(rows) < 100:
+            return found[0] if found else None
+    _fail("github_remote_conflict")
+
+
+def _finish(api, root, plan, journal, commit, pr):
+    # List results alone do not establish the final response contract.
+    verified = _verify_pr(api.request("GET", root + "/pulls/" + str(pr["number"])), plan, commit)
+    previous = journal.last("pr_verified")
+    event = {"objectSha": commit, "number": verified["number"], "state": verified["state"], "draft": verified["draft"]}
+    if previous != event:
+        journal.append("pr_verified", event)
+    return {"planId": plan["planId"], "bundleId": plan["bundleId"], "state": verified["state"],
+            "pullRequest": {key: verified[key] for key in ("number", "url", "draft")},
+            "branch": plan["target"]["newBranch"], "headCommit": commit, "journalEvents": len(journal.events)}
+
+
+def publish_delivery(plan: dict, journal: Path, *, execute: bool = False, resume: bool = False, api=None):
+    if type(execute) is not bool or execute is not True:
+        _fail("github_execution_not_enabled")
+    if type(resume) is not bool:
+        _fail("github_request_invalid")
+    plan = validate_delivery_plan(plan)
+    with _Journal(journal, plan, resume) as receipt:
+        client = GhApi() if api is None else api
+        root = "/repos/" + "/".join(quote(part, safe="") for part in plan["target"]["repository"].split("/"))
+        try:
+            _preflight(client, plan, root)
+            base = _mapping(client.request("GET", root + "/git/commits/" + plan["target"]["baseCommit"]))
+            if base.get("sha") != plan["target"]["baseCommit"]:
+                _fail("github_object_mismatch")
+            base_tree = _oid(_mapping(base.get("tree")).get("sha"))
+            expected_tree = _expected_root(client, root, base_tree, plan["files"], plan["target"]["pathPrefix"])
+            commit_payload = _commit_payload(plan, expected_tree)
+            commit_event = receipt.last("commit_verified")
+            commit = commit_event["objectSha"] if commit_event else None
+            if commit_event and commit_event != {"objectSha": commit, "treeSha": expected_tree, "parentSha": plan["target"]["baseCommit"], "payloadHash": digest(commit_payload)}:
+                _fail("github_journal_invalid")
+            branch = _ref(client, root, plan["target"]["newBranch"])
+            if commit is not None:
+                _verify_commit(client, root, commit, commit_payload)
+            if receipt.has("pr_verified"):
+                known = receipt.last("pr_verified")
+                return _finish(client, root, plan, receipt, commit, {"number": known["number"]})
+            if branch is not None:
+                if commit is None:
+                    _fail("github_remote_conflict")
+                if branch != commit:
+                    _fail("github_remote_conflict")
+                if receipt.has("branch_pending"):
+                    receipt.append("branch_verified", {"objectSha": commit})
+                pr = _find_pr(client, root, plan, commit)
+                if pr is not None:
+                    return _finish(client, root, plan, receipt, commit, pr)
+                if receipt.has("pr_pending") or not receipt.has("branch_pending"):
+                    _fail("github_outcome_uncertain")
+            elif receipt.has("branch_verified") or receipt.has("pr_pending"):
+                # The branch might have been deliberately removed; never recreate it.
+                if commit is not None:
+                    pr = _find_pr(client, root, plan, commit)
+                    if pr is not None:
+                        return _finish(client, root, plan, receipt, commit, pr)
+                _fail("github_outcome_uncertain")
+            if branch is None:
+                if commit is None:
+                    _preflight(client, plan, root)
+                    _base(client, plan, root)
+                    verified_blobs = {event["data"]["objectSha"] for event in receipt.events if event["event"] == "blob_verified"}
+                    for file in plan["files"]:
+                        sha = file["gitBlob"]
+                        if sha in verified_blobs:
+                            continue
+                        payload = {"encoding": "base64", "content": file["content"]}
+                        receipt.append("blob_pending", {"objectSha": sha, "payloadHash": digest(payload)})
+                        if _mapping(client.request("POST", root + "/git/blobs", payload)).get("sha") != sha:
+                            _fail("github_object_mismatch")
+                        receipt.append("blob_verified", {"objectSha": sha})
+                        verified_blobs.add(sha)
+                    tree_payload = {"base_tree": base_tree, "tree": [{"path": file["path"], "mode": file["mode"], "type": "blob", "sha": file["gitBlob"]} for file in plan["files"]]}
+                    receipt.append("tree_pending", {"objectSha": expected_tree, "payloadHash": digest(tree_payload)})
+                    if _mapping(client.request("POST", root + "/git/trees", tree_payload)).get("sha") != expected_tree:
+                        _fail("github_object_mismatch")
+                    _read_tree(client, root, expected_tree)
+                    receipt.append("tree_verified", {"objectSha": expected_tree})
+                    receipt.append("commit_pending", {"payloadHash": digest(commit_payload)})
+                    commit = _oid(_mapping(client.request("POST", root + "/git/commits", commit_payload)).get("sha"))
+                    _verify_commit(client, root, commit, commit_payload)
+                    receipt.append("commit_verified", {"objectSha": commit, "treeSha": expected_tree, "parentSha": plan["target"]["baseCommit"], "payloadHash": digest(commit_payload)})
+                _preflight(client, plan, root)
+                _base(client, plan, root)
+                # A racing newly created ref is never repointed, even to our commit.
+                if _ref(client, root, plan["target"]["newBranch"]) is not None:
+                    _fail("github_remote_conflict")
+                receipt.append("branch_pending", {"objectSha": commit})
+                response = _mapping(client.request("POST", root + "/git/refs", {"ref": "refs/heads/" + plan["target"]["newBranch"], "sha": commit}))
+                if response.get("ref") != "refs/heads/" + plan["target"]["newBranch"] or _mapping(response.get("object")).get("sha") != commit or response["object"].get("type") != "commit" or _ref(client, root, plan["target"]["newBranch"]) != commit:
+                    _fail("github_object_mismatch")
+                receipt.append("branch_verified", {"objectSha": commit})
+            _preflight(client, plan, root)
+            pr = _find_pr(client, root, plan, commit)
+            if pr is not None:
+                return _finish(client, root, plan, receipt, commit, pr)
+            if receipt.has("pr_pending"):
+                _fail("github_outcome_uncertain")
+            _base(client, plan, root)
+            payload = {"title": plan["pullRequest"]["title"], "body": _pr_body(plan), "head": plan["target"]["newBranch"],
+                       "base": plan["target"]["baseBranch"], "draft": plan["pullRequest"]["draft"], "maintainer_can_modify": False}
+            receipt.append("pr_pending", {"objectSha": commit, "payloadHash": digest(payload)})
+            pr = _verify_pr(client.request("POST", root + "/pulls", payload), plan, commit)
+            if pr["draft"] != plan["pullRequest"]["draft"]:
+                _fail("github_pr_mismatch")
+            return _finish(client, root, plan, receipt, commit, pr)
+        except GitHubError as error:
+            try:
+                receipt.append("stopped", {"code": error.code, "status": error.status})
+            except GitHubError:
+                pass  # Retain the original failure; no later remote action follows.
+            raise
+        except Exception:
+            try:
+                receipt.append("stopped", {"code": "github_protocol_invalid", "status": 0})
+            except GitHubError:
+                pass
+            _fail()
+
+
+class GhApi:
+    """Only explicit GitHub REST paths, existing stored gh login and bounded IO."""
+
+    def request(self, method, path, payload=None):
+        if method not in ("GET", "POST") or type(path) is not str or not path.startswith(("/repos/", "/user")) or any(char in path for char in ("\r", "\n", "#", "\\")) or "://" in path or (path.startswith("/user") and path != "/user"):
+            _fail("github_request_invalid")
+        route = re.fullmatch(r"/repos/([A-Za-z0-9-]+)/([A-Za-z0-9_.-]+)(.*)", path)
+        if route and route.group(2) in (".", ".."):
+            _fail("github_request_invalid")
+        tail = route.group(3) if route else None
+        if method == "POST" and tail not in ("/git/blobs", "/git/trees", "/git/commits", "/git/refs", "/pulls"):
+            _fail("github_request_invalid")
+        if method == "GET" and path != "/user" and (tail is None or not (
+                tail in ("", "/hash-algorithm")
+                or re.fullmatch(r"/git/(?:commits|trees)/[0-9a-f]{40}", tail)
+                or re.fullmatch(r"/git/ref/heads/[A-Za-z0-9._%~-]+", tail)
+                or re.fullmatch(r"/pulls/[1-9][0-9]*", tail)
+                or re.fullmatch(r"/pulls\?state=all&head=[A-Za-z0-9%._~-]+&base=[A-Za-z0-9%._~-]+&per_page=100&page=(?:[1-9]|10)", tail))):
+            _fail("github_request_invalid")
+        try:
+            body = None if payload is None else canonical(payload)
+        except UserError:
+            _fail("github_request_invalid")
+        if body is not None and len(body) > MAX_HTTP_BYTES:
+            _fail("github_request_invalid")
+        if (method == "POST") != (body is not None):
+            _fail("github_request_invalid")
+        executable = shutil.which("gh")
+        if executable is None or os.name != "posix":
+            _fail("github_auth_unavailable")
+        environment = {key: os.environ[key] for key in ("PATH", "HOME", "USER", "LOGNAME", "XDG_CONFIG_HOME", "GH_CONFIG_DIR") if key in os.environ}
+        environment.update({"LC_ALL": "C", "LANG": "C", "NO_COLOR": "1", "GH_PROMPT_DISABLED": "1",
+                            "GH_NO_UPDATE_NOTIFIER": "1", "GH_NO_EXTENSION_UPDATE_NOTIFIER": "1", "GH_PAGER": "", "PAGER": ""})
+        arguments = [executable, "api", "--hostname", "github.com", "--method", method, "--include",
+                     "--header", "Accept: application/vnd.github+json", "--header", "X-GitHub-Api-Version: " + API_VERSION]
+        if body is not None:
+            arguments += ["--header", "Content-Type: application/json", "--input", "-"]
+        arguments += ["https://api.github.com" + path]
+        process, finished = None, False
+        buffers = {"stdout": bytearray(), "stderr": bytearray()}
+        try:
+            process = subprocess.Popen(arguments, stdin=subprocess.PIPE if body is not None else subprocess.DEVNULL,
+                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE, close_fds=True,
+                                       start_new_session=True, env=environment)
+            deadline, offset = time.monotonic() + 30, 0
+            with selectors.DefaultSelector() as selector:
+                for name, stream in (("stdout", process.stdout), ("stderr", process.stderr)):
+                    os.set_blocking(stream.fileno(), False)
+                    selector.register(stream, selectors.EVENT_READ, name)
+                if body is not None:
+                    os.set_blocking(process.stdin.fileno(), False)
+                    selector.register(process.stdin, selectors.EVENT_WRITE, "stdin")
+                while selector.get_map():
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0:
+                        _fail("github_timeout")
+                    for key, _events in selector.select(min(remaining, 0.2)):
+                        if key.data == "stdin":
+                            try:
+                                offset += os.write(key.fd, memoryview(body)[offset:offset + 65536])
+                            except BrokenPipeError:
+                                offset = len(body)
+                            if offset == len(body):
+                                selector.unregister(key.fileobj)
+                                process.stdin.close()
+                            continue
+                        cap = MAX_HTTP_BYTES if key.data == "stdout" else 16384
+                        chunk = os.read(key.fd, min(65536, cap - len(buffers[key.data]) + 1))
+                        if not chunk:
+                            selector.unregister(key.fileobj)
+                            continue
+                        buffers[key.data].extend(chunk)
+                        if len(buffers[key.data]) > cap:
+                            _fail("github_output_too_large")
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    _fail("github_timeout")
+                try:
+                    exit_code = process.wait(timeout=remaining)
+                except subprocess.TimeoutExpired:
+                    _fail("github_timeout")
+            finished = True
+            raw = bytes(buffers["stdout"])
+            lines = raw.splitlines(keepends=True)
+            if not lines:
+                _fail("github_auth_unavailable" if exit_code == 4 else "github_request_failed")
+            match = re.fullmatch(rb"HTTP/\S+ ([0-9]{3})[^\r\n]*\r?\n", lines[0])
+            if match is None:
+                _fail("github_request_failed")
+            status = int(match.group(1))
+            separator = next((index for index, line in enumerate(lines[1:], 1) if line.strip() == b""), None)
+            if separator is None or sum(map(len, lines[:separator])) > 65536:
+                _fail()
+            if not 200 <= status < 300:
+                _fail("github_http_error", status)
+            if exit_code != 0:
+                _fail("github_request_failed", status)
+            try:
+                return parse_json(b"".join(lines[separator + 1:]), maximum=MAX_HTTP_BYTES)
+            except UserError:
+                _fail()
+        except (OSError, ValueError):
+            _fail("github_request_failed")
+        finally:
+            if process is not None:
+                cleanup_failed = False
+                if not finished:
+                    try:
+                        os.killpg(process.pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+                    except OSError:
+                        cleanup_failed = True
+                for stream in (process.stdin, process.stdout, process.stderr):
+                    if stream is not None:
+                        try:
+                            stream.close()
+                        except OSError:
+                            cleanup_failed = True
+                if not finished:
+                    try:
+                        process.wait(timeout=1)
+                    except subprocess.TimeoutExpired:
+                        cleanup_failed = True
+                if cleanup_failed:
+                    _fail("github_cleanup_failed")

@@ -13,6 +13,14 @@
   Git commands, with lazy fetching and object replacements disabled. Generation
   handoffs send nothing; supplied responses remain review-required until an
   explicit owner acceptance. Preserve the source/request/review identities.
+- Delivery plans include only a verified accepted bundle and explicit sharing/
+  destination metadata. Plan preparation/verification are offline. Preserve
+  binary bytes and never silently reclassify private or personal data for export.
+- The authenticated publisher is INACTIVE at
+  `docs/proposals/github_delivery.py.proposed`; its tests are also `.py.proposed`.
+  Do not copy/import/execute it or apply the CLI activation patch without the
+  explicit workspace §14 activation approval in `docs/proposals/github-publisher.md`.
+  Source/fixture approval does not authorize real account lookups or remote writes.
 - Freeze suite/task/grader/data-policy/decision identities before comparison.
   Join results by task ID. Missing, mismatched or errored evidence cannot become
   a zero score, a completed run or an automatic model-switch recommendation.
@@ -24,6 +32,8 @@
   Keep new tests under `tests/unit/` using authored T2 fixtures only.
 - The initial 76-case pending scope is frozen at commit `1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c`.
   Do not execute it against changed successor sources as though that were the
-  same approval. New repository/generation checks have a separate scope.
+  same approval. The 52 repository/generation cases remain separately pending
+  at `424c81fd033b8c1211e6f81044888dcd00297aaf`. The 20 delivery-plan and 24 inactive
+  publisher cases are a new 44-case scope; none of these scopes has run.
 - Personal GitHub publication is authorized by the all-project goal. Keep
   canonical evidence in this repository's `docs/`; preserve existing work.

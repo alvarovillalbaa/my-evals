@@ -7,6 +7,7 @@ import sys
 
 from .archive import write_archive
 from .comparison import compare_runs
+from .delivery import build_delivery_plan, read_delivery_plan, write_delivery_plan
 from .errors import UserError
 from .generation import accept_draft, build_request, import_response
 from .harbor import import_job
@@ -43,6 +44,13 @@ def parser():
     accepted.add_argument("draft", type=Path)
     accepted.add_argument("--reviewed", action="store_true")
     accepted.add_argument("--out", required=True, type=Path)
+    delivery = commands.add_parser("delivery-plan", help="Prepare a private GitHub delivery plan without contacting GitHub")
+    delivery.add_argument("bundle", type=Path)
+    delivery.add_argument("--intent", required=True, type=Path)
+    delivery.add_argument("--confirm-sharing", action="store_true")
+    delivery.add_argument("--out", required=True, type=Path)
+    inspect_delivery = commands.add_parser("delivery-verify", help="Verify a delivery artifact locally without account access")
+    inspect_delivery.add_argument("plan", type=Path)
     validate = commands.add_parser("validate", help="Validate an explicit suite without writing or running tasks")
     validate.add_argument("suite", type=Path)
     bundle = commands.add_parser("bundle", help="Create an exclusive portable task bundle")
@@ -87,6 +95,18 @@ def main(argv=None):
             result = {key: review[key] for key in ("reviewId", "requestId", "snapshotId", "status")}
         elif args.command == "generation-accept":
             result = accept_draft(args.draft, args.out, reviewed=args.reviewed)
+        elif args.command == "delivery-plan":
+            bundle_root, output_path = args.bundle.resolve(strict=True), args.out.resolve()
+            if output_path == bundle_root or bundle_root in output_path.parents:
+                raise UserError("output_inside_bundle")
+            plan = build_delivery_plan(args.bundle, read_json(args.intent), publication_consent=args.confirm_sharing)
+            write_delivery_plan(plan, args.out)
+            result = {"planId": plan["planId"], "bundleId": plan["bundleId"], "repository": plan["target"]["repository"],
+                      "files": len(plan["files"]), "sent": False}
+        elif args.command == "delivery-verify":
+            plan = read_delivery_plan(args.plan)
+            result = {"planId": plan["planId"], "bundleId": plan["bundleId"], "files": len(plan["files"]),
+                      "verified": True, "remoteChecked": False}
         elif args.command == "validate":
             manifest, _files = prepare_suite(args.suite)
             result = {"bundleId": manifest["bundleId"], "tasks": len(manifest["tasks"]), "writes": False}

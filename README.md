@@ -6,11 +6,14 @@ better on your own tasks, using the real Harbor framework.
 **Local CLI source.** This implementation captures explicitly selected committed
 repository files, prepares a generation handoff, validates supplied tasks for
 owner review, seals portable task bundles and imports/compares Harbor evidence.
-No provider is called by the handoff commands. Live provider integration and PR
-delivery remain unfinished requirements in the [owning brief](docs/spec.md).
+It also prepares binary-safe repository delivery plans without sending them.
+No provider is called by the handoff commands. The authenticated GitHub publisher
+is an [inactive source proposal](docs/proposals/github-publisher.md); live provider
+integration and PR acceptance remain unfinished in the [owning brief](docs/spec.md).
 
 Python 3.12+ on macOS/Linux; the local artifact tools use only the standard
-library; repository capture also uses the existing Git executable. No package
+library; repository capture also uses the existing Git executable. The proposed
+publisher would reuse an existing GitHub CLI login. No package
 installation, server, database or web hosting is required.
 Harbor and its container/agent dependencies are separate: this tool does not
 install, replace or silently execute them.
@@ -56,6 +59,26 @@ files are private local artifacts. Keep private task bundles out of public Git
 repositories. A bundle includes exact task files and graders; its manifest
 preserves order, stable task IDs, versions, file hashes and the policy fingerprint.
 Transferring and verifying it does not execute its code.
+
+## Prepare repository delivery
+
+The [delivery workflow](docs/references/delivery.md) seals an accepted bundle,
+explicit repository/account/base metadata, a new branch and absent path prefix,
+PR text and a sharing confirmation into one private local plan. It preserves
+binary bytes and verifies every embedded file against the accepted manifest.
+The [example intent](examples/delivery-intent.json) contains placeholders.
+
+```sh
+python3 -m personal_evals delivery-plan artifacts/my-suite \
+  --intent path/to/delivery-intent.json --confirm-sharing \
+  --out artifacts/delivery.json
+python3 -m personal_evals delivery-verify artifacts/delivery.json
+```
+
+These commands perform no account lookup or remote write. `publish` is absent
+from the active CLI. Its [reviewed activation proposal](docs/proposals/github-publisher.md)
+includes create-only branches, destination checks and a durable recovery journal;
+activation and the 44 new fixture checks need their separate approvals.
 
 ## Plan and import real Harbor evidence
 
@@ -119,14 +142,19 @@ keeps its 76 authored cases pinned to the initial source; it does not authorize
 the subsequent repository/generation scope. Both remain separate from real
 framework/provider acceptance. The [repository/generation proposal](docs/proposals/repository-generation-checks.md)
 separately scopes its 52 new authored cases, which are also unexecuted.
+The [delivery proposal](docs/proposals/github-publisher.md) scopes 20 local-plan
+and 24 inactive publisher cases. They have not been executed either.
 The [initial receipt](docs/results/2026/10-28/initial-source.md) and
 [repository handoff receipt](docs/results/2026/10-28/repository-generation.md)
-record actual checks, publication and proof limits.
+record their checks, publication and proof limits; the
+[delivery receipt](docs/results/2026/10-28/delivery-source.md) records this increment.
 
 - `personal_evals/suite.py`: explicit selection, task/manifest identity and bundle verification.
 - `personal_evals/repository.py`, `generation.py`: committed source capture, generation handoff and explicit draft review.
 - `personal_evals/planning.py`, `harbor.py`: real framework plans and provenance-bound imports.
 - `personal_evals/comparison.py`: paired evidence and inconclusive decisions.
+- `personal_evals/delivery.py`: private, self-contained repository delivery plans.
+- `docs/proposals/github_delivery.py.proposed`: inactive authenticated publisher candidate.
 - `personal_evals/archive.py`, `jsonio.py`, `cli.py`: portable output and local commands.
 - `tests/unit/`: authored T2 fixtures only, pending execution approval.
 

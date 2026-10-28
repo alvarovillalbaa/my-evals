@@ -1,0 +1,610 @@
+"""INACTIVE authored T2 publisher cases; activate only with the reviewed module.
+
+No real account, GitHub repository, provider or child process is involved. The
+Git object and REST responses below are explicitly authored protocol fixtures.
+"""
+
+import base64
+from copy import deepcopy
+import fcntl
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import tempfile
+import unittest
+from unittest.mock import patch
+from urllib.parse import parse_qs, unquote, urlsplit
+
+from personal_evals.delivery import build_delivery_plan
+from personal_evals.errors import UserError
+from personal_evals.github_delivery import GitHubError, publish_delivery
+from personal_evals.jsonio import canonical, digest
+from personal_evals.suite import write_bundle
+
+
+def blob_sha(data):
+    return hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
+
+
+class AuthoredGitHub:
+    """Stateful JSON boundary with immutable objects and only new refs/PRs."""
+
+    def __init__(self, plan):
+        self.plan = plan
+        target = plan["target"]
+        self.root = "/repos/" + target["repository"]
+        self.actor = deepcopy(plan["actor"])
+        self.repository = {"id": target["repositoryId"], "full_name": target["repository"],
+            "visibility": target["visibility"], "private": target["visibility"] == "private", "archived": False,
+            "disabled": False, "permissions": {"push": True}, "temp_clone_token": "AUTHORED_SENSITIVE_CLONE_TOKEN"}
+        self.algorithm = {"hash_algorithm": "sha1"}
+        self.refs = {target["baseBranch"]: target["baseCommit"]}
+        self.blobs, self.trees, self.commits, self.pulls = {}, {}, {}, []
+        self.calls, self.before, self.after = [], None, None
+        self.set_base_files({"README.md": b"Unrelated authored base content\n"})
+
+    def set_base_files(self, files):
+        flat = {}
+        for path, data in files.items():
+            sha = blob_sha(data)
+            self.blobs[sha] = data
+            flat[path] = {"mode": "100644", "type": "blob", "sha": sha}
+        tree = self.make_tree(flat)
+        self.commits[self.plan["target"]["baseCommit"]] = {
+            "sha": self.plan["target"]["baseCommit"], "tree": {"sha": tree}, "parents": [],
+            "message": "Authored base commit", "author": {"name": "Authored Base", "email": "base@fixture.invalid", "date": self.plan["createdAt"]},
+            "committer": {"name": "Authored Base", "email": "base@fixture.invalid", "date": self.plan["createdAt"]}}
+
+    def make_tree(self, flat):
+        nested = {}
+        for path, entry in flat.items():
+            parts, parent = path.split("/"), nested
+            for part in parts[:-1]:
+                parent = parent.setdefault(part, {})
+            parent[parts[-1]] = dict(entry)
+
+        def materialize(node):
+            entries = []
+            for name, child in node.items():
+                if "sha" in child:
+                    entries.append({"path": name, **child})
+                else:
+                    entries.append({"path": name, "mode": "040000", "type": "tree", "sha": materialize(child)})
+            entries.sort(key=lambda entry: entry["path"].encode("utf-8") + (b"/" if entry["type"] == "tree" else b""))
+            raw = b"".join(("40000" if entry["type"] == "tree" else entry["mode"]).encode("ascii") + b" "
+                           + entry["path"].encode("utf-8") + b"\0" + bytes.fromhex(entry["sha"]) for entry in entries)
+            sha = hashlib.sha1(b"tree " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()
+            self.trees[sha] = {"sha": sha, "truncated": False, "tree": entries}
+            return sha
+
+        return materialize(nested)
+
+    def flatten(self, sha, prefix=""):
+        result = {}
+        for entry in self.trees[sha]["tree"]:
+            path = prefix + entry["path"]
+            if entry["type"] == "tree":
+                result.update(self.flatten(entry["sha"], path + "/"))
+            else:
+                result[path] = {key: entry[key] for key in ("mode", "type", "sha")}
+        return result
+
+    def request(self, method, path, payload=None):
+        self.calls.append((method, path, deepcopy(payload)))
+        if self.before is not None:
+            self.before(method, path, payload)
+        result = self._request(method, path, payload)
+        if self.after is not None:
+            result = self.after(method, path, payload, result)
+        return deepcopy(result)
+
+    def _request(self, method, path, payload):
+        parsed = urlsplit(path)
+        route, query = parsed.path, parse_qs(parsed.query)
+        if method == "GET" and route == "/user":
+            return self.actor
+        if method == "GET" and route == self.root:
+            return self.repository
+        if method == "GET" and route == self.root + "/hash-algorithm":
+            return self.algorithm
+        if method == "GET" and route.startswith(self.root + "/git/ref/heads/"):
+            branch = unquote(route[len(self.root + "/git/ref/heads/"):])
+            if branch not in self.refs:
+                raise GitHubError(404, "github_http_error")
+            return {"ref": "refs/heads/" + branch, "object": {"type": "commit", "sha": self.refs[branch]}}
+        if method == "GET" and route.startswith(self.root + "/git/commits/"):
+            sha = route.rsplit("/", 1)[1]
+            if sha not in self.commits:
+                raise GitHubError(404, "github_http_error")
+            return self.commits[sha]
+        if method == "GET" and route.startswith(self.root + "/git/trees/"):
+            sha = route.rsplit("/", 1)[1]
+            if sha not in self.trees:
+                raise GitHubError(404, "github_http_error")
+            return self.trees[sha]
+        if method == "POST" and route == self.root + "/git/blobs":
+            if payload["encoding"] != "base64":
+                raise AssertionError("binary blobs must use base64")
+            data = base64.b64decode(payload["content"], validate=True)
+            sha = blob_sha(data)
+            self.blobs[sha] = data
+            return {"sha": sha}
+        if method == "POST" and route == self.root + "/git/trees":
+            flat = self.flatten(payload["base_tree"]) if payload.get("base_tree") else {}
+            for entry in payload["tree"]:
+                flat[entry["path"]] = {key: entry[key] for key in ("mode", "type", "sha")}
+            return {"sha": self.make_tree(flat)}
+        if method == "POST" and route == self.root + "/git/commits":
+            # An authored server identifier, not a claim about GitHub commit serialization.
+            sha = hashlib.sha1(b"authored-server-commit:" + canonical(payload)).hexdigest()
+            self.commits[sha] = {"sha": sha, "tree": {"sha": payload["tree"]},
+                "parents": [{"sha": parent} for parent in payload["parents"]], "message": payload["message"],
+                "author": deepcopy(payload["author"]), "committer": deepcopy(payload["committer"])}
+            return {"sha": sha}
+        if method == "POST" and route == self.root + "/git/refs":
+            branch = payload["ref"].removeprefix("refs/heads/")
+            if branch in self.refs:
+                raise GitHubError(422, "github_http_error")
+            self.refs[branch] = payload["sha"]
+            return {"ref": payload["ref"], "object": {"type": "commit", "sha": payload["sha"]}}
+        if method == "GET" and route == self.root + "/pulls":
+            if int(query.get("page", ["1"])[0]) > 1:
+                return []
+            return self.pulls
+        if method == "GET" and route.startswith(self.root + "/pulls/"):
+            number = int(route.rsplit("/", 1)[1])
+            for pull in self.pulls:
+                if pull["number"] == number:
+                    return pull
+            raise GitHubError(404, "github_http_error")
+        if method == "POST" and route == self.root + "/pulls":
+            head = payload["head"].split(":", 1)[-1]
+            number = len(self.pulls) + 1
+            repository = {"id": self.repository["id"], "full_name": self.repository["full_name"]}
+            pull = {"number": number, "html_url": "https://github.com/" + self.plan["target"]["repository"] + f"/pull/{number}",
+                "state": "open", "merged_at": None, "draft": payload["draft"], "title": payload["title"], "body": payload["body"],
+                "user": deepcopy(self.actor), "head": {"sha": self.refs[head], "ref": head, "repo": deepcopy(repository)},
+                "base": {"sha": self.refs[payload["base"]], "ref": payload["base"], "repo": deepcopy(repository)}}
+            self.pulls.append(pull)
+            return pull
+        raise AssertionError(f"unexpected authored transport operation: {method} {path}")
+
+    def writes(self, suffix=None):
+        return [call for call in self.calls if call[0] != "GET" and (suffix is None or urlsplit(call[1]).path.endswith(suffix))]
+
+
+class GitHubDeliveryTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="personal-evals-authored-publisher-")
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name).resolve()
+        source = self.root / "authored-source"
+        shutil.copytree(Path(__file__).resolve().parents[2] / "examples", source)
+        suite_path = source / "suite.json"
+        suite = json.loads(suite_path.read_text(encoding="utf-8"))
+        binary = source / "demo-text/environment/payload.bin"
+        binary.write_bytes(b"\x00\xff\xfeauthored\r\n\x80")
+        suite["tasks"][0]["files"].append("environment/payload.bin")
+        suite_path.write_text(json.dumps(suite) + "\n", encoding="utf-8")
+        self.bundle = self.root / "accepted-bundle"
+        write_bundle(suite_path, self.bundle)
+        self.intent = {"schemaVersion": 1, "target": {"repository": "authored-owner/authored-repo", "repositoryId": 101,
+            "visibility": "private", "baseBranch": "main", "baseCommit": "1" * 40, "newBranch": "personal-evals/authored", "pathPrefix": "evals/authored"},
+            "actor": {"login": "authored-owner", "id": 202}, "createdAt": "2026-10-28T12:00:00Z",
+            "pullRequest": {"title": "Add reviewed authored evals", "body": "Authored transport fixture only.", "draft": True},
+            "purpose": "Deliver this explicitly reviewed authored task bundle"}
+        self.plan = build_delivery_plan(self.bundle, self.intent, publication_consent=True)
+        self.api = AuthoredGitHub(self.plan)
+        self.journal = self.root / "private-journal"
+
+    def publish(self, *, api=None, plan=None, journal=None, resume=False):
+        return publish_delivery(plan or self.plan, journal or self.journal, execute=True, resume=resume, api=api or self.api)
+
+    def events(self, journal=None):
+        return [json.loads(path.read_text(encoding="utf-8")) for path in sorted((journal or self.journal).glob("*.json"))]
+
+    def no_ref_mutation(self, api=None):
+        for method, path, _payload in (api or self.api).calls:
+            self.assertNotIn(method, ("PATCH", "PUT", "DELETE"), path)
+
+    def partial_before(self, suffix, *, api=None, journal=None):
+        api, journal = api or self.api, journal or self.journal
+
+        def stop(method, path, _payload):
+            if method == "POST" and urlsplit(path).path.endswith(suffix):
+                raise GitHubError(0, "github_request_failed")
+
+        api.before = stop
+        try:
+            with self.assertRaises(UserError):
+                self.publish(api=api, journal=journal)
+        finally:
+            api.before = None
+        self.assertTrue(self.events(journal), "the exact partial journal remains available")
+        return api, journal
+
+    def test_execute_requires_literal_true_before_auth_client_construction(self):
+        for value in (False, None, 1, "true"):
+            journal = self.root / f"not-created-{type(value).__name__}"
+            with self.subTest(value=value), patch("personal_evals.github_delivery.GhApi") as client, self.assertRaises(UserError):
+                publish_delivery(self.plan, journal, execute=value)
+            client.assert_not_called()
+            self.assertFalse(journal.exists())
+
+    def test_observed_actor_id_and_login_must_match_before_writes(self):
+        for field, value in (("id", 999), ("login", "other-authored-actor")):
+            api = AuthoredGitHub(self.plan); api.actor[field] = value
+            with self.subTest(field=field), self.assertRaises(UserError):
+                self.publish(api=api, journal=self.root / f"actor-{field}")
+            self.assertEqual(api.writes(), [])
+
+    def test_repository_numeric_identity_and_full_name_are_immutable_preconditions(self):
+        for field, value in (("id", 999), ("full_name", "other-owner/other-repository")):
+            api = AuthoredGitHub(self.plan); api.repository[field] = value
+            with self.subTest(field=field), self.assertRaises(UserError):
+                self.publish(api=api, journal=self.root / f"repository-{field}")
+            self.assertEqual(api.writes(), [])
+
+    def test_visibility_and_private_flag_drift_stops_before_uploading_content(self):
+        for field, value in (("visibility", "public"), ("private", False), ("private", 1)):
+            api = AuthoredGitHub(self.plan); api.repository[field] = value
+            with self.subTest(field=field, value=value), self.assertRaises(UserError):
+                self.publish(api=api, journal=self.root / f"visibility-{field}-{value}")
+            self.assertEqual(api.writes(), [])
+
+    def test_push_permission_archived_and_disabled_destinations_fail_without_writes(self):
+        changes = ({"permissions": {"push": False}}, {"permissions": {}}, {"permissions": {"push": 1}},
+                   {"archived": True}, {"disabled": True})
+        for index, change in enumerate(changes):
+            api = AuthoredGitHub(self.plan); api.repository.update(change)
+            with self.subTest(change=change), self.assertRaises(UserError):
+                self.publish(api=api, journal=self.root / f"permission-{index}")
+            self.assertEqual(api.writes(), [])
+
+    def test_only_an_explicit_sha1_repository_hash_algorithm_is_supported(self):
+        for algorithm in ({"hash_algorithm": "sha256"}, {}, {"hash_algorithm": None}):
+            api = AuthoredGitHub(self.plan); api.algorithm = algorithm
+            with self.subTest(algorithm=algorithm), self.assertRaises(UserError):
+                self.publish(api=api, journal=self.root / f"hash-{len(list(self.root.iterdir()))}")
+            self.assertEqual(api.writes(), [])
+
+    def test_changed_base_head_is_not_silently_rebased_or_updated(self):
+        self.api.refs[self.plan["target"]["baseBranch"]] = "2" * 40
+        with self.assertRaises(UserError):
+            self.publish()
+        self.assertEqual(self.api.writes(), [])
+        self.no_ref_mutation()
+
+    def test_existing_prefix_or_ancestor_file_is_not_overwritten(self):
+        for index, path in enumerate(("evals", "evals/authored", "evals/authored/already-there.txt")):
+            api = AuthoredGitHub(self.plan); api.set_base_files({path: b"Existing authored destination\n"})
+            with self.subTest(path=path), self.assertRaises(UserError):
+                self.publish(api=api, journal=self.root / f"prefix-{index}")
+            self.assertEqual(api.writes(), []); self.no_ref_mutation(api)
+
+    def test_truncated_base_tree_cannot_prove_an_absent_destination_prefix(self):
+        base = self.api.commits[self.plan["target"]["baseCommit"]]
+        self.api.trees[base["tree"]["sha"]]["truncated"] = True
+        with self.assertRaises(UserError):
+            self.publish()
+        self.assertEqual(self.api.writes(), [])
+
+    def test_binary_blobs_preserve_exact_bytes_and_the_new_tree_preserves_unrelated_base_files(self):
+        self.api.set_base_files({"README.md": b"Keep the root file\n", "evals/other/keep.txt": b"Keep the sibling namespace\n"})
+        base_tree = self.api.commits[self.plan["target"]["baseCommit"]]["tree"]["sha"]
+        summary = self.publish()
+        binary = next(file for file in self.plan["files"] if file["path"].endswith("/environment/payload.bin"))
+        decoded = base64.b64decode(binary["content"], validate=True)
+        self.assertEqual(decoded, b"\x00\xff\xfeauthored\r\n\x80")
+        self.assertEqual(self.api.blobs[binary["gitBlob"]], decoded)
+        self.assertTrue(any(payload == {"encoding": "base64", "content": binary["content"]}
+                            for _method, _path, payload in self.api.writes("/git/blobs")))
+        self.assertEqual(self.api.writes("/git/trees")[0][2]["base_tree"], base_tree)
+        commit = self.api.refs[self.plan["target"]["newBranch"]]
+        files = self.api.flatten(self.api.commits[commit]["tree"]["sha"])
+        self.assertIn("README.md", files); self.assertIn("evals/other/keep.txt", files)
+        self.assertTrue(all(file["path"] in files for file in self.plan["files"]))
+        self.assertTrue(any(method == "GET" and urlsplit(path).path == self.api.root + "/pulls/1" for method, path, _payload in self.api.calls))
+        serialized = canonical(summary).decode("utf-8") + "".join(path.read_text(encoding="utf-8") for path in self.journal.glob("*.json"))
+        self.assertNotIn("AUTHORED_SENSITIVE_CLONE_TOKEN", serialized)
+        self.assertNotIn(str(self.root), serialized)
+        self.no_ref_mutation()
+
+    def test_incorrect_returned_blob_sha_stops_before_tree_commit_or_branch_creation(self):
+        def altered(method, path, _payload, result):
+            return {"sha": "f" * 40} if method == "POST" and path.endswith("/git/blobs") else result
+        self.api.after = altered
+        with self.assertRaises(UserError):
+            self.publish()
+        self.assertEqual(self.api.writes("/git/trees"), [])
+        self.assertEqual(self.api.writes("/git/commits"), [])
+        self.assertEqual(self.api.writes("/git/refs"), [])
+        self.no_ref_mutation()
+
+    def test_verified_commit_is_durably_recorded_before_a_branch_and_recording_failure_stops(self):
+        observed = []
+
+        def inspect(method, path, payload):
+            if method == "POST" and path.endswith("/git/refs"):
+                events = self.events()
+                commit = next(row for row in reversed(events) if row["event"] == "commit_verified")
+                self.assertEqual(commit["data"]["objectSha"], payload["sha"])
+                self.assertEqual(events[-1]["event"], "branch_pending")
+                self.assertLess(commit["sequence"], events[-1]["sequence"])
+                observed.append(payload["sha"])
+
+        self.api.before = inspect
+        self.publish()
+        self.assertEqual(observed, [self.api.refs[self.plan["target"]["newBranch"]]])
+        from personal_evals.github_delivery import _Journal
+        original = _Journal.append
+
+        def deny_commit(receipt, name, data):
+            if name == "commit_verified":
+                raise GitHubError(0, "github_journal_unwritable")
+            return original(receipt, name, data)
+
+        api, journal = AuthoredGitHub(self.plan), self.root / "commit-recording-failed"
+        with patch("personal_evals.github_delivery._Journal.append", new=deny_commit), self.assertRaises(UserError):
+            self.publish(api=api, journal=journal)
+        self.assertEqual(len(api.writes("/git/commits")), 1)
+        self.assertEqual(api.writes("/git/refs"), [])
+        self.assertFalse(any(row["event"] == "commit_verified" for row in self.events(journal)))
+
+    def test_an_existing_matching_branch_and_pr_cannot_be_adopted_by_a_fresh_journal(self):
+        first = self.publish(journal=self.root / "original-owned-journal")
+        before = len(self.api.writes())
+        with self.assertRaises(UserError):
+            self.publish()
+        self.assertEqual(len(self.api.writes()), before)
+        self.assertEqual(self.api.refs[self.plan["target"]["newBranch"]], first["headCommit"])
+        self.assertEqual(len(self.api.pulls), 1)
+        self.no_ref_mutation()
+
+    def test_resume_requires_the_exact_plan_valid_event_chain_and_writable_private_journal(self):
+        first = self.publish()
+        before = len(self.api.writes())
+        resumed = self.publish(resume=True)
+        self.assertEqual(resumed["headCommit"], first["headCommit"])
+        self.assertEqual(len(self.api.writes()), before)
+        changed_intent = deepcopy(self.intent); changed_intent["pullRequest"]["title"] = "A different reviewed intent"
+        other_plan = build_delivery_plan(self.bundle, changed_intent, publication_consent=True)
+        wrong_plan = self.root / "wrong-plan-journal"; shutil.copytree(self.journal, wrong_plan)
+        unused = AuthoredGitHub(other_plan)
+        with self.assertRaises(UserError):
+            self.publish(api=unused, plan=other_plan, journal=wrong_plan, resume=True)
+        self.assertEqual(unused.calls, [])
+        corrupt = self.root / "corrupt-chain"; shutil.copytree(self.journal, corrupt)
+        event_path = corrupt / "00000002.json"
+        event = json.loads(event_path.read_text(encoding="utf-8")); event["previousEventId"] = "0" * 64
+        event["eventId"] = digest({key: value for key, value in event.items() if key != "eventId"})
+        event_path.write_bytes(canonical(event) + b"\n")
+        original_bytes = event_path.read_bytes()
+        unused = AuthoredGitHub(self.plan)
+        with self.assertRaises(UserError):
+            self.publish(api=unused, journal=corrupt, resume=True)
+        self.assertEqual(unused.calls, []); self.assertEqual(event_path.read_bytes(), original_bytes)
+        malformed = self.root / "malformed-stopped-event"; shutil.copytree(self.journal, malformed)
+        prior = self.events(malformed)
+        bad_event = {"schemaVersion": 1, "kind": "personal-evals-delivery-event", "planId": self.plan["planId"],
+            "sequence": len(prior) + 1, "previousEventId": prior[-1]["eventId"], "event": "stopped", "data": {"code": [], "status": 0}}
+        bad_event["eventId"] = digest(bad_event)
+        path = malformed / f"{len(prior) + 1:08d}.json"
+        descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        with os.fdopen(descriptor, "wb") as stream:
+            stream.write(canonical(bad_event) + b"\n")
+        unused = AuthoredGitHub(self.plan)
+        with self.assertRaises(UserError):
+            self.publish(api=unused, journal=malformed, resume=True)
+        self.assertEqual(unused.calls, [])
+        readonly = self.root / "readonly-journal"; shutil.copytree(self.journal, readonly)
+        os.chmod(readonly / ".lock", 0o400)
+        real_open = os.open
+
+        def deny_write(path, flags, *arguments, **keywords):
+            if path == ".lock" and flags & os.O_RDWR:
+                raise PermissionError("AUTHORED_READONLY_JOURNAL")
+            return real_open(path, flags, *arguments, **keywords)
+
+        unused = AuthoredGitHub(self.plan)
+        with patch("os.open", side_effect=deny_write), patch("os.chmod", side_effect=AssertionError("never force journal permissions")), self.assertRaises(UserError):
+            self.publish(api=unused, journal=readonly, resume=True)
+        self.assertEqual(unused.calls, [])
+        self.assertEqual((readonly / ".lock").stat().st_mode & 0o777, 0o400)
+
+    def test_lost_branch_response_recovers_only_the_durably_recorded_exact_commit(self):
+        def lost(method, path, _payload, result):
+            if method == "POST" and path.endswith("/git/refs"):
+                raise GitHubError(0, "github_request_failed")
+            return result
+        self.api.after = lost
+        with self.assertRaises(UserError):
+            self.publish()
+        events = self.events()
+        commit = next(row["data"]["objectSha"] for row in events if row["event"] == "commit_verified")
+        self.assertEqual(self.api.refs[self.plan["target"]["newBranch"]], commit)
+        self.assertTrue(any(row["event"] == "branch_pending" for row in events))
+        self.api.after = None
+        result = self.publish(resume=True)
+        self.assertEqual(result["headCommit"], commit)
+        self.assertEqual(len(self.api.writes("/git/refs")), 1)
+        self.no_ref_mutation()
+
+    def test_a_changed_branch_on_resume_is_never_repointed_or_used_to_create_a_pr(self):
+        self.partial_before("/pulls")
+        self.api.refs[self.plan["target"]["newBranch"]] = "3" * 40
+        before = len(self.api.writes("/pulls"))
+        with self.assertRaises(UserError):
+            self.publish(resume=True)
+        self.assertEqual(len(self.api.writes("/pulls")), before)
+        self.assertEqual(self.api.refs[self.plan["target"]["newBranch"]], "3" * 40)
+        self.no_ref_mutation()
+
+    def test_pr_recovery_verifies_full_identity_and_requires_a_fresh_final_readback(self):
+        changes = [lambda row: row["head"].update(sha="9" * 40), lambda row: row["head"].update(ref="different-head"),
+                   lambda row: row["head"]["repo"].update(id=999), lambda row: row["base"]["repo"].update(id=999),
+                   lambda row: row["base"].update(ref="different-base"), lambda row: row.update(title="Edited title"),
+                   lambda row: row.update(body="Edited owner text"),
+                   lambda row: row.update(body=row["body"].replace(self.plan["planId"], "0" * 64)),
+                   lambda row: row["user"].update(id=999), lambda row: row.update(state="unknown"),
+                   lambda row: row.update(draft=1), lambda row: row.update(html_url="https://external.invalid/private"),
+                   lambda row: row.update(state="closed", merged_at=False),
+                   lambda row: row.update(state="closed", merged_at="not-a-timestamp")]
+        for index, change in enumerate(changes):
+            api, journal = AuthoredGitHub(self.plan), self.root / f"wrong-pr-{index}"
+            self.partial_before("/pulls", api=api, journal=journal)
+            api._request("POST", api.root + "/pulls", api.writes("/pulls")[-1][2])
+            change(api.pulls[0])
+            before = len(api.writes())
+            with self.subTest(index=index), self.assertRaises(UserError):
+                self.publish(api=api, journal=journal, resume=True)
+            self.assertEqual(len(api.writes()), before)
+            self.assertFalse(any(row["event"] == "pr_verified" for row in self.events(journal)))
+        api, journal = AuthoredGitHub(self.plan), self.root / "multiple-matching-prs"
+        self.partial_before("/pulls", api=api, journal=journal)
+        api._request("POST", api.root + "/pulls", api.writes("/pulls")[-1][2])
+        duplicate = deepcopy(api.pulls[0]); duplicate["number"] = 2
+        duplicate["html_url"] = "https://github.com/" + self.plan["target"]["repository"] + "/pull/2"
+        api.pulls.append(duplicate)
+        with self.assertRaises(UserError):
+            self.publish(api=api, journal=journal, resume=True)
+        self.assertEqual(len(api.writes("/pulls")), 1)
+        api, journal = AuthoredGitHub(self.plan), self.root / "changed-final-readback"
+        self.partial_before("/pulls", api=api, journal=journal)
+        api._request("POST", api.root + "/pulls", api.writes("/pulls")[-1][2])
+
+        def altered(method, path, _payload, result):
+            if method == "GET" and path == api.root + "/pulls/1":
+                result = deepcopy(result); result["body"] = "Changed after list lookup"
+            return result
+        api.after = altered
+        with self.assertRaises(UserError):
+            self.publish(api=api, journal=journal, resume=True)
+        self.assertFalse(any(row["event"] == "pr_verified" for row in self.events(journal)))
+
+    def test_requested_draft_mode_is_a_literal_boolean_and_never_silently_falls_back(self):
+        for draft in (False, True):
+            intent = deepcopy(self.intent); intent["pullRequest"]["draft"] = draft
+            plan = build_delivery_plan(self.bundle, intent, publication_consent=True)
+            api = AuthoredGitHub(plan)
+            result = self.publish(api=api, plan=plan, journal=self.root / f"requested-draft-{draft}")
+            self.assertIs(api.writes("/pulls")[0][2]["draft"], draft)
+            self.assertIs(result["pullRequest"]["draft"], draft)
+        for wrong in (1, False):
+            api = AuthoredGitHub(self.plan)
+
+            def altered(method, path, _payload, result):
+                if method == "POST" and path.endswith("/pulls"):
+                    result = deepcopy(result); result["draft"] = wrong
+                return result
+            api.after = altered
+            with self.subTest(wrong=wrong), self.assertRaises(UserError):
+                self.publish(api=api, journal=self.root / f"wrong-draft-{wrong}")
+            self.assertEqual(len(api.writes("/pulls")), 1)
+
+    def test_base_drift_after_commit_creation_stops_before_creating_a_branch(self):
+        def drift(method, path, _payload, result):
+            if method == "POST" and path.endswith("/git/commits"):
+                self.api.refs[self.plan["target"]["baseBranch"]] = "2" * 40
+            return result
+        self.api.after = drift
+        with self.assertRaises(UserError):
+            self.publish()
+        self.assertTrue(any(row["event"] == "commit_verified" for row in self.events()))
+        self.assertEqual(self.api.writes("/git/refs"), []); self.assertEqual(self.api.writes("/pulls"), [])
+        self.no_ref_mutation()
+
+    def test_base_drift_after_branch_creation_leaves_it_in_place_without_creating_a_pr(self):
+        def drift(method, path, _payload, result):
+            if method == "POST" and path.endswith("/git/refs"):
+                self.api.refs[self.plan["target"]["baseBranch"]] = "2" * 40
+            return result
+        self.api.after = drift
+        with self.assertRaises(UserError):
+            self.publish()
+        self.assertIn(self.plan["target"]["newBranch"], self.api.refs)
+        self.assertEqual(self.api.writes("/pulls"), [])
+        self.assertTrue(any(row["event"] == "branch_verified" for row in self.events()))
+        self.no_ref_mutation()
+
+    def test_lost_pr_response_recovers_unique_open_closed_or_merged_identity_without_another_post(self):
+        for index, state in enumerate(("open", "closed", "merged")):
+            api, journal = AuthoredGitHub(self.plan), self.root / f"lost-pr-{state}"
+
+            def lost(method, path, _payload, result):
+                if method == "POST" and path.endswith("/pulls"):
+                    raise GitHubError(0, "github_request_failed")
+                return result
+            api.after = lost
+            with self.subTest(state=state), self.assertRaises(UserError):
+                self.publish(api=api, journal=journal)
+            api.after = None
+            pull = api.pulls[0]
+            pull["state"] = "open" if state == "open" else "closed"
+            pull["merged_at"] = self.plan["createdAt"] if state == "merged" else None
+            if state == "merged":
+                pull["draft"] = False  # An authored later owner action, never performed by the publisher.
+            pull["base"]["sha"] = "4" * 40  # Mutable PR metadata is not the immutable retry identity.
+            before = len(api.writes())
+            result = self.publish(api=api, journal=journal, resume=True)
+            self.assertEqual(result["state"], state)
+            self.assertEqual(len(api.writes()), before)
+            self.assertEqual(len(api.writes("/pulls")), 1)
+            self.no_ref_mutation(api)
+
+    def test_uncertain_pr_without_a_positive_match_stays_pending_and_is_never_posted_again(self):
+        self.partial_before("/pulls")
+        self.assertEqual(self.api.pulls, [])
+        for _attempt in range(2):
+            with self.assertRaises(UserError) as caught:
+                self.publish(resume=True)
+            self.assertEqual(caught.exception.code, "github_outcome_uncertain")
+        self.assertEqual(len(self.api.writes("/pulls")), 1)
+        self.assertTrue(any(row["event"] == "pr_pending" for row in self.events()))
+        self.assertFalse(any(row["event"] == "pr_verified" for row in self.events()))
+        self.no_ref_mutation()
+
+    def test_http_403_has_no_auth_retry_and_partial_journal_contains_only_safe_failures(self):
+        private = "PRIVATE_SERVER_BODY_AND_TOKEN_" + str(self.root)
+
+        def denied(method, path, _payload):
+            if method == "POST" and path.endswith("/git/blobs"):
+                raise GitHubError(403, "github_http_error") from RuntimeError(private)
+        self.api.before = denied
+        with self.assertRaises(UserError) as caught:
+            self.publish()
+        self.assertEqual(caught.exception.status, 403)
+        self.assertEqual(len(self.api.writes("/git/blobs")), 1)
+        self.assertEqual(self.api.writes("/git/refs"), [])
+        events = self.events()
+        self.assertTrue(any(row["event"] == "blob_pending" for row in events))
+        self.assertEqual(events[-1]["event"], "stopped")
+        serialized = canonical(events).decode("utf-8") + str(caught.exception)
+        for value in (private, str(self.root), "AUTHORED_SENSITIVE_CLONE_TOKEN"):
+            self.assertNotIn(value, serialized)
+        api, journal = AuthoredGitHub(self.plan), self.root / "denied-auth-read"
+
+        def no_user(method, path, _payload):
+            if method == "GET" and path == "/user":
+                raise GitHubError(403, "github_http_error")
+        api.before = no_user
+        with self.assertRaises(UserError):
+            self.publish(api=api, journal=journal)
+        self.assertEqual(len(api.calls), 1); self.assertEqual(api.writes(), [])
+
+    def test_same_journal_concurrency_is_rejected_before_account_or_repository_access(self):
+        self.journal.mkdir(mode=0o700)
+        descriptor = os.open(self.journal / ".lock", os.O_RDWR | os.O_CREAT | os.O_EXCL, 0o600)
+        try:
+            fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            with self.assertRaises(UserError) as caught:
+                self.publish(resume=True)
+            self.assertEqual(caught.exception.code, "github_journal_locked")
+            self.assertEqual(self.api.calls, [])
+            self.assertEqual(self.events(), [])
+        finally:
+            fcntl.flock(descriptor, fcntl.LOCK_UN)
+            os.close(descriptor)
+        self.assertEqual((self.journal / ".lock").stat().st_mode & 0o777, 0o600)

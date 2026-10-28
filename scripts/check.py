@@ -10,8 +10,9 @@ from urllib.parse import unquote
 
 root = Path(__file__).resolve().parents[1]
 files = sorted(path for directory in ("personal_evals", "tests", "scripts", "examples") for path in (root / directory).rglob("*.py"))
+proposed = sorted([*(root / "docs/proposals").glob("*.py.proposed"), *(root / "tests").rglob("*.py.proposed")])
 cases = {}
-for path in files:
+for path in [*files, *proposed]:
     tree = ast.parse(path.read_text(encoding="utf-8"), filename=path.name)
     if path.name.startswith("test_"):
         cases[str(path.relative_to(root))] = sum(isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith("test_") for node in ast.walk(tree))
@@ -37,5 +38,6 @@ for path in (root / "examples").rglob("*.json"):
     json.loads(path.read_text(encoding="utf-8"))
 tomllib.loads((root / "examples/demo-text/task.toml").read_text(encoding="utf-8"))
 print(json.dumps({"pythonVersion": sys.version.split()[0], "pythonExecutable": sys.executable, "modulesParsed": len(files),
+                  "inactiveProposalsParsed": len(proposed),
                   "localMarkdownLinks": links, "authoredUnexecutedCases": cases, "totalAuthoredCases": sum(cases.values()),
                   "execution": "syntax and references only; no product import or test executed"}))

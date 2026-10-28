@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "a24be18246682abb30470b8848af25f10fd35c98",
+  "status": "source only; publisher inactive; all44 new cases unexecuted",
+  "newAuthoredCases": {
+    "offlineDeliveryPlan": 20,
+    "inactivePublisher": 24,
+    "total": 44
+  },
+  "totalAuthoredUnexecutedCases": 172,
+  "proposedCommand": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.unit.test_delivery tests.unit.test_github_delivery",
+  "activation": {
+    "publisher": {
+      "from": "docs/proposals/github_delivery.py.proposed",
+      "to": "personal_evals/github_delivery.py"
+    },
+    "cliPatch": "docs/proposals/github-delivery-activation.patch",
+    "expectedActivatedCliSha256": "b74b3396481cf8df8c250d5b016294f9e5c435c4bc550038308f3f8464bff2a4",
+    "fixtures": {
+      "from": "tests/unit/test_github_delivery.py.proposed",
+      "to": "tests/unit/test_github_delivery.py"
+    }
+  },
+  "preservedPendingScopes": [
+    {
+      "sourceCommit": "1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c",
+      "authoredCases": 76,
+      "status": "approval pending; unexecuted",
+      "historicalFilesVerified": 23,
+      "manifest": "docs/results/2026/10-28/source-manifest.json"
+    },
+    {
+      "sourceCommit": "424c81fd033b8c1211e6f81044888dcd00297aaf",
+      "authoredCases": 52,
+      "status": "approval pending; unexecuted",
+      "historicalFilesVerified": 30,
+      "manifest": "docs/results/2026/10-28/repository-generation-source.json"
+    }
+  ],
+  "sha256": {
+    "AGENTS.md": "05ea79eef8b0f1d18e0e5fd453d0b0eae028ba418c5f07fac844b6e7ba21f668",
+    "README.md": "c144c7c7d83333926305bf36e3eb2f4d1abb136833000aac915f4eeb080b1054",
+    "docs/proposals/github-delivery-activation.patch": "61865d39ff84613eb1fda63de5f8f174ea8371b2172ae7ecd7580f3a0fc113a1",
+    "docs/proposals/github-publisher.md": "78f6cb282c37845e330338bf6462dbc13fcc2d7958256d89a0ae7c87182c4586",
+    "docs/proposals/github_delivery.py.proposed": "d3e2ec4b6481df7cf75d4c0acc39dd649faf4aceb22aa5058145d03a5ecf6214",
+    "docs/references/delivery.md": "a78df6c4704af90c58d3148939c502e1753e98c0640dc2f621b3fd33728c21cc",
+    "docs/references/formats.md": "7d639b98f9966b37a402d3d01175f69b1b7cb2eccb92e19b301f0db7e93c3a2b",
+    "docs/references/github.md": "9fe798a102bdfac201224995f34f325a37c8fa10df78118b77f6d0a25f0bbdc8",
+    "docs/spec.md": "4cd086905db37d97aaceba061de95b7ca81d56e35cfae7bb63355bb3bd22c4e5",
+    "examples/delivery-intent.json": "5d968bbbaa21132cfead2aaedb434e47ae7063536abdc00d40abe3ef437f4570",
+    "examples/demo-text/environment/Dockerfile": "082dba0d5dd12e8a4dfb6b6d126de2d34eb75c789a72947d87da0721ea9b5b41",
+    "examples/demo-text/instruction.md": "a2f8c256a17b97be9f75e0ef9a9ba3f9358dd3294e8b0fc849ce1f48517bf570",
+    "examples/demo-text/task.toml": "39ec861c533f5350fb1c96ac998c992178d4a036b2dec0ef4929930b26cbed61",
+    "examples/demo-text/tests/test.sh": "128d2ac29b76a8dd1cf7b47dfe7abb40c4529911ece926ab6011e2684a89fed9",
+    "examples/demo-text/tests/verify.py": "9cda917ce20d833dfad3d06fd972e9e22ed2815ea00da37aad402c6eceac1080",
+    "examples/generation-intent.json": "a21aafcb8041b3b1a5df5c7112682babe54e5e2716e490d034f2be91b1ee8bcf",
+    "examples/source-policy.json": "78db661637830f9a92410d8c5854d99eb3b173bc6e72bee6664857ae3930e3be",
+    "examples/suite.json": "78822889e90c9284c4fcf9c185138bb2e8132f9cd7036b1c714e968d73866271",
+    "personal_evals/__init__.py": "d96d320a09027feadb3350c382edf8138b7ce32db394adaf2c5b3900f15686a8",
+    "personal_evals/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "personal_evals/archive.py": "43275a35385b059a26e03d16a955e0a2aff28cd6b0d3350fce2980455c50f5a8",
+    "personal_evals/cli.py": "a469b295f003e3b0862cdcbd78edf7a00f787cb93f923c3ea18324f7ad8ae858",
+    "personal_evals/comparison.py": "ff9fc0ea48f056ad3e8399785e7dbf7908b358b1917bc9f27c490f34da1e6a58",
+    "personal_evals/delivery.py": "2a7f5e4798be347c2993d747157b8527aa02644bdfd54df9fbe18767a25348ce",
+    "personal_evals/errors.py": "8ac824785799876934893e9e06a1d0e5e73fa5456dac44f0217ba5686330d137",
+    "personal_evals/generation.py": "668b92346616659371edb9b021981104e87f0048f737fa31600c520eda28c17f",
+    "personal_evals/harbor.py": "d51995c49627d9f0813d3ba5744806837d6e03256d468258f41377889773fbd0",
+    "personal_evals/jsonio.py": "3e2cad27c8dc43891e3dbd138b5480736958cbffb18fa1b0ab32a66192b5aacc",
+    "personal_evals/planning.py": "68fc49a849bbcba35af82907e98c7c1bdb4dd2bc58310cfab7d620edaaa2e4ac",
+    "personal_evals/repository.py": "2d46195a75d6fbf9be2fa9d4f9c0cb1f607b3308e0355fa05611650cf9bb51d6",
+    "personal_evals/suite.py": "edad2ed5b79607bd607ae854bbcecf3dee322d89c582c7121e352fdcc37b19dc",
+    "scripts/check.py": "ae2384e884503f96e5e921b21cd7b464b7a27d7cc6733ee8044641078ad127fe",
+    "tests/__init__.py": "f6d27be760b383a5e3d10d86af7563abf91448304d192ddb21b2d6f58793218d",
+    "tests/unit/__init__.py": "c569f732b2a663bed98f887988585949e41c96f4cc4c6e05555af4875e2f376d",
+    "tests/unit/test_comparison.py": "745c0b2f273978ef42ad82a1510d607fad39b2972c97cdc69170c84d31309e0b",
+    "tests/unit/test_delivery.py": "faca887fe3afcd7e8149263b2081cbc6b978767da2892d170162d273dba22126",
+    "tests/unit/test_generation.py": "3a972dfdbd6b2a966bce1e7c23eea2c86d22435c1eedd2ee7e1958c676019e4a",
+    "tests/unit/test_generation_cli.py": "5322fa58576c58f289a63af1371e779e2c9fe49fa62ee2aa0320885486e96d91",
+    "tests/unit/test_github_delivery.py.proposed": "442ee334f5ea019fa1bd56a397de0c3c5c66f65be9c9933f8eff4b64f90b66e8",
+    "tests/unit/test_harbor.py": "88f914804b50f3fd2d35977d64d322545130fc5ef364e5f4053831c3809965d7",
+    "tests/unit/test_local.py": "93dab2317a4bd9a858166553ffbb4b8ad1ef0dc28589fcbeb187cef0dfaf80ea",
+    "tests/unit/test_repository.py": "676e43c0bd79dc0f691226a6acea0ad86a40397f43e4dad6c5c7e3ae96c51583",
+    "tests/unit/test_suite.py": "1cd5c51f267f593010cf01a7d0207a2afd093b9ebf10204d55ab71a0cb34663f"
+  }
+}
