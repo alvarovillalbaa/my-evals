@@ -16,6 +16,30 @@ invocation, 20 passes, no failures/errors/skips, all 43 pre/post source guards
 and verified owned cleanup. The 24 publisher cases remain unrun and inactive;
 the original combined activation surface below was not applied.
 
+The [current-source baseline](../results/2026/11-04/current-baseline-checks.md)
+has 127 passes and one preserved error; the [single corrected case](../results/2026/11-04/current-baseline-repair-checks.md)
+then passed once on its new immutable source. No single invocation passed all 128.
+The baseline and correction do not cover the 24 inactive publisher cases.
+
+## Unresolved pre-activation defects
+
+Activation remains withheld until these source defects are repaired and checked
+with focused regressions; the historical candidate and CLI patch remain exact:
+
+- The candidate unconditionally imports Unix-only `fcntl`, while the proposed
+  CLI patch eagerly imports the candidate. On a platform without that module,
+  even offline commands fail to import before a finite publisher-unavailable
+  response can be returned.
+- The absent-ref uncertainty branch checks `branch_verified` and `pr_pending`
+  but omits `branch_pending`. After a lost branch-create acknowledgement and an
+  owner's subsequent ref deletion, replay can issue another ref POST and
+  recreate the deleted branch. That uncertain state must require positive exact
+  recovery rather than another blind creation.
+
+The existing 24 proposed fixtures use fake APIs and do not exercise the real
+GitHub CLI subprocess/HTTP transport. No live account, export or remote mutation
+authorization follows from this review or the local baseline results.
+
 ## Exact activation surface
 
 - Copy the reviewed [publisher candidate](github_delivery.py.proposed) to
@@ -43,8 +67,9 @@ temporary owned directories and an in-process file-lock contention check. They
 do not start a child process, call the real `gh` executable or exercise the
 product subprocess transport. No browser,
 server, database, Harbor/container, provider, model, installation or CI is used.
-The earlier 76 and 52 checks remain excluded and unrun. The completed offline
-subset ran `tests.unit.test_delivery` alone and left the publisher inactive.
+The earlier 76 and 52 pinned commits remain unrun; the new current-source
+baseline evidence above is separate. The completed offline subset ran
+`tests.unit.test_delivery` alone and left the publisher inactive.
 
 No package installation, new account, OAuth app, token grant, role assignment,
 provider setting, GitHub repository setting, CI configuration or paid enrollment
@@ -100,7 +125,9 @@ branch can remain after an error; receipts must report that state.
 The full [product contract](../spec.md), live provider generation, actual Harbor
 acceptance and real repository delivery remain open until independently verified.
 
-This status edition changes three of the original 43 sealed input fingerprints:
-`AGENTS.md`, `README.md` and this proposal. The other 40, including all code and
-tests, remain unchanged. The historical seal is intact; its complete pre/post
-proof applies to the tested source, not this later documentation edition.
+This status edition changes four of the corrected case's 51 sealed fingerprints:
+`AGENTS.md`, `README.md`, the current-baseline-repair proposal and this proposal.
+The other 47, including all product code, fixtures and inactive candidates, remain
+unchanged. Historical seals and the original failed result are intact; their
+complete pre/post proof applies to their exact checked sources, not this later
+documentation edition.

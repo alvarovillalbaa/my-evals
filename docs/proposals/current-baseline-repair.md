@@ -1,6 +1,11 @@
 # Owned-Git timeout fixture identity repair
 
-4 November 2026. **Source preparation only; the corrected case has not run.**
+4 November 2026. **The single corrected case passed once** at immutable
+`696d13cc8131d7a39c453f25e14f3de91387be40`; the
+[canonical result](../results/2026/11-04/current-baseline-repair-checks.md) and
+[actual output](../results/2026/11-04/current-baseline-repair-checks.json)
+record its exact identity, exit, 51 source guards and owned cleanup. This was
+not a full 128-case rerun or a remote main-synchronization check.
 
 The [current-source baseline](../results/2026/11-04/current-baseline-checks.md)
 ran once at `d2c177131ae79ea02443eddfeb1ecdc726d06271`: 127 cases passed and one
@@ -19,26 +24,31 @@ remain. The fixture additionally requires exactly one captured process and a
 non-null `-SIGKILL` return code, establishing that its process was reaped.
 Product code, shared helpers and the other 127 baseline case bodies are unchanged.
 
-After the preparation commit containing the
+The preparation commit containing the
 [new source seal](../results/2026/11-04/current-baseline-repair-source.json)
-is published and its immutable SHA supplied, execute only:
+was verified as an immutable commit, and only this command ran once:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest -v tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process
 ```
 
-Use the existing Python/Git installations, a fresh owned private temporary root,
+It used existing CPython 3.14.7/Git 2.55.0, a fresh owned private temporary root,
 a 120-second cap, 128 KiB per-stream caps, bounded process termination/reaping
-and identity-checked cleanup. Verify the pinned HEAD, seal bytes and complete
-source fingerprints/modes before and after. Record the one actual case ID,
-status, exit, runtime, bounded output hashes and cleanup; preserve any failure
-before another change. No retry or full128/20/24/76/52 rerun is proposed.
+and identity-checked cleanup. Pinned HEAD, seal bytes and all source
+fingerprints/modes matched before and after. No retry or other suite rerun
+occurred. The original 127-pass/one-error result remains preserved;
+the other 127 case bodies and product runtime were unchanged.
 
 The new complete non-results inventory has **51 inputs**: the prior 50 tracked
 non-results files plus this proposal. The historical 43-entry hash manifest
 omitted seven tracked metadata/reference files; it remains intact and is not
 relabeled as a complete tree. The new seal includes those seven as well as all
 product code, fixtures and inactive publisher proposals. Only `docs/results/`
-is excluded. No tests, imports, installs, CI, publisher activation, real account,
-remote Git, Harbor/container, provider/model or paid service run during this
-preparation. Future one-case setup may use Git only in its tiny owned fixture.
+is excluded. The completed check used Git only in its tiny owned fixture; no
+install, CI, publisher activation, real account, remote Git, Harbor/container,
+provider/model or paid service was used.
+
+The later status edition changes four of these 51 input fingerprints: AGENTS,
+README, this proposal and the publisher proposal. The other 47, including product
+code and the repaired fixture, remain unchanged. The seal still identifies the
+exact checked preparation source; it was not rewritten for documentation edits.

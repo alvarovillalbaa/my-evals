@@ -33,15 +33,23 @@
 - The initial 76-case pending scope is frozen at commit `1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c`.
   Do not execute it against changed successor sources as though that were the
   same approval. The 52 repository/generation cases remain separately pending
-  at `424c81fd033b8c1211e6f81044888dcd00297aaf`. Those 76/52 cases remain unrun.
+  at `424c81fd033b8c1211e6f81044888dcd00297aaf`. Those pinned commits remain unrun.
+  Their seven current-source modules ran once at `d2c177131ae79ea02443eddfeb1ecdc726d06271`:
+  [127 passes and one error](docs/results/2026/11-04/current-baseline-checks.md).
+  The [single corrected case passed](docs/results/2026/11-04/current-baseline-repair-checks.md)
+  once at `696d13cc8131d7a39c453f25e14f3de91387be40`. Product code and the
+  other 127 case bodies were unchanged; no single invocation passed all 128 cases.
   The 20 offline delivery-plan cases passed on 4 November 2026 at
   `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`; the
   [canonical receipt](docs/results/2026/11-04/delivery-plan-checks.md) records
   all 20 actual IDs and unchanged pre/post source. The 24 proposed publisher
-  cases remain unrun and inactive; this result does not activate the publisher.
-- This status-document edition changes only `AGENTS.md`, `README.md` and
-  `docs/proposals/github-publisher.md` among the original 43 sealed inputs.
-  The other 40 fingerprints remain unchanged. Preserve the historical seal;
-  its complete 43-input pre/post proof belongs to the tested source above.
+  cases remain unrun and inactive; the publisher proposal records two unresolved
+  pre-activation defects. No result above activates the publisher.
+- This later status edition changes four of the corrected case's 51 sealed
+  inputs: `AGENTS.md`, `README.md`, `docs/proposals/current-baseline-repair.md`
+  and `docs/proposals/github-publisher.md`. The other 47, including all product
+  code and fixtures, remain unchanged. Preserve the historical seals and the
+  original failed result; do not substitute this documentation edition for a
+  tested source or claim remote main synchronization from native refs.
 - Personal GitHub publication is authorized by the all-project goal. Keep
   canonical evidence in this repository's `docs/`; preserve existing work.

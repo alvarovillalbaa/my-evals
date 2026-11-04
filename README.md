@@ -140,25 +140,36 @@ git diff --check
 
 This parses source and checks references without importing product modules or
 executing tests, tasks, Harbor or Docker. The [initial check proposal](docs/proposals/local-checks.md)
-keeps its 76 authored cases pinned to the initial source; it does not authorize
-the subsequent repository/generation scope. Both remain separate from real
-framework/provider acceptance. The [repository/generation proposal](docs/proposals/repository-generation-checks.md)
-separately scopes its 52 new authored cases, which are also unexecuted.
+keeps its 76 authored cases pinned to the initial source. The
+[repository/generation proposal](docs/proposals/repository-generation-checks.md)
+separately scopes 52 cases. Those historical source commits remain unrun;
+the new current-source evidence below does not substitute for their exact pins.
+
+The seven current-source modules ran once at `d2c177131ae79ea02443eddfeb1ecdc726d06271`:
+**[127 passed and one errored](docs/results/2026/11-04/current-baseline-checks.md)**.
+After a one-method fixture PID correction, **[one corrected case passed once](docs/results/2026/11-04/current-baseline-repair-checks.md)**
+at `696d13cc8131d7a39c453f25e14f3de91387be40`. Product runtime and the other
+127 case bodies were unchanged. This accounts for the current cases across
+two source editions; **no single invocation passed all 128 cases**.
+
 The [delivery proposal](docs/proposals/github-publisher.md) separates 20 local-plan
 and 24 inactive publisher cases. The 20 offline cases passed once on existing
 CPython 3.14.7 at `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`, with no failures,
 errors or skips. All 43 original input bytes and modes matched before and after;
 the [actual result](docs/results/2026/11-04/delivery-plan-checks.json) retains
-identities, streams, limits and cleanup evidence. The 24 publisher cases and
-earlier 76/52 scopes remain unrun; live integrations remain unverified.
+identities, streams, limits and cleanup evidence. The 24 publisher cases remain
+unrun and inactive, with two unresolved pre-activation defects recorded in the
+proposal; live integrations remain unverified.
 The [initial receipt](docs/results/2026/10-28/initial-source.md) and
 [repository handoff receipt](docs/results/2026/10-28/repository-generation.md)
 record their checks, publication and proof limits; the
 [delivery receipt](docs/results/2026/10-28/delivery-source.md) records this increment.
-This later status edition changes three of the 43 sealed inputs (`AGENTS.md`,
-this README and the publisher proposal); the other 40 fingerprints, including
-all code and tests, remain unchanged. The historical seal is preserved rather
-than presented as an exact fingerprint of the later documentation edition.
+This later status edition changes four of the corrected case's 51 sealed inputs:
+`AGENTS.md`, this README and the current-baseline-repair and publisher proposals.
+The other 47 fingerprints, including all product code and fixtures, remain
+unchanged. Historical seals and the original failed receipt remain intact.
+The repair receipt distinguishes immutable-commit proof from the then-pending
+remote main update; native tracking refs are not a main-publication receipt.
 
 - `personal_evals/suite.py`: explicit selection, task/manifest identity and bundle verification.
 - `personal_evals/repository.py`, `generation.py`: committed source capture, generation handoff and explicit draft review.
@@ -167,8 +178,9 @@ than presented as an exact fingerprint of the later documentation edition.
 - `personal_evals/delivery.py`: private, self-contained repository delivery plans.
 - `docs/proposals/github_delivery.py.proposed`: inactive authenticated publisher candidate.
 - `personal_evals/archive.py`, `jsonio.py`, `cli.py`: portable output and local commands.
-- `tests/unit/`: authored T2 fixtures; 20 offline delivery-plan cases passed,
-  while the other recorded scopes remain unrun.
+- `tests/unit/`: authored T2 fixtures; 20 offline delivery-plan cases passed
+  separately from the current baseline and its one-case correction above. The
+  24 inactive publisher cases and historical pinned 76/52 executions remain unrun.
 
 MIT licensed. The full product remains active until its required integrations
 and approved real-run acceptance are complete.
