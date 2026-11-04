@@ -1,133 +1,124 @@
-# Proposed authenticated GitHub publisher activation
+# GitHub publisher activation and focused checks
 
 Last updated: 2026-11-04
 
-Status: **prepared source proposal; not activated**. The active CLI can prepare
-a local [delivery plan](../references/delivery.md). It has no `publish` command.
-The supplied AGENTS.md §14 requires approval before enabling the account/Auth
-integration and external-write path below. New fixture checks also require §7
-approval. No permission is inferred from the earlier 76/52-case requests.
+Status: **source-enabled; 51 selected checks authored and unrun**. The owner's
+repeated “approve everything / keep going / do all the work” instructions
+authorize this source repair and bounded local verification. Preparation does
+not run the checks. Independent review and immutable source publication precede
+the one execution below. No further permission cycle is needed for that scope.
 
-**Offline subset closed:** the 20 delivery-plan cases passed on 4 November 2026
-at `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`, using existing CPython 3.14.7.
-The [canonical receipt](../results/2026/11-04/delivery-plan-checks.md) and
-[actual IDs/output](../results/2026/11-04/delivery-plan-checks.json) record one
-invocation, 20 passes, no failures/errors/skips, all 43 pre/post source guards
-and verified owned cleanup. The 24 publisher cases remain unrun and inactive;
-the original combined activation surface below was not applied.
+This authorization permits no real account lookup, bundle export, branch/PR
+write, notification, credential change or paid action. The operator-invoked
+capability requires an exact reviewed plan and explicit live-use authorization
+before this agent may use an existing account. Fixtures establish no live acceptance.
 
-The [current-source baseline](../results/2026/11-04/current-baseline-checks.md)
-has 127 passes and one preserved error; the [single corrected case](../results/2026/11-04/current-baseline-repair-checks.md)
-then passed once on its new immutable source. No single invocation passed all 128.
-The baseline and correction do not cover the 24 inactive publisher cases.
+## Source change
 
-## Unresolved pre-activation defects
+- Activate the reviewed candidate as `personal_evals/github_delivery.py` and
+  wire `publish PLAN --journal PRIVATE_DIRECTORY --execute`, optionally
+  `--resume`. The CLI imports the publisher only in its publish dispatch.
+- Guard Unix-only `fcntl`. In `publish_delivery`, after literal execute and
+  boolean resume checks, unsupported platforms return
+  `github_platform_unavailable` before its internal plan validation, journal
+  access or client construction. The CLI may first read/verify the explicit
+  local artifact. Offline commands remain importable without `fcntl`.
+- Fence an absent `branch_pending` ref as uncertain. A lost creation
+  acknowledgement followed by owner deletion cannot cause a second ref POST.
+  Positive exact PR recovery, including a closed PR, remains available.
+- Name the unchanged 30-second transport deadline so one owned deadline fixture
+  can temporarily use 0.2 seconds without relying on a child-written PID file.
 
-Activation remains withheld until these source defects are repaired and checked
-with focused regressions; the historical candidate and CLI patch remain exact:
+The original [publisher candidate](github_delivery.py.proposed),
+[activation patch](github-delivery-activation.patch) and
+[24-case candidate](../../tests/unit/test_github_delivery.py.proposed) remain
+unchanged historical inputs. The active 24 case bodies are unchanged copies;
+the repaired active publisher supersedes the old patch. `scripts/check.py`
+separates active and historical AST declarations without claiming execution
+status or unique coverage.
 
-- The candidate unconditionally imports Unix-only `fcntl`, while the proposed
-  CLI patch eagerly imports the candidate. On a platform without that module,
-  even offline commands fail to import before a finite publisher-unavailable
-  response can be returned.
-- The absent-ref uncertainty branch checks `branch_verified` and `pr_pending`
-  but omits `branch_pending`. After a lost branch-create acknowledgement and an
-  owner's subsequent ref deletion, replay can issue another ref POST and
-  recreate the deleted branch. That uncertain state must require positive exact
-  recovery rather than another blind creation.
+## Exact local verification
 
-The existing 24 proposed fixtures use fake APIs and do not exercise the real
-GitHub CLI subprocess/HTTP transport. No live account, export or remote mutation
-authorization follows from this review or the local baseline results.
+The [complete source inventory](../results/2026/11-04/publisher-activation-source.json)
+freezes every tracked non-results path, mode, Git blob, byte count and SHA-256,
+including preserved candidates. Its literal case IDs define this selection:
 
-## Exact activation surface
+| Module | Cases | Meaning |
+| --- | ---: | --- |
+| `tests.unit.test_delivery` | 20 | Offline accepted-bundle and delivery-plan regressions |
+| `tests.unit.test_github_delivery` | 24 | Existing stateful fake-API destination/object/journal/recovery cases |
+| `tests.unit.test_github_delivery_regressions` | 3 | Missing `fcntl` cold CLI, ordered platform refusal and absent pending-ref recovery |
+| `tests.unit.test_github_transport` | 4 | Actual owned fake-gh framing, finite errors, cap and deadline cleanup |
+| Total | 51 | One serial unittest invocation; no other suites |
 
-- Copy the reviewed [publisher candidate](github_delivery.py.proposed) to
-  `personal_evals/github_delivery.py`, preserving its exact bytes.
-- Apply the [CLI activation patch](github-delivery-activation.patch), adding
-  only the proposed `publish` command and its import.
-- Copy the [authored fixture candidate](../../tests/unit/test_github_delivery.py.proposed)
-  to `tests/unit/test_github_delivery.py`, preserving its exact bytes.
-- Run only the two named modules below: 20 local delivery-plan cases and 24
-  publisher cases, **44 total**. The [source fingerprint](../results/2026/10-28/delivery-source.json)
-  freezes their exact bytes and the publisher/CLI activation surface. No real
-  GitHub request is part of those fixtures.
-
-After separately approved activation, the exact proposed command from this
-repository is:
+The controller uses the existing absolute Python executable and records the
+actual version/profile. Existing preparation uses CPython 3.14.7; this is no
+claim about the later execution environment. The exact child arguments are:
 
 ```sh
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.unit.test_delivery tests.unit.test_github_delivery
+python3 -B -S -m unittest -v \
+  tests.unit.test_delivery \
+  tests.unit.test_github_delivery \
+  tests.unit.test_github_delivery_regressions \
+  tests.unit.test_github_transport
 ```
 
-Record the actual Python version/executable, source commit/hashes, exit status,
-raw output and discovered/pass/fail/error/skip totals under the owning results
-directory. These fixtures use authored bundles, binary files, fake API responses,
-temporary owned directories and an in-process file-lock contention check. They
-do not start a child process, call the real `gh` executable or exercise the
-product subprocess transport. No browser,
-server, database, Harbor/container, provider, model, installation or CI is used.
-The earlier 76 and 52 pinned commits remain unrun; the new current-source
-baseline evidence above is separate. The completed offline subset ran
-`tests.unit.test_delivery` alone and left the publisher inactive.
+Use one 120-second process-group wall cap, 128 KiB per captured stream and
+TERM followed by KILL after three seconds, with a bounded post-kill drain and
+verified reaping. No retries. Require exit zero, the exact 51 unique IDs all
+`ok`, no failure/error/skip/expected-failure/unexpected-success, source HEAD/index
+and complete source-byte/mode guards before and after, and verified cleanup.
+Preserve actual failure output and stop before any source repair or rerun.
 
-No package installation, new account, OAuth app, token grant, role assignment,
-provider setting, GitHub repository setting, CI configuration or paid enrollment
-is proposed. The existing `gh` executable owns its stored authentication; the
-app never requests or prints the raw token. The [pinned reference](../references/github.md)
-defines the actual CLI/API boundary and its limits.
+The parent creates a nonce-marked temporary root and verifies its device/inode
+before cleanup. Assign owned HOME, GH_CONFIG_DIR, XDG_CONFIG_HOME, TMPDIR, TMP
+and TEMP; set bytecode off and TZ=UTC. Main PATH points only to an owned empty
+directory, so an accidental default client cannot discover real `gh` or account
+configuration. The absolute Python interpreter remains callable. Each fake-gh
+case replaces PATH with its own executable directory and no credentials.
+All fixture directories must be empty/removed before parent cleanup; remove
+only the exact owned root. No global process or filesystem cleanup.
 
-## Runtime authorization and checks
+The four transport cases start six actual owned Python fake-gh children in
+total, and the cold offline CLI regression starts one isolated Python child.
+The fake transport observes the real spawned PID through a pass-through Popen
+observer, checks framing/stdin and sanitized errors, and requires the child
+and process group to be gone. The 0.2-second case works even if the child has
+not reached its first statement. The production default remains 30 seconds.
 
-The proposed entry point requires a verified, saved delivery plan and literal
-`execute=True` before it can construct the real authenticated client. It checks
-the exact expected account login/ID, immutable repository ID/name, visibility,
-push permission, repository state, SHA1 object format, planned base and absent
-namespace/ref. It uses constructed absolute `https://api.github.com/` endpoints;
-no caller-selected API host or response-provided next URL is followed by app code.
-The GitHub CLI retains its documented HTTP behavior, including redirects.
+No real `gh`, account/config lookup, HTTP request, server, database, browser,
+Harbor/container, provider/model call, package install or CI is part of this
+packet. Existing Python standard library and small authored temporary files only.
 
-Content is limited to the sealed accepted bundle. Binary files use base64 blobs;
-the generated tree must preserve the base and add only the selected absent
-prefix. Commit metadata is explicit, and returned commit identities are verified
-and durably journaled before creating the branch. No unsupported locally guessed
-commit hash is treated as server proof.
+## Runtime behavior and limits
 
-Only ref **creation** is permitted. There is no ref PATCH, force update, branch
-replacement, merge or remote deletion path. Requested draft/ready mode is exact;
-if the destination cannot support it, publication stops without a plan upgrade
-or a silent mode change. A private local journal records bounded immutable
-events and prevents concurrent reuse. Resume requires the same verified plan.
+The [GitHub contract](../references/github.md) retains exact actor/destination,
+visibility/push/state, SHA1 format and immutable base checks. Only sealed accepted
+bundle bytes are eligible; binary blobs and returned tree/commit identities are
+verified. Branch creation is create-only: no ref update, force, merge or deletion.
+The private bounded hash-linked journal prevents concurrent use. Resume must
+match the same verified plan and durable object receipts. A PR is recoverable
+only with the exact head/base repositories and refs, desired commit, author,
+owner text and plan marker; ambiguous PR POST is never blindly repeated.
 
-PR recovery requires exact head/base repository/ref, head commit, expected PR
-author, owner text and plan marker. An existing branch cannot be adopted without
-the same journal's durable verified-commit receipt. Closed/merged PR recovery
-can report a later owner-converted draft state; open PR mode remains exact.
-A PR-create-pending event with no positive exact readback remains
-uncertain; it cannot be followed by another blind POST. Mutable `PR.base.sha`
-does not replace the planned immutable commit. Permission failures do not trigger
-automatic login, retries or grants.
+Fake-gh checks establish the local subprocess/protocol boundary, not actual
+GitHub CLI authentication, redirects, scopes, REST races, draft availability or
+remote automation. Destination administrators can change state between requests;
+the app has no atomic remote lease or expected-old ref CAS. Partial immutable
+objects or a created branch can remain after failure. Live use must explicitly
+authorize the exact destination, reviewed data and effects/cleanup separately.
 
-## What approval would and would not cover
+## Separate historical evidence
 
-Source activation enables an operator-invoked capability; fixture approval tests
-it only against authored local state and fake transports. Neither authorizes this
-agent to inspect the real login, upload a real bundle, create a branch/PR, trigger
-notifications/automation or spend money. A later live check needs an exact
-destination, reviewed data and separately authorized mutation/cleanup scope.
+The [offline 20-case receipt](../results/2026/11-04/delivery-plan-checks.md)
+passed once at `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`, with all 43 source
+guards and owned cleanup. It does not verify the newly active publisher.
+The [current baseline](../results/2026/11-04/current-baseline-checks.md) records
+127 passes and one preserved error; the [single corrected case](../results/2026/11-04/current-baseline-repair-checks.md)
+then passed on its own pinned source. No one invocation passed all 128.
+The original 76/52 pinned executions remain unrun. All historical seals and
+failures remain intact; neither the old 43-input nor 51-input seal substitutes
+for the new complete activation inventory.
 
-Live GitHub behavior, draft availability, actual token permissions, REST races,
-account identity and destination automation remain unverified. Existing CLI
-redirect semantics and repository administrator changes cannot be described as
-an atomic destination or base-commit lease. Partial immutable objects or a created
-branch can remain after an error; receipts must report that state.
-
-The full [product contract](../spec.md), live provider generation, actual Harbor
-acceptance and real repository delivery remain open until independently verified.
-
-This status edition changes four of the corrected case's 51 sealed fingerprints:
-`AGENTS.md`, `README.md`, the current-baseline-repair proposal and this proposal.
-The other 47, including all product code, fixtures and inactive candidates, remain
-unchanged. Historical seals and the original failed result are intact; their
-complete pre/post proof applies to their exact checked sources, not this later
-documentation edition.
+The [full product contract](../spec.md), live provider generation, actual Harbor
+acceptance and real repository delivery remain open.

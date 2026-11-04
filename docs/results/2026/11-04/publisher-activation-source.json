@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 1,
+  "kind": "personal-evals-publisher-activation-source",
+  "preparedAtUtc": "2026-11-04T11:51:05Z",
+  "status": "source-prepared-checks-unrun",
+  "authority": "Owner's repeated approve-everything / keep-going / do-all-the-work instructions authorize this source repair and focused local verification, not live account use.",
+  "baseCommit": "b1976134c837910f9ae0a9f1a43a9ea19ef357a3",
+  "sourceCommit": null,
+  "sourceCommitMeaning": "This inventory is prepared from the staged successor of baseCommit. Root will publish and pin its immutable commit before execution.",
+  "scope": "Every tracked non-results path, including staged new source and preserved historical candidates. No runtime/test execution occurred during preparation.",
+  "excludedPrefixes": [
+    "docs/results/"
+  ],
+  "fileCount": 55,
+  "totalBytes": 509261,
+  "files": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "gitBlob": "be44b544f7576151de8e2972d03a223b25c9d1a2",
+      "bytes": 76,
+      "sha256": "8218965042bc0b760d588f677ff301e0283730e92b7e24e5ab909840d8ca7e3f"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "gitBlob": "391cc68f81eef7e46b8decb0a35342669f5c212d",
+      "bytes": 4998,
+      "sha256": "d7a883c5ecd0b7e957f230954a4bd9e42fb1b53639cefaa15fa6c76e113e582a"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "gitBlob": "7694388483b2d169819b727c2484e0e748498f4c",
+      "bytes": 1078,
+      "sha256": "6e3ae862a0f98e9f377f98f71fd86160932dad7186416f5509a335703c6fe3b5"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "gitBlob": "0a9d0ca34dd9f631f9b03c91cc5a0770b94a5bd2",
+      "bytes": 11338,
+      "sha256": "757ddbb5eef2307e158713c40dfcbfcb57cf861c4b43ce70a66921581e7376e9"
+    },
+    {
+      "path": "docs/proposals/current-baseline-repair.md",
+      "mode": "100644",
+      "gitBlob": "7ac16b971e100e42f10d0c5cbc7a6b70d7444400",
+      "bytes": 3284,
+      "sha256": "a257b1ae1432c572d8b06b92be74eb8652d7e6d16bc3187bf4628bfd2edb6684"
+    },
+    {
+      "path": "docs/proposals/github-delivery-activation.patch",
+      "mode": "100644",
+      "gitBlob": "df2f74dca29c492ae030701d1be45efa573b5d29",
+      "bytes": 2028,
+      "sha256": "61865d39ff84613eb1fda63de5f8f174ea8371b2172ae7ecd7580f3a0fc113a1"
+    },
+    {
+      "path": "docs/proposals/github-publisher.md",
+      "mode": "100644",
+      "gitBlob": "f716dae2b637b125a2ca5014cc71e412d44b129d",
+      "bytes": 7271,
+      "sha256": "06341d1eba8e1665575f7752acd09a61485abeb3e7187272b908efbab68d29a5"
+    },
+    {
+      "path": "docs/proposals/github_delivery.py.proposed",
+      "mode": "100644",
+      "gitBlob": "97a26e4b0f19fd7c0243ae6a41f209a56eb34b15",
+      "bytes": 34918,
+      "sha256": "d3e2ec4b6481df7cf75d4c0acc39dd649faf4aceb22aa5058145d03a5ecf6214"
+    },
+    {
+      "path": "docs/proposals/local-checks.md",
+      "mode": "100644",
+      "gitBlob": "ebbcf528364db8e08efc6eef5938bb2f5e59537f",
+      "bytes": 4203,
+      "sha256": "2f504f750bb3208df56965fd7f0dbc356396c439ac1f9333b761f3820f5b7bc4"
+    },
+    {
+      "path": "docs/proposals/repository-generation-checks.md",
+      "mode": "100644",
+      "gitBlob": "9f6567ecfc2fb4891390677afcd624b657f931f6",
+      "bytes": 3593,
+      "sha256": "25e186330d2a08235077ba2a3d868bc3550bf0e586a446b6fc01032940a89f27"
+    },
+    {
+      "path": "docs/references/delivery.md",
+      "mode": "100644",
+      "gitBlob": "946ec66a4ceea7389a4596102638bb3f06b14fb3",
+      "bytes": 5150,
+      "sha256": "af3d1189cf82b96856a3b6965137105972aa717650fe7ff8fa00cb2aa17f5b31"
+    },
+    {
+      "path": "docs/references/formats.md",
+      "mode": "100644",
+      "gitBlob": "5d4cbafaa112d5faada97559234a19ba7b416dad",
+      "bytes": 6555,
+      "sha256": "7d639b98f9966b37a402d3d01175f69b1b7cb2eccb92e19b301f0db7e93c3a2b"
+    },
+    {
+      "path": "docs/references/generation.md",
+      "mode": "100644",
+      "gitBlob": "efc55bb6c744db011a41bec41d372e34e73f3eb2",
+      "bytes": 5556,
+      "sha256": "f1bc25da6da25bdbdd913b6704fc2827ddc2a3e88234256b415c8d82043401e6"
+    },
+    {
+      "path": "docs/references/git.md",
+      "mode": "100644",
+      "gitBlob": "15081ed152245896f4d9edb258000b132413ec1f",
+      "bytes": 7459,
+      "sha256": "a2452a21a66cfd3ec6176906e8c0069ef8e5c91c9a6a24cb4ecc37eddc057cd7"
+    },
+    {
+      "path": "docs/references/github.md",
+      "mode": "100644",
+      "gitBlob": "29777499fddf24b0c34853c51599df9743cab3fa",
+      "bytes": 12505,
+      "sha256": "bcfd9597df8b43f18a01206c6ed115495466f490d87521b6188ec646a43207f3"
+    },
+    {
+      "path": "docs/references/harbor.md",
+      "mode": "100644",
+      "gitBlob": "30ab3016fb4f7ff6984731e132ab89463ab6d7d4",
+      "bytes": 11028,
+      "sha256": "f5e649408287779a9306133f997b9a882541ef3def6df38d7714a5a1a4d3a9c8"
+    },
+    {
+      "path": "docs/spec.md",
+      "mode": "100644",
+      "gitBlob": "167728801b88a874c4a2f27692e14de6370b8e2e",
+      "bytes": 4429,
+      "sha256": "7b2ab944aca32d514af0befe55eb0711065b9dfed36bd80c570125576d0b4269"
+    },
+    {
+      "path": "examples/delivery-intent.json",
+      "mode": "100644",
+      "gitBlob": "f46129ef9a8eb65f31076076cca436b7252cc11a",
+      "bytes": 697,
+      "sha256": "5d968bbbaa21132cfead2aaedb434e47ae7063536abdc00d40abe3ef437f4570"
+    },
+    {
+      "path": "examples/demo-text/environment/Dockerfile",
+      "mode": "100644",
+      "gitBlob": "1c05932167cf7f684ba2725f1df8fb24835cec47",
+      "bytes": 35,
+      "sha256": "082dba0d5dd12e8a4dfb6b6d126de2d34eb75c789a72947d87da0721ea9b5b41"
+    },
+    {
+      "path": "examples/demo-text/instruction.md",
+      "mode": "100644",
+      "gitBlob": "03b463a5c85e983f44a01d3b025f42ec39398b83",
+      "bytes": 262,
+      "sha256": "a2f8c256a17b97be9f75e0ef9a9ba3f9358dd3294e8b0fc849ce1f48517bf570"
+    },
+    {
+      "path": "examples/demo-text/task.toml",
+      "mode": "100644",
+      "gitBlob": "4e6001315839dd7417a7946a5a64676f05a3d503",
+      "bytes": 77,
+      "sha256": "39ec861c533f5350fb1c96ac998c992178d4a036b2dec0ef4929930b26cbed61"
+    },
+    {
+      "path": "examples/demo-text/tests/test.sh",
+      "mode": "100644",
+      "gitBlob": "24698361b02eed90bc16dc63162f431895a2ace1",
+      "bytes": 67,
+      "sha256": "128d2ac29b76a8dd1cf7b47dfe7abb40c4529911ece926ab6011e2684a89fed9"
+    },
+    {
+      "path": "examples/demo-text/tests/verify.py",
+      "mode": "100644",
+      "gitBlob": "0887187269829d376f7a6d74f5f0f93d503cd4e3",
+      "bytes": 309,
+      "sha256": "9cda917ce20d833dfad3d06fd972e9e22ed2815ea00da37aad402c6eceac1080"
+    },
+    {
+      "path": "examples/generation-intent.json",
+      "mode": "100644",
+      "gitBlob": "747aacd20f06d00f6b386ee57bdff51d561ce298",
+      "bytes": 1008,
+      "sha256": "a21aafcb8041b3b1a5df5c7112682babe54e5e2716e490d034f2be91b1ee8bcf"
+    },
+    {
+      "path": "examples/source-policy.json",
+      "mode": "100644",
+      "gitBlob": "d1bcef66293559a5544d7998f90251e2420fca1a",
+      "bytes": 93,
+      "sha256": "78db661637830f9a92410d8c5854d99eb3b173bc6e72bee6664857ae3930e3be"
+    },
+    {
+      "path": "examples/suite.json",
+      "mode": "100644",
+      "gitBlob": "a445bba8893cfa26d0d5176ae2a21ee3d45ffa46",
+      "bytes": 712,
+      "sha256": "78822889e90c9284c4fcf9c185138bb2e8132f9cd7036b1c714e968d73866271"
+    },
+    {
+      "path": "personal_evals/__init__.py",
+      "mode": "100644",
+      "gitBlob": "ec785301a6a6207c52eb44434ca11b75d20a6d8e",
+      "bytes": 101,
+      "sha256": "d96d320a09027feadb3350c382edf8138b7ce32db394adaf2c5b3900f15686a8"
+    },
+    {
+      "path": "personal_evals/__main__.py",
+      "mode": "100644",
+      "gitBlob": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08",
+      "bytes": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "personal_evals/archive.py",
+      "mode": "100644",
+      "gitBlob": "ee55c9ab88670f108f4a255e743acd207db93ed2",
+      "bytes": 1482,
+      "sha256": "43275a35385b059a26e03d16a955e0a2aff28cd6b0d3350fce2980455c50f5a8"
+    },
+    {
+      "path": "personal_evals/cli.py",
+      "mode": "100644",
+      "gitBlob": "2bb8fdb2be55f79e22039840851d2b27283f0643",
+      "bytes": 9125,
+      "sha256": "9ddad20eab2eca64b03b8f02239fe7d44d70239aa93e218e8db4d3f6913adef5"
+    },
+    {
+      "path": "personal_evals/comparison.py",
+      "mode": "100644",
+      "gitBlob": "1c3294a438c538d85fc9d0a063bf748556918a30",
+      "bytes": 15355,
+      "sha256": "ff9fc0ea48f056ad3e8399785e7dbf7908b358b1917bc9f27c490f34da1e6a58"
+    },
+    {
+      "path": "personal_evals/delivery.py",
+      "mode": "100644",
+      "gitBlob": "c108f3797448494af33cd3885ea6cf21bc3e3cb5",
+      "bytes": 13364,
+      "sha256": "2a7f5e4798be347c2993d747157b8527aa02644bdfd54df9fbe18767a25348ce"
+    },
+    {
+      "path": "personal_evals/errors.py",
+      "mode": "100644",
+      "gitBlob": "7be2984897947b2778761bfc5361c50bdbd05736",
+      "bytes": 206,
+      "sha256": "8ac824785799876934893e9e06a1d0e5e73fa5456dac44f0217ba5686330d137"
+    },
+    {
+      "path": "personal_evals/generation.py",
+      "mode": "100644",
+      "gitBlob": "71341d0018748ee1e37d8aac604820aaf28d0f36",
+      "bytes": 16083,
+      "sha256": "668b92346616659371edb9b021981104e87f0048f737fa31600c520eda28c17f"
+    },
+    {
+      "path": "personal_evals/github_delivery.py",
+      "mode": "100644",
+      "gitBlob": "d25d0eaf49c1c3f607479594737b5fab12f2fc74",
+      "bytes": 35235,
+      "sha256": "b1632787756292ce2297e43f5a36736cd8d533460d1160d79b0127f66c3f80ef"
+    },
+    {
+      "path": "personal_evals/harbor.py",
+      "mode": "100644",
+      "gitBlob": "496eea0b776d932551a218f74d81b868df9da041",
+      "bytes": 19085,
+      "sha256": "d51995c49627d9f0813d3ba5744806837d6e03256d468258f41377889773fbd0"
+    },
+    {
+      "path": "personal_evals/jsonio.py",
+      "mode": "100644",
+      "gitBlob": "92aa2adb88a0f8911c918c5c2be2272af6f06b90",
+      "bytes": 3793,
+      "sha256": "3e2cad27c8dc43891e3dbd138b5480736958cbffb18fa1b0ab32a66192b5aacc"
+    },
+    {
+      "path": "personal_evals/planning.py",
+      "mode": "100644",
+      "gitBlob": "c39dbb86d29ff86360a0deafb96c99217076f448",
+      "bytes": 4589,
+      "sha256": "68fc49a849bbcba35af82907e98c7c1bdb4dd2bc58310cfab7d620edaaa2e4ac"
+    },
+    {
+      "path": "personal_evals/repository.py",
+      "mode": "100644",
+      "gitBlob": "c09c9f75e854a4920dc72e2b16a5cee08e244531",
+      "bytes": 13452,
+      "sha256": "2d46195a75d6fbf9be2fa9d4f9c0cb1f607b3308e0355fa05611650cf9bb51d6"
+    },
+    {
+      "path": "personal_evals/suite.py",
+      "mode": "100644",
+      "gitBlob": "eba73fe6f0ecb679b2ff788449c7fe0029c41673",
+      "bytes": 18285,
+      "sha256": "edad2ed5b79607bd607ae854bbcecf3dee322d89c582c7121e352fdcc37b19dc"
+    },
+    {
+      "path": "scripts/check.py",
+      "mode": "100644",
+      "gitBlob": "63f6e7d8ef7ecbcb5f844841d2cdec7a3459e3ec",
+      "bytes": 2878,
+      "sha256": "245d52cca2da2d7f7a854a066869875909104820b7fdc21aec055c82b7b6e7e5"
+    },
+    {
+      "path": "tests/__init__.py",
+      "mode": "100644",
+      "gitBlob": "bfe620e6c86c5843b6156813f878dd025418ad22",
+      "bytes": 72,
+      "sha256": "f6d27be760b383a5e3d10d86af7563abf91448304d192ddb21b2d6f58793218d"
+    },
+    {
+      "path": "tests/unit/__init__.py",
+      "mode": "100644",
+      "gitBlob": "2fdda697ac6532feac55a08cdbf675bede263233",
+      "bytes": 40,
+      "sha256": "c569f732b2a663bed98f887988585949e41c96f4cc4c6e05555af4875e2f376d"
+    },
+    {
+      "path": "tests/unit/test_comparison.py",
+      "mode": "100644",
+      "gitBlob": "286d6e110f0d967bb5be981844b1524d7c233e51",
+      "bytes": 20194,
+      "sha256": "745c0b2f273978ef42ad82a1510d607fad39b2972c97cdc69170c84d31309e0b"
+    },
+    {
+      "path": "tests/unit/test_delivery.py",
+      "mode": "100644",
+      "gitBlob": "d1ee0ceb361ee4b5e7430fc8fa5489476309bca1",
+      "bytes": 20782,
+      "sha256": "faca887fe3afcd7e8149263b2081cbc6b978767da2892d170162d273dba22126"
+    },
+    {
+      "path": "tests/unit/test_generation.py",
+      "mode": "100644",
+      "gitBlob": "56b2c69364aa54e4c98881a3f3233fcb1a6c9aeb",
+      "bytes": 22949,
+      "sha256": "3a972dfdbd6b2a966bce1e7c23eea2c86d22435c1eedd2ee7e1958c676019e4a"
+    },
+    {
+      "path": "tests/unit/test_generation_cli.py",
+      "mode": "100644",
+      "gitBlob": "7d9b9dbf4c8a68c745e05571b48315a70cf96712",
+      "bytes": 19986,
+      "sha256": "5322fa58576c58f289a63af1371e779e2c9fe49fa62ee2aa0320885486e96d91"
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py",
+      "mode": "100644",
+      "gitBlob": "ce20f7cdd47bc7987f7aaf580a17934118f880fd",
+      "bytes": 34360,
+      "sha256": "830197769009aa3fa7e6715d9a52f4eaa6e26b269c95f778a8a70cb3689ebf10"
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py.proposed",
+      "mode": "100644",
+      "gitBlob": "a94447ebd420d92f3cc483c0a22ef9fb8138ddfe",
+      "bytes": 34366,
+      "sha256": "442ee334f5ea019fa1bd56a397de0c3c5c66f65be9c9933f8eff4b64f90b66e8"
+    },
+    {
+      "path": "tests/unit/test_github_delivery_regressions.py",
+      "mode": "100644",
+      "gitBlob": "c9cffa6d5621c327d168bb35c0a7b14e00c6559b",
+      "bytes": 6574,
+      "sha256": "677f9e8e7a21cc9d47a1dd874bdb551a32300fc867699e28aa88a6e3d94832b1"
+    },
+    {
+      "path": "tests/unit/test_github_transport.py",
+      "mode": "100644",
+      "gitBlob": "a94c5e8b50e1d12690743409868e23af4ba260cb",
+      "bytes": 9029,
+      "sha256": "caf70ba51c912a9de5b9369f27aad1cd7ecf1927201080b66055fff88e9584a8"
+    },
+    {
+      "path": "tests/unit/test_harbor.py",
+      "mode": "100644",
+      "gitBlob": "a7386cd3022bb7425e0da4475f015a26fd891249",
+      "bytes": 15769,
+      "sha256": "88f914804b50f3fd2d35977d64d322545130fc5ef364e5f4053831c3809965d7"
+    },
+    {
+      "path": "tests/unit/test_local.py",
+      "mode": "100644",
+      "gitBlob": "4b392743346ca5b58f2f1f4d3d864ca19b037cdb",
+      "bytes": 8580,
+      "sha256": "93dab2317a4bd9a858166553ffbb4b8ad1ef0dc28589fcbeb187cef0dfaf80ea"
+    },
+    {
+      "path": "tests/unit/test_repository.py",
+      "mode": "100644",
+      "gitBlob": "0f0acdc535ab2aa959ecc5cc8956d030f642e24e",
+      "bytes": 15726,
+      "sha256": "830b3623ffb405a711575082634cd51412318d484cb63caec01c01ad0da42744"
+    },
+    {
+      "path": "tests/unit/test_suite.py",
+      "mode": "100644",
+      "gitBlob": "6f3043ba63c881367c5fe15f34cd14882634d59f",
+      "bytes": 19024,
+      "sha256": "1cd5c51f267f593010cf01a7d0207a2afd093b9ebf10204d55ab71a0cb34663f"
+    }
+  ],
+  "testFiles": [
+    {
+      "path": "tests/unit/test_delivery.py",
+      "module": "tests.unit.test_delivery",
+      "caseIds": [
+        "tests.unit.test_delivery.DeliveryTests.test_binary_bytes_full_inventory_and_independent_git_hashes_are_preserved",
+        "tests.unit.test_delivery.DeliveryTests.test_plan_and_embedded_manifest_validate_without_original_files",
+        "tests.unit.test_delivery.DeliveryTests.test_consent_requires_literal_true_before_any_bundle_read",
+        "tests.unit.test_delivery.DeliveryTests.test_public_policy_restrictions_do_not_silently_change_requested_visibility_or_draft",
+        "tests.unit.test_delivery.DeliveryTests.test_repository_and_numeric_identity_inputs_are_strict_and_bounded",
+        "tests.unit.test_delivery.DeliveryTests.test_branches_are_conservative_short_refs_and_distinct",
+        "tests.unit.test_delivery.DeliveryTests.test_prefix_is_an_explicit_safe_ascii_relative_namespace",
+        "tests.unit.test_delivery.DeliveryTests.test_actor_timestamp_and_pr_text_are_explicit_and_not_coerced",
+        "tests.unit.test_delivery.DeliveryTests.test_exact_target_actor_time_pr_mode_and_purpose_bind_recovery_identity",
+        "tests.unit.test_delivery.DeliveryTests.test_blob_content_length_hash_modes_and_git_identity_are_verified",
+        "tests.unit.test_delivery.DeliveryTests.test_noncanonical_base64_is_rejected_even_when_decoded_bytes_match",
+        "tests.unit.test_delivery.DeliveryTests.test_expected_inventory_rejects_missing_extra_duplicate_and_unrooted_files",
+        "tests.unit.test_delivery.DeliveryTests.test_rehashed_manifest_cannot_relabel_toml_and_manifest_bytes_are_canonical",
+        "tests.unit.test_delivery.DeliveryTests.test_nfc_casefold_and_file_directory_collisions_are_detected",
+        "tests.unit.test_delivery.DeliveryTests.test_unknown_metadata_weakened_preconditions_and_retargeted_consent_are_rejected",
+        "tests.unit.test_delivery.DeliveryTests.test_validation_returns_detached_plan_and_manifest_without_rewriting_intent",
+        "tests.unit.test_delivery.DeliveryTests.test_plan_byte_boundary_uses_small_fixtures_and_explicit_large_artifact_limit",
+        "tests.unit.test_delivery.DeliveryTests.test_private_output_is_complete_exclusive_and_preserves_existing_links",
+        "tests.unit.test_delivery.DeliveryTests.test_bundle_change_after_initial_verification_is_rejected_during_capture",
+        "tests.unit.test_delivery.DeliveryTests.test_no_process_network_or_private_source_context_is_automatically_exported"
+      ]
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py",
+      "module": "tests.unit.test_github_delivery",
+      "caseIds": [
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_execute_requires_literal_true_before_auth_client_construction",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_observed_actor_id_and_login_must_match_before_writes",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_repository_numeric_identity_and_full_name_are_immutable_preconditions",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_visibility_and_private_flag_drift_stops_before_uploading_content",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_push_permission_archived_and_disabled_destinations_fail_without_writes",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_only_an_explicit_sha1_repository_hash_algorithm_is_supported",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_changed_base_head_is_not_silently_rebased_or_updated",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_existing_prefix_or_ancestor_file_is_not_overwritten",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_truncated_base_tree_cannot_prove_an_absent_destination_prefix",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_binary_blobs_preserve_exact_bytes_and_the_new_tree_preserves_unrelated_base_files",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_incorrect_returned_blob_sha_stops_before_tree_commit_or_branch_creation",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_verified_commit_is_durably_recorded_before_a_branch_and_recording_failure_stops",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_an_existing_matching_branch_and_pr_cannot_be_adopted_by_a_fresh_journal",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_resume_requires_the_exact_plan_valid_event_chain_and_writable_private_journal",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_lost_branch_response_recovers_only_the_durably_recorded_exact_commit",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_a_changed_branch_on_resume_is_never_repointed_or_used_to_create_a_pr",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_pr_recovery_verifies_full_identity_and_requires_a_fresh_final_readback",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_requested_draft_mode_is_a_literal_boolean_and_never_silently_falls_back",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_base_drift_after_commit_creation_stops_before_creating_a_branch",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_base_drift_after_branch_creation_leaves_it_in_place_without_creating_a_pr",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_lost_pr_response_recovers_unique_open_closed_or_merged_identity_without_another_post",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_uncertain_pr_without_a_positive_match_stays_pending_and_is_never_posted_again",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_http_403_has_no_auth_retry_and_partial_journal_contains_only_safe_failures",
+        "tests.unit.test_github_delivery.GitHubDeliveryTests.test_same_journal_concurrency_is_rejected_before_account_or_repository_access"
+      ]
+    },
+    {
+      "path": "tests/unit/test_github_delivery_regressions.py",
+      "module": "tests.unit.test_github_delivery_regressions",
+      "caseIds": [
+        "tests.unit.test_github_delivery_regressions.PublisherRegressionTests.test_offline_cli_cold_import_and_verification_do_not_require_fcntl",
+        "tests.unit.test_github_delivery_regressions.PublisherRegressionTests.test_unsupported_publisher_refuses_before_validation_journal_or_client",
+        "tests.unit.test_github_delivery_regressions.PublisherRegressionTests.test_absent_pending_branch_is_never_recreated_and_exact_pr_can_recover"
+      ]
+    },
+    {
+      "path": "tests/unit/test_github_transport.py",
+      "module": "tests.unit.test_github_transport",
+      "caseIds": [
+        "tests.unit.test_github_transport.GitHubTransportTests.test_owned_fake_gh_frames_get_and_post_with_isolated_configuration",
+        "tests.unit.test_github_transport.GitHubTransportTests.test_http_and_malformed_json_errors_are_finite_without_stderr_leak_or_retry",
+        "tests.unit.test_github_transport.GitHubTransportTests.test_output_limit_kills_and_reaps_the_real_owned_transport",
+        "tests.unit.test_github_transport.GitHubTransportTests.test_small_deadline_kills_and_reaps_observed_child_without_pid_file"
+      ]
+    }
+  ],
+  "expectedCaseCounts": {
+    "delivery": 20,
+    "unchangedPublisher": 24,
+    "publisherRegressions": 3,
+    "ownedSubprocessTransport": 4,
+    "publisherSubtotal": 31,
+    "total": 51
+  },
+  "caseIdentityMeaning": "Literal direct test methods from four explicit modules, not runtime discovery or pass evidence. No inherited TestCase or directly imported TestCase is added by new modules.",
+  "preparedRuntime": {
+    "implementation": "CPython",
+    "version": "3.14.7",
+    "executableBasename": "python3",
+    "profile": "-B -S",
+    "futureRuntimeMustBeRecorded": true
+  },
+  "proposedExecution": {
+    "argv": [
+      "python3",
+      "-B",
+      "-S",
+      "-m",
+      "unittest",
+      "-v",
+      "tests.unit.test_delivery",
+      "tests.unit.test_github_delivery",
+      "tests.unit.test_github_delivery_regressions",
+      "tests.unit.test_github_transport"
+    ],
+    "executable": "Existing absolute Python executable; basename shown for portability.",
+    "childCount": 1,
+    "serial": true,
+    "wallSeconds": 120,
+    "stdoutBytes": 131072,
+    "stderrBytes": 131072,
+    "termination": "Own process group TERM, KILL after 3 seconds, bounded post-kill drain; require reaping and no surviving group.",
+    "retries": 0,
+    "environment": "Allowlisted only: owned empty PATH directory, owned HOME/GH_CONFIG_DIR/XDG_CONFIG_HOME/TMPDIR/TMP/TEMP, bytecode disabled and TZ=UTC. No inherited account/provider credentials or Python options.",
+    "fixtures": "Small authored filesystem/fake API data only. Parent nonce + device/inode guards; fixture cleanup checked before exact-owned-root removal. No global cleanup.",
+    "nestedChildren": {
+      "ownedPythonFakeGh": 6,
+      "isolatedColdOfflineCliPython": 1,
+      "realGh": 0
+    },
+    "fakeGh": "Owned Python executable under fixture-only PATH/HOME/config; real pass-through Popen observer retains actual spawned PID. No real account/config/network requests.",
+    "deadlineFixture": "Production request default remains 30 seconds. One owned fake-gh case temporarily patches it to 0.2 seconds and checks actual child/group reaping without a child-written PID file.",
+    "acceptance": [
+      "Exact 51 unique case IDs all ok",
+      "Child exit zero",
+      "No fail/error/skip/expected-failure/unexpected-success",
+      "Exact pinned HEAD and complete source path/mode/blob/byte guards before and after",
+      "No surviving owned process group and verified owned fixture cleanup"
+    ],
+    "onFailure": "Preserve actual bounded output/status and stop before changing source or rerunning."
+  },
+  "staticVerification": {
+    "activeSourceAndTestAstParsed": true,
+    "generatedFakeGhAstParsed": true,
+    "unchangedOriginalPublisherMethodBodies": 24,
+    "historicalCandidateTestAndPatchBytesMatchBaseCommit": true,
+    "moduleCountAndReferences": "Final scripts/check.py output is supplied in the authoring handoff; AST/link checking only.",
+    "noProductImports": true,
+    "noTestsExecuted": true
+  },
+  "historicalInputs": [
+    "docs/proposals/github_delivery.py.proposed",
+    "tests/unit/test_github_delivery.py.proposed",
+    "docs/proposals/github-delivery-activation.patch"
+  ],
+  "historicalEvidence": {
+    "offline20": "docs/results/2026/11-04/delivery-plan-checks.json",
+    "currentBaseline127Pass1Error": "docs/results/2026/11-04/current-baseline-checks.json",
+    "singleCorrectedCase": "docs/results/2026/11-04/current-baseline-repair-checks.json",
+    "qualification": "Separate immutable sources and invocations; no one invocation passed all 128. Old 76/52 pinned runs remain unrun; no historical seal is replaced."
+  },
+  "limitations": [
+    "Checks remain unrun in this source edition.",
+    "No real gh authentication, account, export, branch/PR, notification or remote cleanup is authorized or verified.",
+    "No model/provider, Harbor/container, browser, database, installation or CI execution.",
+    "Fake subprocess protocol/process evidence cannot establish actual GitHub CLI/REST behavior, credentials/scopes, redirects or administrator races.",
+    "Source-enabled capability is not full-product or live-delivery acceptance."
+  ]
+}

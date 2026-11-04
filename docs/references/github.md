@@ -1,11 +1,12 @@
 # GitHub delivery contract and activation boundary
 
-Last updated: 2026-10-28
+Last updated: 2026-11-04
 
 This reference prepares the PR-delivery requirement in the
 [owning specification](../spec.md). Offline delivery planning does not access an
-account or publish a branch/PR. An authenticated publisher remains proposed
-until its separate source-activation approval. Publication of this product's
+account or publish a branch/PR. The owner authorized the operator-invoked
+[publisher source and focused checks](../proposals/github-publisher.md); the
+repaired capability is source-enabled with verification pending. Publication of this product's
 source does not authorize uploading a private evaluation bundle elsewhere.
 
 ## Primary sources and versions
@@ -33,7 +34,12 @@ request was executed for this research.
 
 ## Existing authentication, without credential extraction
 
-A proposed publisher may invoke the existing CLI login through `gh api`.
+The publisher may invoke the existing CLI login through `gh api` only after
+literal execution approval and POSIX locking support. Offline CLI commands do
+not import the publisher. In `publish_delivery`, unsupported platforms receive
+a finite `github_platform_unavailable` before its internal plan validation,
+journal or client creation. The CLI may first read/verify the explicit local
+artifact.
 It must not invoke `gh auth token`, expose token values, create an account,
 request additional scopes, change the active account, run a browser login, or
 silently repair authorization failures. A reviewed actor ID/login must match
@@ -148,6 +154,9 @@ branch creation, a repeated fixed object intent cannot overwrite an existing
 branch, but might leave an unreferenced object; do not claim those requests
 have a general documented idempotency key. Branch reconciliation reads its
 exact deterministic ref and requires the durably recorded desired commit.
+An absent ref with `branch_pending` cannot distinguish a failed create from an
+owner deletion after a lost acknowledgement. Preserve uncertainty unless a
+positive exact PR is recovered; never blindly create that branch again.
 
 For an uncertain PR request, query bounded all-state results for the exact
 head/base and verify the complete delivery identity. A unique matching PR can
@@ -158,13 +167,16 @@ out request will never arrive; retain `pr_create_pending` and require explicit
 resolution instead of blindly retrying POST. The REST PR endpoint documents
 no client idempotency key or atomic check-and-create transaction.
 
-## Concrete files required before approval
+## Source activation and live-use boundary
 
-The review package needs the active offline plan implementation/CLI contract,
-the complete inactive publisher at `docs/proposals/github_delivery.py.proposed`,
-an exact activation patch, the external-action proposal with the above
-destination/data/notification scope, the journal/reconciliation schema, and
-authored transport/journal/CLI checks with a separate unrun test proposal.
-The `.proposed` file is review material, not an importable activated publisher.
-Existing 76-case and 52-case unapproved scopes remain separate; neither is
-authorization for new checks, an authenticated API probe or a live delivery.
+The [current packet](../proposals/github-publisher.md) records the owner's source/check
+authorization, repaired active publisher/CLI, preserved 24 case bodies, seven
+new regression/owned-transport cases and a complete frozen 51-case scope. The
+original `.proposed` module/tests and activation patch remain historical inputs;
+they must not overwrite the repaired active implementation.
+
+No new check has run yet. Fake-gh subprocesses exercise local framing/deadline/
+cleanup only, without real CLI authentication or requests. Source activation and
+fixture approval do not authorize a live account lookup, private bundle upload,
+branch/PR, notifications, automation or spend. Those actions need the exact
+reviewed destination/data/live-effect scope; no such action occurred here.

@@ -16,11 +16,20 @@
 - Delivery plans include only a verified accepted bundle and explicit sharing/
   destination metadata. Plan preparation/verification are offline. Preserve
   binary bytes and never silently reclassify private or personal data for export.
-- The authenticated publisher is INACTIVE at
-  `docs/proposals/github_delivery.py.proposed`; its tests are also `.py.proposed`.
-  Do not copy/import/execute it or apply the CLI activation patch without the
-  explicit workspace §14 activation approval in `docs/proposals/github-publisher.md`.
-  Source/fixture approval does not authorize real account lookups or remote writes.
+- The operator-invoked publisher is source-enabled at
+  `personal_evals/github_delivery.py` under the owner's repeated “approve
+  everything / keep going / do all the work” source/check authorization.
+  Its repaired 31 publisher checks plus 20 delivery regressions are prepared,
+  unrun, and await frozen-source review/publication in
+  `docs/proposals/github-publisher.md`. Do not execute them during preparation.
+  Preserve the original `.proposed` files and old activation patch as historical
+  inputs. No real account lookup, bundle export, branch/PR write, notification,
+  credential change or paid action is authorized by this source/check scope.
+- `publish_delivery` requires literal `execute=True`, boolean resume and POSIX
+  `fcntl` support before its own plan validation/journal/client creation. The
+  CLI may first read/verify the explicit local artifact. Offline commands lazily
+  avoid this import. An absent pending branch stays uncertain; only a positive
+  exact PR can recover it, with no second ref POST.
 - Freeze suite/task/grader/data-policy/decision identities before comparison.
   Join results by task ID. Missing, mismatched or errored evidence cannot become
   a zero score, a completed run or an automatic model-switch recommendation.
@@ -42,14 +51,17 @@
   The 20 offline delivery-plan cases passed on 4 November 2026 at
   `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`; the
   [canonical receipt](docs/results/2026/11-04/delivery-plan-checks.md) records
-  all 20 actual IDs and unchanged pre/post source. The 24 proposed publisher
-  cases remain unrun and inactive; the publisher proposal records two unresolved
-  pre-activation defects. No result above activates the publisher.
-- This later status edition changes four of the corrected case's 51 sealed
-  inputs: `AGENTS.md`, `README.md`, `docs/proposals/current-baseline-repair.md`
-  and `docs/proposals/github-publisher.md`. The other 47, including all product
-  code and fixtures, remain unchanged. Preserve the historical seals and the
-  original failed result; do not substitute this documentation edition for a
-  tested source or claim remote main synchronization from native refs.
+  all 20 actual IDs and unchanged pre/post source. The 24 publisher case bodies
+  are copied unchanged into active source, with three defect regressions and
+  four owned fake-gh subprocess cases. This new 51-case packet is unrun;
+  previous results do not verify the repaired capability or live transport.
+- The preceding `b1976134` status edition changed four of the corrected case's
+  51 inputs and retained the other 47. That historical proof remains pinned to
+  its recorded source. This activation has a separate complete non-results
+  inventory at `docs/results/2026/11-04/publisher-activation-source.json`.
+  Preserve all historical seals/failures; do not substitute current source for
+  tested refs or infer remote main synchronization from native tracking refs.
+- `scripts/check.py` reports active and historical AST declarations separately;
+  these counts prove neither execution status nor unique coverage.
 - Personal GitHub publication is authorized by the all-project goal. Keep
   canonical evidence in this repository's `docs/`; preserve existing work.

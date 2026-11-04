@@ -51,6 +51,11 @@ def parser():
     delivery.add_argument("--out", required=True, type=Path)
     inspect_delivery = commands.add_parser("delivery-verify", help="Verify a delivery artifact locally without account access")
     inspect_delivery.add_argument("plan", type=Path)
+    publish = commands.add_parser("publish", help="Publish the exact reviewed plan using the existing GitHub login")
+    publish.add_argument("plan", type=Path)
+    publish.add_argument("--journal", required=True, type=Path)
+    publish.add_argument("--execute", action="store_true")
+    publish.add_argument("--resume", action="store_true")
     validate = commands.add_parser("validate", help="Validate an explicit suite without writing or running tasks")
     validate.add_argument("suite", type=Path)
     bundle = commands.add_parser("bundle", help="Create an exclusive portable task bundle")
@@ -107,6 +112,10 @@ def main(argv=None):
             plan = read_delivery_plan(args.plan)
             result = {"planId": plan["planId"], "bundleId": plan["bundleId"], "files": len(plan["files"]),
                       "verified": True, "remoteChecked": False}
+        elif args.command == "publish":
+            from .github_delivery import publish_delivery
+            plan = read_delivery_plan(args.plan)
+            result = publish_delivery(plan, args.journal, execute=args.execute, resume=args.resume)
         elif args.command == "validate":
             manifest, _files = prepare_suite(args.suite)
             result = {"bundleId": manifest["bundleId"], "tasks": len(manifest["tasks"]), "writes": False}

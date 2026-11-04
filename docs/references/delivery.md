@@ -1,12 +1,14 @@
 # Reviewed bundle delivery
 
-Last updated: 2026-10-28
+Last updated: 2026-11-04
 
 Delivery starts from an accepted [portable bundle](formats.md), not a generation
 request or repository snapshot. The active commands create and verify a private,
 self-contained GitHub delivery plan. They do not contact GitHub or read account
-credentials. The authenticated publisher remains an
-[inactive proposal](../proposals/github-publisher.md) under the supplied §14 gate.
+credentials. The authenticated publisher is now
+[source-enabled with verification pending](../proposals/github-publisher.md)
+under the owner's source/check approval. This grants no live account or
+repository action to this agent.
 
 ## Prepare the exact destination
 
@@ -32,7 +34,7 @@ python3 -m personal_evals delivery-verify artifacts/delivery.json
 `--confirm-sharing` records the owner's permission to share this exact bundle
 with that destination. It does not execute a remote action or prove ownership,
 license suitability or the repository's current settings. Actual account,
-permission, visibility, base and namespace checks belong to the proposed
+permission, visibility, base and namespace checks belong to the operator-invoked
 publisher before any remote write.
 
 The output embeds canonical `bundle.json` and every task file under the chosen
@@ -68,10 +70,10 @@ Base and new branches must differ and pass the conservative ref-name contract.
 Local outputs remain private and refuse overwrite; writing inside the source
 bundle is rejected.
 
-## Proposed remote publication
+## Operator-invoked publication source
 
 The separate [GitHub contract](github.md) records the actual API and existing
-GitHub CLI behavior. The proposed publisher reuses that CLI's active login,
+GitHub CLI behavior. The POSIX publisher reuses that CLI's active login,
 checks the expected actor/repository/visibility/permissions, uploads immutable
 objects and creates only the selected new ref and PR. It does not force-push,
 replace an existing branch, merge, delete remote resources, grant a role, change
@@ -81,9 +83,13 @@ A private append-only receipt records mutation intent before calls and verified
 identities afterward. Uncertain PR creation is reconciled by a positive exact
 readback; absence from a query is not proof that an earlier request cannot still
 arrive. The publisher must never blindly submit that PR again. Partial remote
-objects/branches are retained and reported, not silently removed.
+objects/branches are retained and reported, not silently removed. An absent ref
+with a durable `branch_pending` event is also uncertain: an owner might have
+removed it after a lost acknowledgement. Resume may recover a positive exact PR
+but cannot issue another ref POST for that absent branch.
 
-These are proposed execution semantics, not live acceptance evidence. REST
+These are source-prepared semantics with an unrun [51-check packet](../proposals/github-publisher.md),
+not verified live behavior. REST
 prechecks cannot atomically freeze administrator-controlled repository settings
 or the base branch. The existing GitHub CLI's documented redirects still apply.
 Publishing may trigger destination notifications and existing automation; no

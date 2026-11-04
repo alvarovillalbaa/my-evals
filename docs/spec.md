@@ -29,8 +29,9 @@ files and requires owner review before sealing. This is not completion of the
 live provider/repository generation or PR flow. A further offline delivery plan
 preserves the accepted bundle's binary bytes and seals destination/account/base
 metadata, PR text and explicit sharing consent. The
-[authenticated publisher proposal](proposals/github-publisher.md) remains inactive
-pending its separate activation gate; no live PR acceptance is claimed.
+[publisher source/check packet](proposals/github-publisher.md) now enables an
+operator-invoked capability under the owner's explicit source/check approval.
+Its repaired 51-case scope is authored and unrun; no live PR acceptance is claimed.
 No model result is fabricated
 and no live account, container, framework execution or deployment is implied by
 source publication.
@@ -55,9 +56,10 @@ Only explicit bounded local files and committed selected Git blobs are read.
 No repository scan, remote fetch, provider call, hidden model reasoning, account
 connection or credential discovery is implicit. No paid service or provider run
 is authorized by this source work.
-The inactive publisher would use the existing GitHub CLI login only after an
-explicit execute flag and verify the selected actor, repository, permissions,
-visibility and immutable objects. Preparing a plan or approving fixture checks
+The source-enabled publisher requires POSIX locking and uses the existing GitHub
+CLI login only after an explicit execute flag, checking the selected actor,
+repository, permissions, visibility and immutable objects. Offline commands do
+not import it. Preparing a plan or approving source/fixture checks
 does not authorize this agent to perform live account or repository mutations.
 Harbor/container installation and execution require their own reviewed scope.
 There is no web service, database or shared Auth need for the initial local CLI;
