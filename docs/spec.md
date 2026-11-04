@@ -31,7 +31,10 @@ preserves the accepted bundle's binary bytes and seals destination/account/base
 metadata, PR text and explicit sharing consent. The
 [publisher source/check packet](proposals/github-publisher.md) now enables an
 operator-invoked capability under the owner's explicit source/check approval.
-Its repaired 51-case scope is authored and unrun; no live PR acceptance is claimed.
+Its repaired [51-case local scope passed](results/2026/11-04/publisher-activation-checks.md)
+once on its exact source, using authored fake APIs and an owned Python fake-gh
+executable. This does not verify real `gh`, authentication, GitHub, a provider,
+Harbor or full-product acceptance; no live PR acceptance is claimed.
 No model result is fabricated
 and no live account, container, framework execution or deployment is implied by
 source publication.

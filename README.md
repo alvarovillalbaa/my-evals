@@ -8,7 +8,7 @@ repository files, prepares a generation handoff, validates supplied tasks for
 owner review, seals portable task bundles and imports/compares Harbor evidence.
 It also prepares binary-safe repository delivery plans without sending them.
 No provider is called by the handoff commands. The operator-invoked GitHub publisher
-is [source-enabled with verification pending](docs/proposals/github-publisher.md);
+has [51 focused local checks passed](docs/results/2026/11-04/publisher-activation-checks.md);
 live provider integration and PR acceptance remain unfinished in the [owning brief](docs/spec.md).
 
 Python 3.12+ on macOS/Linux; the local artifact tools use only the standard
@@ -82,7 +82,8 @@ It has not been used against a real account. The [source/check packet](docs/prop
 preserves create-only branches, destination checks and a private durable journal.
 An absent pending branch cannot be recreated; only positive exact PR recovery
 can resolve it. The [20 offline checks passed](docs/results/2026/11-04/delivery-plan-checks.md)
-on 4 November. The new 31-publisher plus 20-delivery regression packet is unrun.
+on 4 November. The new 31-publisher plus 20-delivery regression packet
+[passed once on its exact source](docs/results/2026/11-04/publisher-activation-checks.md).
 Source/check approval authorizes no live account lookup, export or branch/PR
 mutation by this agent.
 
@@ -158,14 +159,17 @@ two source editions; **no single invocation passed all 128 cases**.
 
 The [activation proposal](docs/proposals/github-publisher.md) selects 20 local-plan,
 24 unchanged publisher, three defect-regression and four owned fake-gh transport
-cases: **51 total, unrun** in this source edition. The 20 offline cases passed once on existing
+cases: **[51 passed once](docs/results/2026/11-04/publisher-activation-checks.md)** at
+`79088442419bdddf9cdad156450e019a53376364`, with every exact case ID `ok`, no
+skip/nonpassing case, exit zero, all 55 source guards and owned cleanup. The
+20 offline cases separately passed once on existing
 CPython 3.14.7 at `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`, with no failures,
 errors or skips. All 43 original input bytes and modes matched before and after;
 the [actual result](docs/results/2026/11-04/delivery-plan-checks.json) retains
 identities, streams, limits and cleanup evidence. The source now repairs the
-Unix-only import coupling and absent pending-branch replay. Verification of
-those repairs remains pending. Fake-gh cases will exercise an owned Python
-stand-in, not real `gh`, its authentication or actual GitHub behavior.
+Unix-only import coupling and absent pending-branch replay. The focused run
+verified those repairs with authored local state. Fake-gh cases exercised an
+owned Python stand-in, not real `gh`, its authentication or actual GitHub behavior.
 The [initial receipt](docs/results/2026/10-28/initial-source.md) and
 [repository handoff receipt](docs/results/2026/10-28/repository-generation.md)
 record their checks, publication and proof limits; the
@@ -173,7 +177,10 @@ record their checks, publication and proof limits; the
 The preceding `b1976134` status edition retained 47 of that corrected case's 51
 inputs; its historical receipts remain pinned to their exact sources. The new
 [complete activation inventory](docs/results/2026/11-04/publisher-activation-source.json)
-owns this source/check packet. Static checker counts are AST declarations split
+owns the tested source/check packet. This later edition changes only six status
+documents among its 55 inputs; the other 49 fingerprints, including all product
+code, tests, checker and historical candidates, remain unchanged. Static checker
+counts are AST declarations split
 between active and preserved proposed files, with no execution or unique-coverage
 claim. Historical seals and failed receipts remain intact; native tracking refs
 are not a main-publication receipt.
@@ -183,12 +190,13 @@ are not a main-publication receipt.
 - `personal_evals/planning.py`, `harbor.py`: real framework plans and provenance-bound imports.
 - `personal_evals/comparison.py`: paired evidence and inconclusive decisions.
 - `personal_evals/delivery.py`: private, self-contained repository delivery plans.
-- `personal_evals/github_delivery.py`: operator-invoked POSIX publisher, source-prepared and unverified.
+- `personal_evals/github_delivery.py`: operator-invoked POSIX publisher with focused local verification; live use unverified.
 - `docs/proposals/github_delivery.py.proposed`: preserved historical inactive candidate.
 - `personal_evals/archive.py`, `jsonio.py`, `cli.py`: portable output and local commands.
 - `tests/unit/`: authored T2 fixtures; 20 offline delivery-plan cases passed
   separately from the current baseline and its one-case correction above. The
-  new 51-case activation packet and historical pinned 76/52 executions remain unrun.
+  new 51-case activation packet passed once on its exact source; historical
+  pinned 76/52 executions remain unrun.
 
 MIT licensed. The full product remains active until its required integrations
 and approved real-run acceptance are complete.

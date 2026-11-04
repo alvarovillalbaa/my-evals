@@ -2,11 +2,17 @@
 
 Last updated: 2026-11-04
 
-Status: **source-enabled; 51 selected checks authored and unrun**. The owner's
+Status: **source-enabled; 51 selected local checks passed once** at
+`79088442419bdddf9cdad156450e019a53376364`. The
+[canonical receipt](../results/2026/11-04/publisher-activation-checks.md) and
+[actual identities/output](../results/2026/11-04/publisher-activation-checks.json)
+record one invocation: all 51 exact unique IDs `ok`, no skip/nonpassing case,
+child exit zero, all 55 source guards and verified owned cleanup. Unittest
+reported 4.239 seconds; the supervised child took 4.490 seconds, with no outer
+timeout, termination or stream truncation. The owner's
 repeated “approve everything / keep going / do all the work” instructions
-authorize this source repair and bounded local verification. Preparation does
-not run the checks. Independent review and immutable source publication precede
-the one execution below. No further permission cycle is needed for that scope.
+authorized the source repair and bounded local verification. Independent review
+and immutable source publication preceded this one execution.
 
 This authorization permits no real account lookup, bundle export, branch/PR
 write, notification, credential change or paid action. The operator-invoked
@@ -37,7 +43,7 @@ the repaired active publisher supersedes the old patch. `scripts/check.py`
 separates active and historical AST declarations without claiming execution
 status or unique coverage.
 
-## Exact local verification
+## Completed local verification
 
 The [complete source inventory](../results/2026/11-04/publisher-activation-source.json)
 freezes every tracked non-results path, mode, Git blob, byte count and SHA-256,
@@ -51,9 +57,8 @@ including preserved candidates. Its literal case IDs define this selection:
 | `tests.unit.test_github_transport` | 4 | Actual owned fake-gh framing, finite errors, cap and deadline cleanup |
 | Total | 51 | One serial unittest invocation; no other suites |
 
-The controller uses the existing absolute Python executable and records the
-actual version/profile. Existing preparation uses CPython 3.14.7; this is no
-claim about the later execution environment. The exact child arguments are:
+The receipt records the actual Python version/profile and executable. The
+single supervised child used these exact arguments:
 
 ```sh
 python3 -B -S -m unittest -v \
@@ -63,32 +68,39 @@ python3 -B -S -m unittest -v \
   tests.unit.test_github_transport
 ```
 
-Use one 120-second process-group wall cap, 128 KiB per captured stream and
-TERM followed by KILL after three seconds, with a bounded post-kill drain and
-verified reaping. No retries. Require exit zero, the exact 51 unique IDs all
-`ok`, no failure/error/skip/expected-failure/unexpected-success, source HEAD/index
-and complete source-byte/mode guards before and after, and verified cleanup.
-Preserve actual failure output and stop before any source repair or rerun.
+The run enforced a 120-second process-group wall cap, 128 KiB per captured
+stream and TERM/KILL cleanup bounds. It needed no outer termination or retry.
+All 51 unique IDs were `ok`, with no failure/error/skip/expected-failure/
+unexpected-success. HEAD, the 69-entry index, complete source bytes/modes,
+the seal and historical evidence matched before and after; reaping, absence
+of the outer process group and owned fixture cleanup passed.
 
-The parent creates a nonce-marked temporary root and verifies its device/inode
-before cleanup. Assign owned HOME, GH_CONFIG_DIR, XDG_CONFIG_HOME, TMPDIR, TMP
-and TEMP; set bytecode off and TZ=UTC. Main PATH points only to an owned empty
+The parent used a nonce-marked temporary root and verified its device/inode
+before cleanup. HOME, GH_CONFIG_DIR, XDG_CONFIG_HOME, TMPDIR, TMP and TEMP were
+owned paths, with bytecode off and TZ=UTC. Main PATH pointed only to an owned empty
 directory, so an accidental default client cannot discover real `gh` or account
-configuration. The absolute Python interpreter remains callable. Each fake-gh
-case replaces PATH with its own executable directory and no credentials.
-All fixture directories must be empty/removed before parent cleanup; remove
-only the exact owned root. No global process or filesystem cleanup.
+configuration. The absolute Python interpreter remained callable. Each fake-gh
+case replaced PATH with its own executable directory and no credentials.
+Fixture cleanup passed before exact-owned-root removal. No global process or
+filesystem cleanup occurred.
 
-The four transport cases start six actual owned Python fake-gh children in
-total, and the cold offline CLI regression starts one isolated Python child.
-The fake transport observes the real spawned PID through a pass-through Popen
-observer, checks framing/stdin and sanitized errors, and requires the child
-and process group to be gone. The 0.2-second case works even if the child has
-not reached its first statement. The production default remains 30 seconds.
+The four transport cases exercised six actual owned Python fake-gh children in
+total, and the cold offline CLI regression used one isolated Python child.
+The fake transport observed the real spawned PID through a pass-through Popen
+observer, checked framing/stdin and sanitized errors, and required each child
+and process group to be gone. The 0.2-second case did not rely on a child-written
+PID file or assume its first statement ran. The production default remains
+30 seconds.
 
 No real `gh`, account/config lookup, HTTP request, server, database, browser,
 Harbor/container, provider/model call, package install or CI is part of this
 packet. Existing Python standard library and small authored temporary files only.
+
+This later edition changes exactly six status documents among the 55 tested
+inputs: `AGENTS.md`, `README.md`, this proposal, `docs/spec.md` and the delivery/
+GitHub references. The other 49 inputs, including all code, tests, checker and
+historical candidates, remain unchanged. The original source seal and complete
+checked-source receipt are preserved; this documentation edition was not rerun.
 
 ## Runtime behavior and limits
 

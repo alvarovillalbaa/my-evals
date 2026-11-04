@@ -6,7 +6,8 @@ This reference prepares the PR-delivery requirement in the
 [owning specification](../spec.md). Offline delivery planning does not access an
 account or publish a branch/PR. The owner authorized the operator-invoked
 [publisher source and focused checks](../proposals/github-publisher.md); the
-repaired capability is source-enabled with verification pending. Publication of this product's
+repaired capability has [51 focused local checks passed](../results/2026/11-04/publisher-activation-checks.md).
+Publication of this product's
 source does not authorize uploading a private evaluation bundle elsewhere.
 
 ## Primary sources and versions
@@ -175,8 +176,12 @@ new regression/owned-transport cases and a complete frozen 51-case scope. The
 original `.proposed` module/tests and activation patch remain historical inputs;
 they must not overwrite the repaired active implementation.
 
-No new check has run yet. Fake-gh subprocesses exercise local framing/deadline/
-cleanup only, without real CLI authentication or requests. Source activation and
+The [canonical result](../results/2026/11-04/publisher-activation-checks.md) records
+one exact-source invocation with all 51 case IDs `ok`, unchanged source guards
+and owned cleanup. The 24 original case bodies/helpers remain unchanged copies.
+Fake-gh subprocesses exercised local framing/deadline/cleanup only, without
+real `gh`, authentication, GitHub, provider, Harbor or full-product acceptance.
+Source activation and
 fixture approval do not authorize a live account lookup, private bundle upload,
 branch/PR, notifications, automation or spend. Those actions need the exact
 reviewed destination/data/live-effect scope; no such action occurred here.

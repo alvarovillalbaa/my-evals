@@ -19,9 +19,11 @@
 - The operator-invoked publisher is source-enabled at
   `personal_evals/github_delivery.py` under the owner's repeated “approve
   everything / keep going / do all the work” source/check authorization.
-  Its repaired 31 publisher checks plus 20 delivery regressions are prepared,
-  unrun, and await frozen-source review/publication in
-  `docs/proposals/github-publisher.md`. Do not execute them during preparation.
+  Its repaired 31 publisher checks plus 20 delivery regressions passed once at
+  `79088442419bdddf9cdad156450e019a53376364`; the
+  [canonical receipt](docs/results/2026/11-04/publisher-activation-checks.md)
+  records all 51 exact IDs, source guards and owned cleanup. This is local
+  fixture/subprocess verification, not live GitHub acceptance.
   Preserve the original `.proposed` files and old activation patch as historical
   inputs. No real account lookup, bundle export, branch/PR write, notification,
   credential change or paid action is authorized by this source/check scope.
@@ -53,12 +55,15 @@
   [canonical receipt](docs/results/2026/11-04/delivery-plan-checks.md) records
   all 20 actual IDs and unchanged pre/post source. The 24 publisher case bodies
   are copied unchanged into active source, with three defect regressions and
-  four owned fake-gh subprocess cases. This new 51-case packet is unrun;
-  previous results do not verify the repaired capability or live transport.
+  four owned fake-gh subprocess cases. The new 51-case packet passed on its
+  exact source; the fake executable does not verify real `gh`, authentication,
+  GitHub, a provider, Harbor or full-product acceptance.
 - The preceding `b1976134` status edition changed four of the corrected case's
   51 inputs and retained the other 47. That historical proof remains pinned to
   its recorded source. This activation has a separate complete non-results
   inventory at `docs/results/2026/11-04/publisher-activation-source.json`.
+  This later six-status-document edition retains the other 49 of those 55
+  tested inputs unchanged, including all code/tests/checker and candidates.
   Preserve all historical seals/failures; do not substitute current source for
   tested refs or infer remote main synchronization from native tracking refs.
 - `scripts/check.py` reports active and historical AST declarations separately;

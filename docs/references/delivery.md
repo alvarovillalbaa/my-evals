@@ -6,7 +6,7 @@ Delivery starts from an accepted [portable bundle](formats.md), not a generation
 request or repository snapshot. The active commands create and verify a private,
 self-contained GitHub delivery plan. They do not contact GitHub or read account
 credentials. The authenticated publisher is now
-[source-enabled with verification pending](../proposals/github-publisher.md)
+[source-enabled with 51 focused local checks passed](../results/2026/11-04/publisher-activation-checks.md)
 under the owner's source/check approval. This grants no live account or
 repository action to this agent.
 
@@ -88,8 +88,10 @@ with a durable `branch_pending` event is also uncertain: an owner might have
 removed it after a lost acknowledgement. Resume may recover a positive exact PR
 but cannot issue another ref POST for that absent branch.
 
-These are source-prepared semantics with an unrun [51-check packet](../proposals/github-publisher.md),
-not verified live behavior. REST
+The [51-check packet passed once](../results/2026/11-04/publisher-activation-checks.md)
+on its exact source with authored fake APIs and an owned Python fake-gh. It
+does not verify real `gh`, authentication, GitHub, a provider, Harbor or
+full-product behavior. REST
 prechecks cannot atomically freeze administrator-controlled repository settings
 or the base branch. The existing GitHub CLI's documented redirects still apply.
 Publishing may trigger destination notifications and existing automation; no
