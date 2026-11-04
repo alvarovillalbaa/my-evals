@@ -1,0 +1,1300 @@
+{
+  "schemaVersion": 1,
+  "status": "failed-one-fixture-error",
+  "date": "2026-11-04",
+  "project": "Personal Evals",
+  "dataTier": "T2 authored fixtures",
+  "authority": "Persistent owner approve-everything / keep-going / do-all-work authorization covered this one new current-source128 baseline. It did not activate the publisher or authorize real account/export actions.",
+  "scope": "New current-source Personal Evals128 baseline; not execution of historical pinned76/52 sources",
+  "sourceCommit": "d2c177131ae79ea02443eddfeb1ecdc726d06271",
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "tests.unit.test_suite",
+    "tests.unit.test_harbor",
+    "tests.unit.test_comparison",
+    "tests.unit.test_local",
+    "tests.unit.test_repository",
+    "tests.unit.test_generation",
+    "tests.unit.test_generation_cli"
+  ],
+  "runtime": {
+    "implementation": "cpython",
+    "version": "3.14.7",
+    "executableDisplay": "python3",
+    "platform": "darwin",
+    "gitVersion": "git version 2.55.0",
+    "gitExecutableDisplay": "git"
+  },
+  "startedAt": "2026-11-04T11:04:56.244350+00:00",
+  "limits": {
+    "testSeconds": 120,
+    "terminationGraceSeconds": 3,
+    "postKillDrainSeconds": 3,
+    "stdoutBytes": 131072,
+    "stderrBytes": 131072
+  },
+  "invocations": 1,
+  "timedOut": false,
+  "interrupted": false,
+  "forcedKill": false,
+  "outputLimitExceeded": false,
+  "processReaped": true,
+  "processGroupGone": true,
+  "sourcePreGuard": true,
+  "sourcePostGuard": true,
+  "headPreGuard": true,
+  "headPostGuard": true,
+  "cleanupVerified": true,
+  "sourceInputs": [
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "bytes": 3457,
+      "sha256": "780ba6306601490ca7c7061baa87c19f71b5b1d4bbcb2137637098cfc86d38e5"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "bytes": 9843,
+      "sha256": "9f24a6c1f8a9e8b5f5c03ee09867c929642f362daacc99c658ece4259d9b7575"
+    },
+    {
+      "path": "docs/proposals/github-delivery-activation.patch",
+      "mode": "100644",
+      "bytes": 2028,
+      "sha256": "61865d39ff84613eb1fda63de5f8f174ea8371b2172ae7ecd7580f3a0fc113a1"
+    },
+    {
+      "path": "docs/proposals/github-publisher.md",
+      "mode": "100644",
+      "bytes": 6266,
+      "sha256": "d41658c485281da034f5a6374157bed7d6635aaa7375841a5fb923bc74fde078"
+    },
+    {
+      "path": "docs/proposals/github_delivery.py.proposed",
+      "mode": "100644",
+      "bytes": 34918,
+      "sha256": "d3e2ec4b6481df7cf75d4c0acc39dd649faf4aceb22aa5058145d03a5ecf6214"
+    },
+    {
+      "path": "docs/references/delivery.md",
+      "mode": "100644",
+      "bytes": 4753,
+      "sha256": "a78df6c4704af90c58d3148939c502e1753e98c0640dc2f621b3fd33728c21cc"
+    },
+    {
+      "path": "docs/references/formats.md",
+      "mode": "100644",
+      "bytes": 6555,
+      "sha256": "7d639b98f9966b37a402d3d01175f69b1b7cb2eccb92e19b301f0db7e93c3a2b"
+    },
+    {
+      "path": "docs/references/github.md",
+      "mode": "100644",
+      "bytes": 11698,
+      "sha256": "9fe798a102bdfac201224995f34f325a37c8fa10df78118b77f6d0a25f0bbdc8"
+    },
+    {
+      "path": "docs/spec.md",
+      "mode": "100644",
+      "bytes": 4275,
+      "sha256": "4cd086905db37d97aaceba061de95b7ca81d56e35cfae7bb63355bb3bd22c4e5"
+    },
+    {
+      "path": "examples/delivery-intent.json",
+      "mode": "100644",
+      "bytes": 697,
+      "sha256": "5d968bbbaa21132cfead2aaedb434e47ae7063536abdc00d40abe3ef437f4570"
+    },
+    {
+      "path": "examples/demo-text/environment/Dockerfile",
+      "mode": "100644",
+      "bytes": 35,
+      "sha256": "082dba0d5dd12e8a4dfb6b6d126de2d34eb75c789a72947d87da0721ea9b5b41"
+    },
+    {
+      "path": "examples/demo-text/instruction.md",
+      "mode": "100644",
+      "bytes": 262,
+      "sha256": "a2f8c256a17b97be9f75e0ef9a9ba3f9358dd3294e8b0fc849ce1f48517bf570"
+    },
+    {
+      "path": "examples/demo-text/task.toml",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "39ec861c533f5350fb1c96ac998c992178d4a036b2dec0ef4929930b26cbed61"
+    },
+    {
+      "path": "examples/demo-text/tests/test.sh",
+      "mode": "100644",
+      "bytes": 67,
+      "sha256": "128d2ac29b76a8dd1cf7b47dfe7abb40c4529911ece926ab6011e2684a89fed9"
+    },
+    {
+      "path": "examples/demo-text/tests/verify.py",
+      "mode": "100644",
+      "bytes": 309,
+      "sha256": "9cda917ce20d833dfad3d06fd972e9e22ed2815ea00da37aad402c6eceac1080"
+    },
+    {
+      "path": "examples/generation-intent.json",
+      "mode": "100644",
+      "bytes": 1008,
+      "sha256": "a21aafcb8041b3b1a5df5c7112682babe54e5e2716e490d034f2be91b1ee8bcf"
+    },
+    {
+      "path": "examples/source-policy.json",
+      "mode": "100644",
+      "bytes": 93,
+      "sha256": "78db661637830f9a92410d8c5854d99eb3b173bc6e72bee6664857ae3930e3be"
+    },
+    {
+      "path": "examples/suite.json",
+      "mode": "100644",
+      "bytes": 712,
+      "sha256": "78822889e90c9284c4fcf9c185138bb2e8132f9cd7036b1c714e968d73866271"
+    },
+    {
+      "path": "personal_evals/__init__.py",
+      "mode": "100644",
+      "bytes": 101,
+      "sha256": "d96d320a09027feadb3350c382edf8138b7ce32db394adaf2c5b3900f15686a8"
+    },
+    {
+      "path": "personal_evals/__main__.py",
+      "mode": "100644",
+      "bytes": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "personal_evals/archive.py",
+      "mode": "100644",
+      "bytes": 1482,
+      "sha256": "43275a35385b059a26e03d16a955e0a2aff28cd6b0d3350fce2980455c50f5a8"
+    },
+    {
+      "path": "personal_evals/cli.py",
+      "mode": "100644",
+      "bytes": 8536,
+      "sha256": "a469b295f003e3b0862cdcbd78edf7a00f787cb93f923c3ea18324f7ad8ae858"
+    },
+    {
+      "path": "personal_evals/comparison.py",
+      "mode": "100644",
+      "bytes": 15355,
+      "sha256": "ff9fc0ea48f056ad3e8399785e7dbf7908b358b1917bc9f27c490f34da1e6a58"
+    },
+    {
+      "path": "personal_evals/delivery.py",
+      "mode": "100644",
+      "bytes": 13364,
+      "sha256": "2a7f5e4798be347c2993d747157b8527aa02644bdfd54df9fbe18767a25348ce"
+    },
+    {
+      "path": "personal_evals/errors.py",
+      "mode": "100644",
+      "bytes": 206,
+      "sha256": "8ac824785799876934893e9e06a1d0e5e73fa5456dac44f0217ba5686330d137"
+    },
+    {
+      "path": "personal_evals/generation.py",
+      "mode": "100644",
+      "bytes": 16083,
+      "sha256": "668b92346616659371edb9b021981104e87f0048f737fa31600c520eda28c17f"
+    },
+    {
+      "path": "personal_evals/harbor.py",
+      "mode": "100644",
+      "bytes": 19085,
+      "sha256": "d51995c49627d9f0813d3ba5744806837d6e03256d468258f41377889773fbd0"
+    },
+    {
+      "path": "personal_evals/jsonio.py",
+      "mode": "100644",
+      "bytes": 3793,
+      "sha256": "3e2cad27c8dc43891e3dbd138b5480736958cbffb18fa1b0ab32a66192b5aacc"
+    },
+    {
+      "path": "personal_evals/planning.py",
+      "mode": "100644",
+      "bytes": 4589,
+      "sha256": "68fc49a849bbcba35af82907e98c7c1bdb4dd2bc58310cfab7d620edaaa2e4ac"
+    },
+    {
+      "path": "personal_evals/repository.py",
+      "mode": "100644",
+      "bytes": 13452,
+      "sha256": "2d46195a75d6fbf9be2fa9d4f9c0cb1f607b3308e0355fa05611650cf9bb51d6"
+    },
+    {
+      "path": "personal_evals/suite.py",
+      "mode": "100644",
+      "bytes": 18285,
+      "sha256": "edad2ed5b79607bd607ae854bbcecf3dee322d89c582c7121e352fdcc37b19dc"
+    },
+    {
+      "path": "scripts/check.py",
+      "mode": "100644",
+      "bytes": 2391,
+      "sha256": "ae2384e884503f96e5e921b21cd7b464b7a27d7cc6733ee8044641078ad127fe"
+    },
+    {
+      "path": "tests/__init__.py",
+      "mode": "100644",
+      "bytes": 72,
+      "sha256": "f6d27be760b383a5e3d10d86af7563abf91448304d192ddb21b2d6f58793218d"
+    },
+    {
+      "path": "tests/unit/__init__.py",
+      "mode": "100644",
+      "bytes": 40,
+      "sha256": "c569f732b2a663bed98f887988585949e41c96f4cc4c6e05555af4875e2f376d"
+    },
+    {
+      "path": "tests/unit/test_comparison.py",
+      "mode": "100644",
+      "bytes": 20194,
+      "sha256": "745c0b2f273978ef42ad82a1510d607fad39b2972c97cdc69170c84d31309e0b"
+    },
+    {
+      "path": "tests/unit/test_delivery.py",
+      "mode": "100644",
+      "bytes": 20782,
+      "sha256": "faca887fe3afcd7e8149263b2081cbc6b978767da2892d170162d273dba22126"
+    },
+    {
+      "path": "tests/unit/test_generation.py",
+      "mode": "100644",
+      "bytes": 22949,
+      "sha256": "3a972dfdbd6b2a966bce1e7c23eea2c86d22435c1eedd2ee7e1958c676019e4a"
+    },
+    {
+      "path": "tests/unit/test_generation_cli.py",
+      "mode": "100644",
+      "bytes": 19986,
+      "sha256": "5322fa58576c58f289a63af1371e779e2c9fe49fa62ee2aa0320885486e96d91"
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py.proposed",
+      "mode": "100644",
+      "bytes": 34366,
+      "sha256": "442ee334f5ea019fa1bd56a397de0c3c5c66f65be9c9933f8eff4b64f90b66e8"
+    },
+    {
+      "path": "tests/unit/test_harbor.py",
+      "mode": "100644",
+      "bytes": 15769,
+      "sha256": "88f914804b50f3fd2d35977d64d322545130fc5ef364e5f4053831c3809965d7"
+    },
+    {
+      "path": "tests/unit/test_local.py",
+      "mode": "100644",
+      "bytes": 8580,
+      "sha256": "93dab2317a4bd9a858166553ffbb4b8ad1ef0dc28589fcbeb187cef0dfaf80ea"
+    },
+    {
+      "path": "tests/unit/test_repository.py",
+      "mode": "100644",
+      "bytes": 15317,
+      "sha256": "676e43c0bd79dc0f691226a6acea0ad86a40397f43e4dad6c5c7e3ae96c51583"
+    },
+    {
+      "path": "tests/unit/test_suite.py",
+      "mode": "100644",
+      "bytes": 19024,
+      "sha256": "1cd5c51f267f593010cf01a7d0207a2afd093b9ebf10204d55ab71a0cb34663f"
+    }
+  ],
+  "historicalSealSha256": "2952c26017548c2bb9d921fb4ac1dd963606e6ad7369baaf36bbf794659035c4",
+  "caseFiles": [
+    {
+      "module": "tests.unit.test_suite",
+      "expected": 20,
+      "ids": [
+        "tests.unit.test_suite.SuiteTests.test_bundle_inventory_rejects_extra_files_directories_missing_files_and_links",
+        "tests.unit.test_suite.SuiteTests.test_empty_excessive_duplicate_task_ids_and_harbor_names_are_rejected",
+        "tests.unit.test_suite.SuiteTests.test_existing_output_directory_file_or_link_is_never_overwritten",
+        "tests.unit.test_suite.SuiteTests.test_explicit_bytes_and_independent_harbor_digest",
+        "tests.unit.test_suite.SuiteTests.test_file_count_duplicates_and_portable_case_collisions_are_rejected",
+        "tests.unit.test_suite.SuiteTests.test_manifest_metadata_fingerprints_and_exact_shape_are_checked",
+        "tests.unit.test_suite.SuiteTests.test_manifest_validation_detaches_data_and_source_relocation_does_not_change_ids",
+        "tests.unit.test_suite.SuiteTests.test_nonregular_selected_file_is_rejected_before_read",
+        "tests.unit.test_suite.SuiteTests.test_per_file_and_aggregate_byte_limits",
+        "tests.unit.test_suite.SuiteTests.test_policy_decision_split_task_order_and_grader_settings_bind_identity",
+        "tests.unit.test_suite.SuiteTests.test_private_bundle_roundtrip_remains_valid_after_transfer",
+        "tests.unit.test_suite.SuiteTests.test_rehashed_metadata_cannot_substitute_a_different_toml_identity",
+        "tests.unit.test_suite.SuiteTests.test_relative_paths_reject_traversal_absolute_and_ambiguous_segments",
+        "tests.unit.test_suite.SuiteTests.test_required_explicit_files_and_supported_locations_are_enforced",
+        "tests.unit.test_suite.SuiteTests.test_secret_filenames_are_rejected_without_reading_them",
+        "tests.unit.test_suite.SuiteTests.test_strict_suite_scalars_and_unknown_fields_are_rejected",
+        "tests.unit.test_suite.SuiteTests.test_symlink_task_directory_selected_file_and_ancestor_are_rejected",
+        "tests.unit.test_suite.SuiteTests.test_tampered_file_bytes_or_lengths_never_verify",
+        "tests.unit.test_suite.SuiteTests.test_task_schema_identity_version_utf8_and_multistep_are_validated",
+        "tests.unit.test_suite.SuiteTests.test_write_failure_removes_only_owned_outputs_and_preserves_a_foreign_file"
+      ]
+    },
+    {
+      "module": "tests.unit.test_harbor",
+      "expected": 20,
+      "ids": [
+        "tests.unit.test_harbor.HarborImportTests.test_bundle_file_tampering_is_rejected_before_reading_results",
+        "tests.unit.test_harbor.HarborImportTests.test_config_job_and_model_and_reported_identity_cannot_cross_plans",
+        "tests.unit.test_harbor.HarborImportTests.test_duplicate_trial_uuid_is_rejected_across_directories",
+        "tests.unit.test_harbor.HarborImportTests.test_malformed_lock_keeps_its_bytes_hash_but_never_validates",
+        "tests.unit.test_harbor.HarborImportTests.test_missing_and_naive_or_reversed_trial_times_are_not_invented",
+        "tests.unit.test_harbor.HarborImportTests.test_missing_lock_excludes_reward_without_inventing_provenance",
+        "tests.unit.test_harbor.HarborImportTests.test_missing_out_of_range_and_boolean_rewards_stay_unknown",
+        "tests.unit.test_harbor.HarborImportTests.test_normalized_output_omits_paths_tokens_metadata_and_traces",
+        "tests.unit.test_harbor.HarborImportTests.test_provider_neutral_terminus_adapter_has_its_real_pinned_version",
+        "tests.unit.test_harbor.HarborImportTests.test_raw_trial_and_step_errors_are_preserved_without_becoming_zero",
+        "tests.unit.test_harbor.HarborImportTests.test_reported_model_match_is_literal_and_does_not_infer_provider_aliases",
+        "tests.unit.test_harbor.HarborImportTests.test_root_harbor_pin_schema_concurrency_and_retry_are_required",
+        "tests.unit.test_harbor.HarborImportTests.test_symlinked_trial_directory_and_oversized_raw_file_are_rejected",
+        "tests.unit.test_harbor.HarborImportTests.test_task_digest_version_and_local_name_must_match_the_sealed_bundle",
+        "tests.unit.test_harbor.HarborImportTests.test_trial_lock_must_be_recorded_in_the_root_job_lock",
+        "tests.unit.test_harbor.HarborImportTests.test_unknown_task_and_missing_model_are_explicit_excluded_evidence",
+        "tests.unit.test_harbor.HarborImportTests.test_unknown_usage_is_not_zero_and_input_already_contains_cache",
+        "tests.unit.test_harbor.HarborImportTests.test_usage_chooses_top_level_or_steps_without_double_counting",
+        "tests.unit.test_harbor.HarborImportTests.test_valid_trial_binds_seal_plan_and_real_harbor_result_shape",
+        "tests.unit.test_harbor.HarborImportTests.test_workload_overrides_are_excluded_even_when_reward_is_present"
+      ]
+    },
+    {
+      "module": "tests.unit.test_comparison",
+      "expected": 20,
+      "ids": [
+        "tests.unit.test_comparison.PairedComparisonTests.test_a_single_pair_or_no_pairs_has_no_interval_and_cannot_recommend",
+        "tests.unit.test_comparison.PairedComparisonTests.test_attempts_are_averaged_within_tasks_rather_than_counted_as_extra_pairs",
+        "tests.unit.test_comparison.PairedComparisonTests.test_complete_positive_evidence_is_deterministic_and_seals_the_report",
+        "tests.unit.test_comparison.PairedComparisonTests.test_complete_sufficiently_sized_negative_interval_reports_regression",
+        "tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_equality_and_explicit_regression_allowance_are_preserved",
+        "tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_regression_vetoes_a_positive_average",
+        "tests.unit.test_comparison.PairedComparisonTests.test_duplicate_trial_ids_within_or_across_runs_are_rejected",
+        "tests.unit.test_comparison.PairedComparisonTests.test_edited_run_and_manifest_identities_are_not_trusted",
+        "tests.unit.test_comparison.PairedComparisonTests.test_excluded_error_evidence_is_separate_from_missing_or_zero_scores",
+        "tests.unit.test_comparison.PairedComparisonTests.test_extra_valid_attempts_are_not_cherry_picked_into_a_task_mean",
+        "tests.unit.test_comparison.PairedComparisonTests.test_frozen_protocol_attempt_agent_and_bundle_mismatches_reject_comparison",
+        "tests.unit.test_comparison.PairedComparisonTests.test_missing_attempts_stay_missing_and_never_become_zero_rewards",
+        "tests.unit.test_comparison.PairedComparisonTests.test_pairing_uses_task_ids_and_preserves_manifest_order_after_result_reordering",
+        "tests.unit.test_comparison.PairedComparisonTests.test_positive_effect_below_the_declared_practical_improvement_is_inconclusive",
+        "tests.unit.test_comparison.PairedComparisonTests.test_same_requested_model_or_reused_job_identity_is_not_a_model_switch",
+        "tests.unit.test_comparison.PairedComparisonTests.test_status_reward_model_and_provenance_correspondences_are_strict",
+        "tests.unit.test_comparison.PairedComparisonTests.test_uncertainty_crossing_zero_does_not_support_a_switch",
+        "tests.unit.test_comparison.PairedComparisonTests.test_unknown_fields_boolean_numbers_and_nonfinite_values_are_rejected",
+        "tests.unit.test_comparison.PairedComparisonTests.test_unmapped_imported_evidence_is_visible_and_blocks_a_complete_comparison",
+        "tests.unit.test_comparison.PairedComparisonTests.test_usage_totals_preserve_unknowns_and_never_add_cached_input_twice"
+      ]
+    },
+    {
+      "module": "tests.unit.test_local",
+      "expected": 16,
+      "ids": [
+        "tests.unit.test_local.LocalArtifactTests.test_agent_version_and_attempts_are_part_of_protocol",
+        "tests.unit.test_local.LocalArtifactTests.test_archive_is_deterministic_and_refuses_overwrite",
+        "tests.unit.test_local.LocalArtifactTests.test_archive_transfer_preserves_sealed_identity",
+        "tests.unit.test_local.LocalArtifactTests.test_boolean_attempts_and_ambiguous_model_are_rejected",
+        "tests.unit.test_local.LocalArtifactTests.test_changed_task_cannot_be_archived_under_old_manifest",
+        "tests.unit.test_local.LocalArtifactTests.test_cli_errors_do_not_echo_unknown_private_values",
+        "tests.unit.test_local.LocalArtifactTests.test_duplicate_json_keys_are_rejected",
+        "tests.unit.test_local.LocalArtifactTests.test_edited_plan_or_wrong_bundle_cannot_reuse_identity",
+        "tests.unit.test_local.LocalArtifactTests.test_empty_suite_does_not_invent_example_tasks",
+        "tests.unit.test_local.LocalArtifactTests.test_json_publication_is_private_complete_and_refuses_overwrite",
+        "tests.unit.test_local.LocalArtifactTests.test_link_and_oversized_regular_inputs_are_rejected",
+        "tests.unit.test_local.LocalArtifactTests.test_model_change_preserves_protocol_but_changes_plan_identity",
+        "tests.unit.test_local.LocalArtifactTests.test_nonfinite_and_invalid_unicode_are_rejected",
+        "tests.unit.test_local.LocalArtifactTests.test_provider_neutral_terminus_uses_its_pinned_framework_version",
+        "tests.unit.test_local.LocalArtifactTests.test_real_harbor_command_is_an_argv_with_no_shell_execution",
+        "tests.unit.test_local.LocalArtifactTests.test_validate_cli_has_no_writes_or_task_execution"
+      ]
+    },
+    {
+      "module": "tests.unit.test_repository",
+      "expected": 20,
+      "ids": [
+        "tests.unit.test_repository.RepositoryTests.test_ambient_git_redirection_and_trace_settings_do_not_escape_the_explicit_repo",
+        "tests.unit.test_repository.RepositoryTests.test_bare_repositories_are_supported_and_nested_worktree_roots_are_rejected",
+        "tests.unit.test_repository.RepositoryTests.test_byte_and_total_limits_are_enforced_before_blob_capture",
+        "tests.unit.test_repository.RepositoryTests.test_committed_links_directories_and_gitlinks_are_rejected",
+        "tests.unit.test_repository.RepositoryTests.test_data_policy_label_and_empty_selection_cannot_be_defaulted",
+        "tests.unit.test_repository.RepositoryTests.test_dirty_worktree_untracked_files_and_index_are_preserved",
+        "tests.unit.test_repository.RepositoryTests.test_duplicate_and_casefold_paths_are_rejected",
+        "tests.unit.test_repository.RepositoryTests.test_explicit_file_order_and_executable_mode_are_preserved",
+        "tests.unit.test_repository.RepositoryTests.test_literal_option_looking_and_space_paths_never_become_flags",
+        "tests.unit.test_repository.RepositoryTests.test_missing_local_blob_fails_without_fetching_or_altering_the_repository",
+        "tests.unit.test_repository.RepositoryTests.test_missing_selected_and_untracked_only_files_are_not_read_from_disk",
+        "tests.unit.test_repository.RepositoryTests.test_non_utf8_nul_and_disallowed_controls_are_rejected",
+        "tests.unit.test_repository.RepositoryTests.test_old_commit_selection_does_not_follow_later_branch_changes",
+        "tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process",
+        "tests.unit.test_repository.RepositoryTests.test_process_output_is_bounded_and_raw_stderr_never_enters_errors",
+        "tests.unit.test_repository.RepositoryTests.test_replace_refs_do_not_substitute_a_different_committed_tree",
+        "tests.unit.test_repository.RepositoryTests.test_secret_dot_traversal_glob_and_control_paths_fail_before_git",
+        "tests.unit.test_repository.RepositoryTests.test_sha256_repository_uses_sha256_git_object_headers",
+        "tests.unit.test_repository.RepositoryTests.test_snapshot_reads_committed_bytes_and_binds_git_header_hash",
+        "tests.unit.test_repository.RepositoryTests.test_strict_validation_checks_all_identities_and_detaches_caller_objects"
+      ]
+    },
+    {
+      "module": "tests.unit.test_generation",
+      "expected": 20,
+      "ids": [
+        "tests.unit.test_generation.GenerationTests.test_acceptance_requires_explicit_boolean_owner_review",
+        "tests.unit.test_generation.GenerationTests.test_acceptance_uses_captured_reviewed_bytes_when_input_changes_before_bundle_write",
+        "tests.unit.test_generation.GenerationTests.test_acceptance_writes_a_real_verified_bundle_bound_to_the_review",
+        "tests.unit.test_generation.GenerationTests.test_arbitrary_response_metadata_and_trace_fields_are_not_retained",
+        "tests.unit.test_generation.GenerationTests.test_edited_task_request_review_or_extra_inventory_blocks_acceptance",
+        "tests.unit.test_generation.GenerationTests.test_failed_import_cleans_only_owned_outputs_and_preserves_foreign_additions",
+        "tests.unit.test_generation.GenerationTests.test_generated_content_is_strict_utf8_nul_free_and_bounded",
+        "tests.unit.test_generation.GenerationTests.test_generated_paths_secrets_ignored_files_and_case_collisions_are_rejected",
+        "tests.unit.test_generation.GenerationTests.test_import_and_acceptance_refuse_existing_outputs_and_nested_bundle_destination",
+        "tests.unit.test_generation.GenerationTests.test_import_maps_response_ids_and_preserves_provider_bytes_owner_metadata_and_policy",
+        "tests.unit.test_generation.GenerationTests.test_missing_duplicate_unknown_or_unused_selected_source_is_rejected",
+        "tests.unit.test_generation.GenerationTests.test_missing_or_blank_instructions_environment_and_graders_are_not_fabricated",
+        "tests.unit.test_generation.GenerationTests.test_provider_cannot_change_task_name_version_or_harbor_profile",
+        "tests.unit.test_generation.GenerationTests.test_rehashing_review_does_not_allow_owner_policy_or_grader_metadata_changes",
+        "tests.unit.test_generation.GenerationTests.test_request_artifact_limit_has_an_exact_small_fixture_boundary",
+        "tests.unit.test_generation.GenerationTests.test_request_binds_full_source_policy_and_normalizes_explicit_paths",
+        "tests.unit.test_generation.GenerationTests.test_request_identity_and_nested_snapshot_tampering_are_rejected",
+        "tests.unit.test_generation.GenerationTests.test_response_binding_and_exact_requested_task_set_are_required_before_output",
+        "tests.unit.test_generation.GenerationTests.test_response_limit_and_invalid_json_utf8_duplicate_keys_never_create_output",
+        "tests.unit.test_generation.GenerationTests.test_strict_owner_intent_rejects_unknown_fields_invalid_bounds_and_duplicate_ids"
+      ]
+    },
+    {
+      "module": "tests.unit.test_generation_cli",
+      "expected": 12,
+      "ids": [
+        "tests.unit.test_generation_cli.GenerationCliTests.test_all_four_generation_commands_preserve_existing_output_files_or_directories",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_changed_generated_files_cannot_be_accepted_under_the_old_review_identity",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_cli_pipeline_has_no_provider_harbor_or_pr_execution_and_errors_do_not_echo_private_data",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_generation_accept_requires_the_reviewed_flag_and_preserves_owner_policy",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_binds_response_to_request_snapshot_model_and_task_identity",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_creates_a_review_required_draft_without_accepting_or_executing_it",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_is_an_unsent_deterministic_handoff_preserving_source_and_policy",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_rejects_unselected_source_and_missing_grader_requirements",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_invalid_snapshot_policy_is_finite_and_creates_no_artifact",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_missing_generated_grader_is_rejected_before_a_draft_can_be_created",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_reads_the_committed_revision_and_ignores_dirty_and_unselected_files",
+        "tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_requires_explicit_file_selection_and_policy_before_capture"
+      ]
+    }
+  ],
+  "expectedCaseIds": [
+    "tests.unit.test_comparison.PairedComparisonTests.test_a_single_pair_or_no_pairs_has_no_interval_and_cannot_recommend",
+    "tests.unit.test_comparison.PairedComparisonTests.test_attempts_are_averaged_within_tasks_rather_than_counted_as_extra_pairs",
+    "tests.unit.test_comparison.PairedComparisonTests.test_complete_positive_evidence_is_deterministic_and_seals_the_report",
+    "tests.unit.test_comparison.PairedComparisonTests.test_complete_sufficiently_sized_negative_interval_reports_regression",
+    "tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_equality_and_explicit_regression_allowance_are_preserved",
+    "tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_regression_vetoes_a_positive_average",
+    "tests.unit.test_comparison.PairedComparisonTests.test_duplicate_trial_ids_within_or_across_runs_are_rejected",
+    "tests.unit.test_comparison.PairedComparisonTests.test_edited_run_and_manifest_identities_are_not_trusted",
+    "tests.unit.test_comparison.PairedComparisonTests.test_excluded_error_evidence_is_separate_from_missing_or_zero_scores",
+    "tests.unit.test_comparison.PairedComparisonTests.test_extra_valid_attempts_are_not_cherry_picked_into_a_task_mean",
+    "tests.unit.test_comparison.PairedComparisonTests.test_frozen_protocol_attempt_agent_and_bundle_mismatches_reject_comparison",
+    "tests.unit.test_comparison.PairedComparisonTests.test_missing_attempts_stay_missing_and_never_become_zero_rewards",
+    "tests.unit.test_comparison.PairedComparisonTests.test_pairing_uses_task_ids_and_preserves_manifest_order_after_result_reordering",
+    "tests.unit.test_comparison.PairedComparisonTests.test_positive_effect_below_the_declared_practical_improvement_is_inconclusive",
+    "tests.unit.test_comparison.PairedComparisonTests.test_same_requested_model_or_reused_job_identity_is_not_a_model_switch",
+    "tests.unit.test_comparison.PairedComparisonTests.test_status_reward_model_and_provenance_correspondences_are_strict",
+    "tests.unit.test_comparison.PairedComparisonTests.test_uncertainty_crossing_zero_does_not_support_a_switch",
+    "tests.unit.test_comparison.PairedComparisonTests.test_unknown_fields_boolean_numbers_and_nonfinite_values_are_rejected",
+    "tests.unit.test_comparison.PairedComparisonTests.test_unmapped_imported_evidence_is_visible_and_blocks_a_complete_comparison",
+    "tests.unit.test_comparison.PairedComparisonTests.test_usage_totals_preserve_unknowns_and_never_add_cached_input_twice",
+    "tests.unit.test_generation.GenerationTests.test_acceptance_requires_explicit_boolean_owner_review",
+    "tests.unit.test_generation.GenerationTests.test_acceptance_uses_captured_reviewed_bytes_when_input_changes_before_bundle_write",
+    "tests.unit.test_generation.GenerationTests.test_acceptance_writes_a_real_verified_bundle_bound_to_the_review",
+    "tests.unit.test_generation.GenerationTests.test_arbitrary_response_metadata_and_trace_fields_are_not_retained",
+    "tests.unit.test_generation.GenerationTests.test_edited_task_request_review_or_extra_inventory_blocks_acceptance",
+    "tests.unit.test_generation.GenerationTests.test_failed_import_cleans_only_owned_outputs_and_preserves_foreign_additions",
+    "tests.unit.test_generation.GenerationTests.test_generated_content_is_strict_utf8_nul_free_and_bounded",
+    "tests.unit.test_generation.GenerationTests.test_generated_paths_secrets_ignored_files_and_case_collisions_are_rejected",
+    "tests.unit.test_generation.GenerationTests.test_import_and_acceptance_refuse_existing_outputs_and_nested_bundle_destination",
+    "tests.unit.test_generation.GenerationTests.test_import_maps_response_ids_and_preserves_provider_bytes_owner_metadata_and_policy",
+    "tests.unit.test_generation.GenerationTests.test_missing_duplicate_unknown_or_unused_selected_source_is_rejected",
+    "tests.unit.test_generation.GenerationTests.test_missing_or_blank_instructions_environment_and_graders_are_not_fabricated",
+    "tests.unit.test_generation.GenerationTests.test_provider_cannot_change_task_name_version_or_harbor_profile",
+    "tests.unit.test_generation.GenerationTests.test_rehashing_review_does_not_allow_owner_policy_or_grader_metadata_changes",
+    "tests.unit.test_generation.GenerationTests.test_request_artifact_limit_has_an_exact_small_fixture_boundary",
+    "tests.unit.test_generation.GenerationTests.test_request_binds_full_source_policy_and_normalizes_explicit_paths",
+    "tests.unit.test_generation.GenerationTests.test_request_identity_and_nested_snapshot_tampering_are_rejected",
+    "tests.unit.test_generation.GenerationTests.test_response_binding_and_exact_requested_task_set_are_required_before_output",
+    "tests.unit.test_generation.GenerationTests.test_response_limit_and_invalid_json_utf8_duplicate_keys_never_create_output",
+    "tests.unit.test_generation.GenerationTests.test_strict_owner_intent_rejects_unknown_fields_invalid_bounds_and_duplicate_ids",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_all_four_generation_commands_preserve_existing_output_files_or_directories",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_changed_generated_files_cannot_be_accepted_under_the_old_review_identity",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_cli_pipeline_has_no_provider_harbor_or_pr_execution_and_errors_do_not_echo_private_data",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_generation_accept_requires_the_reviewed_flag_and_preserves_owner_policy",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_binds_response_to_request_snapshot_model_and_task_identity",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_creates_a_review_required_draft_without_accepting_or_executing_it",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_is_an_unsent_deterministic_handoff_preserving_source_and_policy",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_rejects_unselected_source_and_missing_grader_requirements",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_invalid_snapshot_policy_is_finite_and_creates_no_artifact",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_missing_generated_grader_is_rejected_before_a_draft_can_be_created",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_reads_the_committed_revision_and_ignores_dirty_and_unselected_files",
+    "tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_requires_explicit_file_selection_and_policy_before_capture",
+    "tests.unit.test_harbor.HarborImportTests.test_bundle_file_tampering_is_rejected_before_reading_results",
+    "tests.unit.test_harbor.HarborImportTests.test_config_job_and_model_and_reported_identity_cannot_cross_plans",
+    "tests.unit.test_harbor.HarborImportTests.test_duplicate_trial_uuid_is_rejected_across_directories",
+    "tests.unit.test_harbor.HarborImportTests.test_malformed_lock_keeps_its_bytes_hash_but_never_validates",
+    "tests.unit.test_harbor.HarborImportTests.test_missing_and_naive_or_reversed_trial_times_are_not_invented",
+    "tests.unit.test_harbor.HarborImportTests.test_missing_lock_excludes_reward_without_inventing_provenance",
+    "tests.unit.test_harbor.HarborImportTests.test_missing_out_of_range_and_boolean_rewards_stay_unknown",
+    "tests.unit.test_harbor.HarborImportTests.test_normalized_output_omits_paths_tokens_metadata_and_traces",
+    "tests.unit.test_harbor.HarborImportTests.test_provider_neutral_terminus_adapter_has_its_real_pinned_version",
+    "tests.unit.test_harbor.HarborImportTests.test_raw_trial_and_step_errors_are_preserved_without_becoming_zero",
+    "tests.unit.test_harbor.HarborImportTests.test_reported_model_match_is_literal_and_does_not_infer_provider_aliases",
+    "tests.unit.test_harbor.HarborImportTests.test_root_harbor_pin_schema_concurrency_and_retry_are_required",
+    "tests.unit.test_harbor.HarborImportTests.test_symlinked_trial_directory_and_oversized_raw_file_are_rejected",
+    "tests.unit.test_harbor.HarborImportTests.test_task_digest_version_and_local_name_must_match_the_sealed_bundle",
+    "tests.unit.test_harbor.HarborImportTests.test_trial_lock_must_be_recorded_in_the_root_job_lock",
+    "tests.unit.test_harbor.HarborImportTests.test_unknown_task_and_missing_model_are_explicit_excluded_evidence",
+    "tests.unit.test_harbor.HarborImportTests.test_unknown_usage_is_not_zero_and_input_already_contains_cache",
+    "tests.unit.test_harbor.HarborImportTests.test_usage_chooses_top_level_or_steps_without_double_counting",
+    "tests.unit.test_harbor.HarborImportTests.test_valid_trial_binds_seal_plan_and_real_harbor_result_shape",
+    "tests.unit.test_harbor.HarborImportTests.test_workload_overrides_are_excluded_even_when_reward_is_present",
+    "tests.unit.test_local.LocalArtifactTests.test_agent_version_and_attempts_are_part_of_protocol",
+    "tests.unit.test_local.LocalArtifactTests.test_archive_is_deterministic_and_refuses_overwrite",
+    "tests.unit.test_local.LocalArtifactTests.test_archive_transfer_preserves_sealed_identity",
+    "tests.unit.test_local.LocalArtifactTests.test_boolean_attempts_and_ambiguous_model_are_rejected",
+    "tests.unit.test_local.LocalArtifactTests.test_changed_task_cannot_be_archived_under_old_manifest",
+    "tests.unit.test_local.LocalArtifactTests.test_cli_errors_do_not_echo_unknown_private_values",
+    "tests.unit.test_local.LocalArtifactTests.test_duplicate_json_keys_are_rejected",
+    "tests.unit.test_local.LocalArtifactTests.test_edited_plan_or_wrong_bundle_cannot_reuse_identity",
+    "tests.unit.test_local.LocalArtifactTests.test_empty_suite_does_not_invent_example_tasks",
+    "tests.unit.test_local.LocalArtifactTests.test_json_publication_is_private_complete_and_refuses_overwrite",
+    "tests.unit.test_local.LocalArtifactTests.test_link_and_oversized_regular_inputs_are_rejected",
+    "tests.unit.test_local.LocalArtifactTests.test_model_change_preserves_protocol_but_changes_plan_identity",
+    "tests.unit.test_local.LocalArtifactTests.test_nonfinite_and_invalid_unicode_are_rejected",
+    "tests.unit.test_local.LocalArtifactTests.test_provider_neutral_terminus_uses_its_pinned_framework_version",
+    "tests.unit.test_local.LocalArtifactTests.test_real_harbor_command_is_an_argv_with_no_shell_execution",
+    "tests.unit.test_local.LocalArtifactTests.test_validate_cli_has_no_writes_or_task_execution",
+    "tests.unit.test_repository.RepositoryTests.test_ambient_git_redirection_and_trace_settings_do_not_escape_the_explicit_repo",
+    "tests.unit.test_repository.RepositoryTests.test_bare_repositories_are_supported_and_nested_worktree_roots_are_rejected",
+    "tests.unit.test_repository.RepositoryTests.test_byte_and_total_limits_are_enforced_before_blob_capture",
+    "tests.unit.test_repository.RepositoryTests.test_committed_links_directories_and_gitlinks_are_rejected",
+    "tests.unit.test_repository.RepositoryTests.test_data_policy_label_and_empty_selection_cannot_be_defaulted",
+    "tests.unit.test_repository.RepositoryTests.test_dirty_worktree_untracked_files_and_index_are_preserved",
+    "tests.unit.test_repository.RepositoryTests.test_duplicate_and_casefold_paths_are_rejected",
+    "tests.unit.test_repository.RepositoryTests.test_explicit_file_order_and_executable_mode_are_preserved",
+    "tests.unit.test_repository.RepositoryTests.test_literal_option_looking_and_space_paths_never_become_flags",
+    "tests.unit.test_repository.RepositoryTests.test_missing_local_blob_fails_without_fetching_or_altering_the_repository",
+    "tests.unit.test_repository.RepositoryTests.test_missing_selected_and_untracked_only_files_are_not_read_from_disk",
+    "tests.unit.test_repository.RepositoryTests.test_non_utf8_nul_and_disallowed_controls_are_rejected",
+    "tests.unit.test_repository.RepositoryTests.test_old_commit_selection_does_not_follow_later_branch_changes",
+    "tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process",
+    "tests.unit.test_repository.RepositoryTests.test_process_output_is_bounded_and_raw_stderr_never_enters_errors",
+    "tests.unit.test_repository.RepositoryTests.test_replace_refs_do_not_substitute_a_different_committed_tree",
+    "tests.unit.test_repository.RepositoryTests.test_secret_dot_traversal_glob_and_control_paths_fail_before_git",
+    "tests.unit.test_repository.RepositoryTests.test_sha256_repository_uses_sha256_git_object_headers",
+    "tests.unit.test_repository.RepositoryTests.test_snapshot_reads_committed_bytes_and_binds_git_header_hash",
+    "tests.unit.test_repository.RepositoryTests.test_strict_validation_checks_all_identities_and_detaches_caller_objects",
+    "tests.unit.test_suite.SuiteTests.test_bundle_inventory_rejects_extra_files_directories_missing_files_and_links",
+    "tests.unit.test_suite.SuiteTests.test_empty_excessive_duplicate_task_ids_and_harbor_names_are_rejected",
+    "tests.unit.test_suite.SuiteTests.test_existing_output_directory_file_or_link_is_never_overwritten",
+    "tests.unit.test_suite.SuiteTests.test_explicit_bytes_and_independent_harbor_digest",
+    "tests.unit.test_suite.SuiteTests.test_file_count_duplicates_and_portable_case_collisions_are_rejected",
+    "tests.unit.test_suite.SuiteTests.test_manifest_metadata_fingerprints_and_exact_shape_are_checked",
+    "tests.unit.test_suite.SuiteTests.test_manifest_validation_detaches_data_and_source_relocation_does_not_change_ids",
+    "tests.unit.test_suite.SuiteTests.test_nonregular_selected_file_is_rejected_before_read",
+    "tests.unit.test_suite.SuiteTests.test_per_file_and_aggregate_byte_limits",
+    "tests.unit.test_suite.SuiteTests.test_policy_decision_split_task_order_and_grader_settings_bind_identity",
+    "tests.unit.test_suite.SuiteTests.test_private_bundle_roundtrip_remains_valid_after_transfer",
+    "tests.unit.test_suite.SuiteTests.test_rehashed_metadata_cannot_substitute_a_different_toml_identity",
+    "tests.unit.test_suite.SuiteTests.test_relative_paths_reject_traversal_absolute_and_ambiguous_segments",
+    "tests.unit.test_suite.SuiteTests.test_required_explicit_files_and_supported_locations_are_enforced",
+    "tests.unit.test_suite.SuiteTests.test_secret_filenames_are_rejected_without_reading_them",
+    "tests.unit.test_suite.SuiteTests.test_strict_suite_scalars_and_unknown_fields_are_rejected",
+    "tests.unit.test_suite.SuiteTests.test_symlink_task_directory_selected_file_and_ancestor_are_rejected",
+    "tests.unit.test_suite.SuiteTests.test_tampered_file_bytes_or_lengths_never_verify",
+    "tests.unit.test_suite.SuiteTests.test_task_schema_identity_version_utf8_and_multistep_are_validated",
+    "tests.unit.test_suite.SuiteTests.test_write_failure_removes_only_owned_outputs_and_preserves_a_foreign_file"
+  ],
+  "childEnvironmentKeys": [
+    "PATH",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONNOUSERSITE",
+    "TEMP",
+    "TMP",
+    "TMPDIR",
+    "TZ"
+  ],
+  "exitCode": 1,
+  "durationSeconds": 90.540557,
+  "pipesComplete": true,
+  "fixtureChildrenRemainingBeforeParentCleanup": [],
+  "temporaryRootAllocated": true,
+  "finishedAt": "2026-11-04T11:06:27.478927+00:00",
+  "stdout": {
+    "bytes": 0,
+    "capturedBytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "truncated": false,
+    "textProjection": "",
+    "projectionQualification": "Complete captured UTF-8 output with only repository/runtime/owned-temporary absolute prefixes replaced by portable markers. bytes/capturedBytes/sha256 above describe the original unmodified stream, not this projection."
+  },
+  "stderr": {
+    "bytes": 24935,
+    "capturedBytes": 24935,
+    "sha256": "3c00b1fe0b400fd96c98c688b7c630288ed202097aa91a38e077a97b212d343e",
+    "truncated": false,
+    "textProjection": "test_bundle_inventory_rejects_extra_files_directories_missing_files_and_links (tests.unit.test_suite.SuiteTests.test_bundle_inventory_rejects_extra_files_directories_missing_files_and_links) ... ok\ntest_empty_excessive_duplicate_task_ids_and_harbor_names_are_rejected (tests.unit.test_suite.SuiteTests.test_empty_excessive_duplicate_task_ids_and_harbor_names_are_rejected) ... ok\ntest_existing_output_directory_file_or_link_is_never_overwritten (tests.unit.test_suite.SuiteTests.test_existing_output_directory_file_or_link_is_never_overwritten) ... ok\ntest_explicit_bytes_and_independent_harbor_digest (tests.unit.test_suite.SuiteTests.test_explicit_bytes_and_independent_harbor_digest) ... ok\ntest_file_count_duplicates_and_portable_case_collisions_are_rejected (tests.unit.test_suite.SuiteTests.test_file_count_duplicates_and_portable_case_collisions_are_rejected) ... ok\ntest_manifest_metadata_fingerprints_and_exact_shape_are_checked (tests.unit.test_suite.SuiteTests.test_manifest_metadata_fingerprints_and_exact_shape_are_checked) ... ok\ntest_manifest_validation_detaches_data_and_source_relocation_does_not_change_ids (tests.unit.test_suite.SuiteTests.test_manifest_validation_detaches_data_and_source_relocation_does_not_change_ids) ... ok\ntest_nonregular_selected_file_is_rejected_before_read (tests.unit.test_suite.SuiteTests.test_nonregular_selected_file_is_rejected_before_read) ... ok\ntest_per_file_and_aggregate_byte_limits (tests.unit.test_suite.SuiteTests.test_per_file_and_aggregate_byte_limits) ... ok\ntest_policy_decision_split_task_order_and_grader_settings_bind_identity (tests.unit.test_suite.SuiteTests.test_policy_decision_split_task_order_and_grader_settings_bind_identity) ... ok\ntest_private_bundle_roundtrip_remains_valid_after_transfer (tests.unit.test_suite.SuiteTests.test_private_bundle_roundtrip_remains_valid_after_transfer) ... ok\ntest_rehashed_metadata_cannot_substitute_a_different_toml_identity (tests.unit.test_suite.SuiteTests.test_rehashed_metadata_cannot_substitute_a_different_toml_identity) ... ok\ntest_relative_paths_reject_traversal_absolute_and_ambiguous_segments (tests.unit.test_suite.SuiteTests.test_relative_paths_reject_traversal_absolute_and_ambiguous_segments) ... ok\ntest_required_explicit_files_and_supported_locations_are_enforced (tests.unit.test_suite.SuiteTests.test_required_explicit_files_and_supported_locations_are_enforced) ... ok\ntest_secret_filenames_are_rejected_without_reading_them (tests.unit.test_suite.SuiteTests.test_secret_filenames_are_rejected_without_reading_them) ... ok\ntest_strict_suite_scalars_and_unknown_fields_are_rejected (tests.unit.test_suite.SuiteTests.test_strict_suite_scalars_and_unknown_fields_are_rejected) ... ok\ntest_symlink_task_directory_selected_file_and_ancestor_are_rejected (tests.unit.test_suite.SuiteTests.test_symlink_task_directory_selected_file_and_ancestor_are_rejected) ... ok\ntest_tampered_file_bytes_or_lengths_never_verify (tests.unit.test_suite.SuiteTests.test_tampered_file_bytes_or_lengths_never_verify) ... ok\ntest_task_schema_identity_version_utf8_and_multistep_are_validated (tests.unit.test_suite.SuiteTests.test_task_schema_identity_version_utf8_and_multistep_are_validated) ... ok\ntest_write_failure_removes_only_owned_outputs_and_preserves_a_foreign_file (tests.unit.test_suite.SuiteTests.test_write_failure_removes_only_owned_outputs_and_preserves_a_foreign_file) ... ok\ntest_bundle_file_tampering_is_rejected_before_reading_results (tests.unit.test_harbor.HarborImportTests.test_bundle_file_tampering_is_rejected_before_reading_results) ... ok\ntest_config_job_and_model_and_reported_identity_cannot_cross_plans (tests.unit.test_harbor.HarborImportTests.test_config_job_and_model_and_reported_identity_cannot_cross_plans) ... ok\ntest_duplicate_trial_uuid_is_rejected_across_directories (tests.unit.test_harbor.HarborImportTests.test_duplicate_trial_uuid_is_rejected_across_directories) ... ok\ntest_malformed_lock_keeps_its_bytes_hash_but_never_validates (tests.unit.test_harbor.HarborImportTests.test_malformed_lock_keeps_its_bytes_hash_but_never_validates) ... ok\ntest_missing_and_naive_or_reversed_trial_times_are_not_invented (tests.unit.test_harbor.HarborImportTests.test_missing_and_naive_or_reversed_trial_times_are_not_invented) ... ok\ntest_missing_lock_excludes_reward_without_inventing_provenance (tests.unit.test_harbor.HarborImportTests.test_missing_lock_excludes_reward_without_inventing_provenance) ... ok\ntest_missing_out_of_range_and_boolean_rewards_stay_unknown (tests.unit.test_harbor.HarborImportTests.test_missing_out_of_range_and_boolean_rewards_stay_unknown) ... ok\ntest_normalized_output_omits_paths_tokens_metadata_and_traces (tests.unit.test_harbor.HarborImportTests.test_normalized_output_omits_paths_tokens_metadata_and_traces) ... ok\ntest_provider_neutral_terminus_adapter_has_its_real_pinned_version (tests.unit.test_harbor.HarborImportTests.test_provider_neutral_terminus_adapter_has_its_real_pinned_version) ... ok\ntest_raw_trial_and_step_errors_are_preserved_without_becoming_zero (tests.unit.test_harbor.HarborImportTests.test_raw_trial_and_step_errors_are_preserved_without_becoming_zero) ... ok\ntest_reported_model_match_is_literal_and_does_not_infer_provider_aliases (tests.unit.test_harbor.HarborImportTests.test_reported_model_match_is_literal_and_does_not_infer_provider_aliases) ... ok\ntest_root_harbor_pin_schema_concurrency_and_retry_are_required (tests.unit.test_harbor.HarborImportTests.test_root_harbor_pin_schema_concurrency_and_retry_are_required) ... ok\ntest_symlinked_trial_directory_and_oversized_raw_file_are_rejected (tests.unit.test_harbor.HarborImportTests.test_symlinked_trial_directory_and_oversized_raw_file_are_rejected) ... ok\ntest_task_digest_version_and_local_name_must_match_the_sealed_bundle (tests.unit.test_harbor.HarborImportTests.test_task_digest_version_and_local_name_must_match_the_sealed_bundle) ... ok\ntest_trial_lock_must_be_recorded_in_the_root_job_lock (tests.unit.test_harbor.HarborImportTests.test_trial_lock_must_be_recorded_in_the_root_job_lock) ... ok\ntest_unknown_task_and_missing_model_are_explicit_excluded_evidence (tests.unit.test_harbor.HarborImportTests.test_unknown_task_and_missing_model_are_explicit_excluded_evidence) ... ok\ntest_unknown_usage_is_not_zero_and_input_already_contains_cache (tests.unit.test_harbor.HarborImportTests.test_unknown_usage_is_not_zero_and_input_already_contains_cache) ... ok\ntest_usage_chooses_top_level_or_steps_without_double_counting (tests.unit.test_harbor.HarborImportTests.test_usage_chooses_top_level_or_steps_without_double_counting) ... ok\ntest_valid_trial_binds_seal_plan_and_real_harbor_result_shape (tests.unit.test_harbor.HarborImportTests.test_valid_trial_binds_seal_plan_and_real_harbor_result_shape) ... ok\ntest_workload_overrides_are_excluded_even_when_reward_is_present (tests.unit.test_harbor.HarborImportTests.test_workload_overrides_are_excluded_even_when_reward_is_present) ... ok\ntest_a_single_pair_or_no_pairs_has_no_interval_and_cannot_recommend (tests.unit.test_comparison.PairedComparisonTests.test_a_single_pair_or_no_pairs_has_no_interval_and_cannot_recommend) ... ok\ntest_attempts_are_averaged_within_tasks_rather_than_counted_as_extra_pairs (tests.unit.test_comparison.PairedComparisonTests.test_attempts_are_averaged_within_tasks_rather_than_counted_as_extra_pairs) ... ok\ntest_complete_positive_evidence_is_deterministic_and_seals_the_report (tests.unit.test_comparison.PairedComparisonTests.test_complete_positive_evidence_is_deterministic_and_seals_the_report) ... ok\ntest_complete_sufficiently_sized_negative_interval_reports_regression (tests.unit.test_comparison.PairedComparisonTests.test_complete_sufficiently_sized_negative_interval_reports_regression) ... ok\ntest_critical_threshold_equality_and_explicit_regression_allowance_are_preserved (tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_equality_and_explicit_regression_allowance_are_preserved) ... ok\ntest_critical_threshold_regression_vetoes_a_positive_average (tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_regression_vetoes_a_positive_average) ... ok\ntest_duplicate_trial_ids_within_or_across_runs_are_rejected (tests.unit.test_comparison.PairedComparisonTests.test_duplicate_trial_ids_within_or_across_runs_are_rejected) ... ok\ntest_edited_run_and_manifest_identities_are_not_trusted (tests.unit.test_comparison.PairedComparisonTests.test_edited_run_and_manifest_identities_are_not_trusted) ... ok\ntest_excluded_error_evidence_is_separate_from_missing_or_zero_scores (tests.unit.test_comparison.PairedComparisonTests.test_excluded_error_evidence_is_separate_from_missing_or_zero_scores) ... ok\ntest_extra_valid_attempts_are_not_cherry_picked_into_a_task_mean (tests.unit.test_comparison.PairedComparisonTests.test_extra_valid_attempts_are_not_cherry_picked_into_a_task_mean) ... ok\ntest_frozen_protocol_attempt_agent_and_bundle_mismatches_reject_comparison (tests.unit.test_comparison.PairedComparisonTests.test_frozen_protocol_attempt_agent_and_bundle_mismatches_reject_comparison) ... ok\ntest_missing_attempts_stay_missing_and_never_become_zero_rewards (tests.unit.test_comparison.PairedComparisonTests.test_missing_attempts_stay_missing_and_never_become_zero_rewards) ... ok\ntest_pairing_uses_task_ids_and_preserves_manifest_order_after_result_reordering (tests.unit.test_comparison.PairedComparisonTests.test_pairing_uses_task_ids_and_preserves_manifest_order_after_result_reordering) ... ok\ntest_positive_effect_below_the_declared_practical_improvement_is_inconclusive (tests.unit.test_comparison.PairedComparisonTests.test_positive_effect_below_the_declared_practical_improvement_is_inconclusive) ... ok\ntest_same_requested_model_or_reused_job_identity_is_not_a_model_switch (tests.unit.test_comparison.PairedComparisonTests.test_same_requested_model_or_reused_job_identity_is_not_a_model_switch) ... ok\ntest_status_reward_model_and_provenance_correspondences_are_strict (tests.unit.test_comparison.PairedComparisonTests.test_status_reward_model_and_provenance_correspondences_are_strict) ... ok\ntest_uncertainty_crossing_zero_does_not_support_a_switch (tests.unit.test_comparison.PairedComparisonTests.test_uncertainty_crossing_zero_does_not_support_a_switch) ... ok\ntest_unknown_fields_boolean_numbers_and_nonfinite_values_are_rejected (tests.unit.test_comparison.PairedComparisonTests.test_unknown_fields_boolean_numbers_and_nonfinite_values_are_rejected) ... ok\ntest_unmapped_imported_evidence_is_visible_and_blocks_a_complete_comparison (tests.unit.test_comparison.PairedComparisonTests.test_unmapped_imported_evidence_is_visible_and_blocks_a_complete_comparison) ... ok\ntest_usage_totals_preserve_unknowns_and_never_add_cached_input_twice (tests.unit.test_comparison.PairedComparisonTests.test_usage_totals_preserve_unknowns_and_never_add_cached_input_twice) ... ok\ntest_agent_version_and_attempts_are_part_of_protocol (tests.unit.test_local.LocalArtifactTests.test_agent_version_and_attempts_are_part_of_protocol) ... ok\ntest_archive_is_deterministic_and_refuses_overwrite (tests.unit.test_local.LocalArtifactTests.test_archive_is_deterministic_and_refuses_overwrite) ... ok\ntest_archive_transfer_preserves_sealed_identity (tests.unit.test_local.LocalArtifactTests.test_archive_transfer_preserves_sealed_identity) ... ok\ntest_boolean_attempts_and_ambiguous_model_are_rejected (tests.unit.test_local.LocalArtifactTests.test_boolean_attempts_and_ambiguous_model_are_rejected) ... ok\ntest_changed_task_cannot_be_archived_under_old_manifest (tests.unit.test_local.LocalArtifactTests.test_changed_task_cannot_be_archived_under_old_manifest) ... ok\ntest_cli_errors_do_not_echo_unknown_private_values (tests.unit.test_local.LocalArtifactTests.test_cli_errors_do_not_echo_unknown_private_values) ... ok\ntest_duplicate_json_keys_are_rejected (tests.unit.test_local.LocalArtifactTests.test_duplicate_json_keys_are_rejected) ... ok\ntest_edited_plan_or_wrong_bundle_cannot_reuse_identity (tests.unit.test_local.LocalArtifactTests.test_edited_plan_or_wrong_bundle_cannot_reuse_identity) ... ok\ntest_empty_suite_does_not_invent_example_tasks (tests.unit.test_local.LocalArtifactTests.test_empty_suite_does_not_invent_example_tasks) ... ok\ntest_json_publication_is_private_complete_and_refuses_overwrite (tests.unit.test_local.LocalArtifactTests.test_json_publication_is_private_complete_and_refuses_overwrite) ... ok\ntest_link_and_oversized_regular_inputs_are_rejected (tests.unit.test_local.LocalArtifactTests.test_link_and_oversized_regular_inputs_are_rejected) ... ok\ntest_model_change_preserves_protocol_but_changes_plan_identity (tests.unit.test_local.LocalArtifactTests.test_model_change_preserves_protocol_but_changes_plan_identity) ... ok\ntest_nonfinite_and_invalid_unicode_are_rejected (tests.unit.test_local.LocalArtifactTests.test_nonfinite_and_invalid_unicode_are_rejected) ... ok\ntest_provider_neutral_terminus_uses_its_pinned_framework_version (tests.unit.test_local.LocalArtifactTests.test_provider_neutral_terminus_uses_its_pinned_framework_version) ... ok\ntest_real_harbor_command_is_an_argv_with_no_shell_execution (tests.unit.test_local.LocalArtifactTests.test_real_harbor_command_is_an_argv_with_no_shell_execution) ... ok\ntest_validate_cli_has_no_writes_or_task_execution (tests.unit.test_local.LocalArtifactTests.test_validate_cli_has_no_writes_or_task_execution) ... ok\ntest_ambient_git_redirection_and_trace_settings_do_not_escape_the_explicit_repo (tests.unit.test_repository.RepositoryTests.test_ambient_git_redirection_and_trace_settings_do_not_escape_the_explicit_repo) ... ok\ntest_bare_repositories_are_supported_and_nested_worktree_roots_are_rejected (tests.unit.test_repository.RepositoryTests.test_bare_repositories_are_supported_and_nested_worktree_roots_are_rejected) ... ok\ntest_byte_and_total_limits_are_enforced_before_blob_capture (tests.unit.test_repository.RepositoryTests.test_byte_and_total_limits_are_enforced_before_blob_capture) ... ok\ntest_committed_links_directories_and_gitlinks_are_rejected (tests.unit.test_repository.RepositoryTests.test_committed_links_directories_and_gitlinks_are_rejected) ... ok\ntest_data_policy_label_and_empty_selection_cannot_be_defaulted (tests.unit.test_repository.RepositoryTests.test_data_policy_label_and_empty_selection_cannot_be_defaulted) ... ok\ntest_dirty_worktree_untracked_files_and_index_are_preserved (tests.unit.test_repository.RepositoryTests.test_dirty_worktree_untracked_files_and_index_are_preserved) ... ok\ntest_duplicate_and_casefold_paths_are_rejected (tests.unit.test_repository.RepositoryTests.test_duplicate_and_casefold_paths_are_rejected) ... ok\ntest_explicit_file_order_and_executable_mode_are_preserved (tests.unit.test_repository.RepositoryTests.test_explicit_file_order_and_executable_mode_are_preserved) ... ok\ntest_literal_option_looking_and_space_paths_never_become_flags (tests.unit.test_repository.RepositoryTests.test_literal_option_looking_and_space_paths_never_become_flags) ... ok\ntest_missing_local_blob_fails_without_fetching_or_altering_the_repository (tests.unit.test_repository.RepositoryTests.test_missing_local_blob_fails_without_fetching_or_altering_the_repository) ... ok\ntest_missing_selected_and_untracked_only_files_are_not_read_from_disk (tests.unit.test_repository.RepositoryTests.test_missing_selected_and_untracked_only_files_are_not_read_from_disk) ... ok\ntest_non_utf8_nul_and_disallowed_controls_are_rejected (tests.unit.test_repository.RepositoryTests.test_non_utf8_nul_and_disallowed_controls_are_rejected) ... ok\ntest_old_commit_selection_does_not_follow_later_branch_changes (tests.unit.test_repository.RepositoryTests.test_old_commit_selection_does_not_follow_later_branch_changes) ... ok\ntest_owned_git_deadline_kills_and_reaps_only_its_process (tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process) ... ERROR\ntest_process_output_is_bounded_and_raw_stderr_never_enters_errors (tests.unit.test_repository.RepositoryTests.test_process_output_is_bounded_and_raw_stderr_never_enters_errors) ... ok\ntest_replace_refs_do_not_substitute_a_different_committed_tree (tests.unit.test_repository.RepositoryTests.test_replace_refs_do_not_substitute_a_different_committed_tree) ... ok\ntest_secret_dot_traversal_glob_and_control_paths_fail_before_git (tests.unit.test_repository.RepositoryTests.test_secret_dot_traversal_glob_and_control_paths_fail_before_git) ... ok\ntest_sha256_repository_uses_sha256_git_object_headers (tests.unit.test_repository.RepositoryTests.test_sha256_repository_uses_sha256_git_object_headers) ... ok\ntest_snapshot_reads_committed_bytes_and_binds_git_header_hash (tests.unit.test_repository.RepositoryTests.test_snapshot_reads_committed_bytes_and_binds_git_header_hash) ... ok\ntest_strict_validation_checks_all_identities_and_detaches_caller_objects (tests.unit.test_repository.RepositoryTests.test_strict_validation_checks_all_identities_and_detaches_caller_objects) ... ok\ntest_acceptance_requires_explicit_boolean_owner_review (tests.unit.test_generation.GenerationTests.test_acceptance_requires_explicit_boolean_owner_review) ... ok\ntest_acceptance_uses_captured_reviewed_bytes_when_input_changes_before_bundle_write (tests.unit.test_generation.GenerationTests.test_acceptance_uses_captured_reviewed_bytes_when_input_changes_before_bundle_write) ... ok\ntest_acceptance_writes_a_real_verified_bundle_bound_to_the_review (tests.unit.test_generation.GenerationTests.test_acceptance_writes_a_real_verified_bundle_bound_to_the_review) ... ok\ntest_arbitrary_response_metadata_and_trace_fields_are_not_retained (tests.unit.test_generation.GenerationTests.test_arbitrary_response_metadata_and_trace_fields_are_not_retained) ... ok\ntest_edited_task_request_review_or_extra_inventory_blocks_acceptance (tests.unit.test_generation.GenerationTests.test_edited_task_request_review_or_extra_inventory_blocks_acceptance) ... ok\ntest_failed_import_cleans_only_owned_outputs_and_preserves_foreign_additions (tests.unit.test_generation.GenerationTests.test_failed_import_cleans_only_owned_outputs_and_preserves_foreign_additions) ... ok\ntest_generated_content_is_strict_utf8_nul_free_and_bounded (tests.unit.test_generation.GenerationTests.test_generated_content_is_strict_utf8_nul_free_and_bounded) ... ok\ntest_generated_paths_secrets_ignored_files_and_case_collisions_are_rejected (tests.unit.test_generation.GenerationTests.test_generated_paths_secrets_ignored_files_and_case_collisions_are_rejected) ... ok\ntest_import_and_acceptance_refuse_existing_outputs_and_nested_bundle_destination (tests.unit.test_generation.GenerationTests.test_import_and_acceptance_refuse_existing_outputs_and_nested_bundle_destination) ... ok\ntest_import_maps_response_ids_and_preserves_provider_bytes_owner_metadata_and_policy (tests.unit.test_generation.GenerationTests.test_import_maps_response_ids_and_preserves_provider_bytes_owner_metadata_and_policy) ... ok\ntest_missing_duplicate_unknown_or_unused_selected_source_is_rejected (tests.unit.test_generation.GenerationTests.test_missing_duplicate_unknown_or_unused_selected_source_is_rejected) ... ok\ntest_missing_or_blank_instructions_environment_and_graders_are_not_fabricated (tests.unit.test_generation.GenerationTests.test_missing_or_blank_instructions_environment_and_graders_are_not_fabricated) ... ok\ntest_provider_cannot_change_task_name_version_or_harbor_profile (tests.unit.test_generation.GenerationTests.test_provider_cannot_change_task_name_version_or_harbor_profile) ... ok\ntest_rehashing_review_does_not_allow_owner_policy_or_grader_metadata_changes (tests.unit.test_generation.GenerationTests.test_rehashing_review_does_not_allow_owner_policy_or_grader_metadata_changes) ... ok\ntest_request_artifact_limit_has_an_exact_small_fixture_boundary (tests.unit.test_generation.GenerationTests.test_request_artifact_limit_has_an_exact_small_fixture_boundary) ... ok\ntest_request_binds_full_source_policy_and_normalizes_explicit_paths (tests.unit.test_generation.GenerationTests.test_request_binds_full_source_policy_and_normalizes_explicit_paths) ... ok\ntest_request_identity_and_nested_snapshot_tampering_are_rejected (tests.unit.test_generation.GenerationTests.test_request_identity_and_nested_snapshot_tampering_are_rejected) ... ok\ntest_response_binding_and_exact_requested_task_set_are_required_before_output (tests.unit.test_generation.GenerationTests.test_response_binding_and_exact_requested_task_set_are_required_before_output) ... ok\ntest_response_limit_and_invalid_json_utf8_duplicate_keys_never_create_output (tests.unit.test_generation.GenerationTests.test_response_limit_and_invalid_json_utf8_duplicate_keys_never_create_output) ... ok\ntest_strict_owner_intent_rejects_unknown_fields_invalid_bounds_and_duplicate_ids (tests.unit.test_generation.GenerationTests.test_strict_owner_intent_rejects_unknown_fields_invalid_bounds_and_duplicate_ids) ... ok\ntest_all_four_generation_commands_preserve_existing_output_files_or_directories (tests.unit.test_generation_cli.GenerationCliTests.test_all_four_generation_commands_preserve_existing_output_files_or_directories) ... ok\ntest_changed_generated_files_cannot_be_accepted_under_the_old_review_identity (tests.unit.test_generation_cli.GenerationCliTests.test_changed_generated_files_cannot_be_accepted_under_the_old_review_identity) ... ok\ntest_cli_pipeline_has_no_provider_harbor_or_pr_execution_and_errors_do_not_echo_private_data (tests.unit.test_generation_cli.GenerationCliTests.test_cli_pipeline_has_no_provider_harbor_or_pr_execution_and_errors_do_not_echo_private_data) ... ok\ntest_generation_accept_requires_the_reviewed_flag_and_preserves_owner_policy (tests.unit.test_generation_cli.GenerationCliTests.test_generation_accept_requires_the_reviewed_flag_and_preserves_owner_policy) ... ok\ntest_generation_import_binds_response_to_request_snapshot_model_and_task_identity (tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_binds_response_to_request_snapshot_model_and_task_identity) ... ok\ntest_generation_import_creates_a_review_required_draft_without_accepting_or_executing_it (tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_creates_a_review_required_draft_without_accepting_or_executing_it) ... ok\ntest_generation_request_is_an_unsent_deterministic_handoff_preserving_source_and_policy (tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_is_an_unsent_deterministic_handoff_preserving_source_and_policy) ... ok\ntest_generation_request_rejects_unselected_source_and_missing_grader_requirements (tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_rejects_unselected_source_and_missing_grader_requirements) ... ok\ntest_invalid_snapshot_policy_is_finite_and_creates_no_artifact (tests.unit.test_generation_cli.GenerationCliTests.test_invalid_snapshot_policy_is_finite_and_creates_no_artifact) ... ok\ntest_missing_generated_grader_is_rejected_before_a_draft_can_be_created (tests.unit.test_generation_cli.GenerationCliTests.test_missing_generated_grader_is_rejected_before_a_draft_can_be_created) ... ok\ntest_snapshot_reads_the_committed_revision_and_ignores_dirty_and_unselected_files (tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_reads_the_committed_revision_and_ignores_dirty_and_unselected_files) ... ok\ntest_snapshot_requires_explicit_file_selection_and_policy_before_capture (tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_requires_explicit_file_selection_and_policy_before_capture) ... ok\n\n======================================================================\nERROR: test_owned_git_deadline_kills_and_reaps_only_its_process (tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"[repository]/tests/unit/test_repository.py\", line 256, in test_owned_git_deadline_kills_and_reaps_only_its_process\n    os.kill(int(pidfile.read_text()), 0)\n                ~~~~~~~~~~~~~~~~~^^\n  File \"[python-runtime]/lib/python3.14/pathlib/__init__.py\", line 787, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[python-runtime]/lib/python3.14/pathlib/__init__.py\", line 771, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '[owned-task]/tmpz_kde1dr/owned.pid'\n\n----------------------------------------------------------------------\nRan 128 tests in 87.776s\n\nFAILED (errors=1)\n",
+    "projectionQualification": "Complete captured UTF-8 output with only repository/runtime/owned-temporary absolute prefixes replaced by portable markers. bytes/capturedBytes/sha256 above describe the original unmodified stream, not this projection."
+  },
+  "actualCases": [
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_bundle_inventory_rejects_extra_files_directories_missing_files_and_links",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_empty_excessive_duplicate_task_ids_and_harbor_names_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_existing_output_directory_file_or_link_is_never_overwritten",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_explicit_bytes_and_independent_harbor_digest",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_file_count_duplicates_and_portable_case_collisions_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_manifest_metadata_fingerprints_and_exact_shape_are_checked",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_manifest_validation_detaches_data_and_source_relocation_does_not_change_ids",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_nonregular_selected_file_is_rejected_before_read",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_per_file_and_aggregate_byte_limits",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_policy_decision_split_task_order_and_grader_settings_bind_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_private_bundle_roundtrip_remains_valid_after_transfer",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_rehashed_metadata_cannot_substitute_a_different_toml_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_relative_paths_reject_traversal_absolute_and_ambiguous_segments",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_required_explicit_files_and_supported_locations_are_enforced",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_secret_filenames_are_rejected_without_reading_them",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_strict_suite_scalars_and_unknown_fields_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_symlink_task_directory_selected_file_and_ancestor_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_tampered_file_bytes_or_lengths_never_verify",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_task_schema_identity_version_utf8_and_multistep_are_validated",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_suite.SuiteTests.test_write_failure_removes_only_owned_outputs_and_preserves_a_foreign_file",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_bundle_file_tampering_is_rejected_before_reading_results",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_config_job_and_model_and_reported_identity_cannot_cross_plans",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_duplicate_trial_uuid_is_rejected_across_directories",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_malformed_lock_keeps_its_bytes_hash_but_never_validates",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_missing_and_naive_or_reversed_trial_times_are_not_invented",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_missing_lock_excludes_reward_without_inventing_provenance",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_missing_out_of_range_and_boolean_rewards_stay_unknown",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_normalized_output_omits_paths_tokens_metadata_and_traces",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_provider_neutral_terminus_adapter_has_its_real_pinned_version",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_raw_trial_and_step_errors_are_preserved_without_becoming_zero",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_reported_model_match_is_literal_and_does_not_infer_provider_aliases",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_root_harbor_pin_schema_concurrency_and_retry_are_required",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_symlinked_trial_directory_and_oversized_raw_file_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_task_digest_version_and_local_name_must_match_the_sealed_bundle",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_trial_lock_must_be_recorded_in_the_root_job_lock",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_unknown_task_and_missing_model_are_explicit_excluded_evidence",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_unknown_usage_is_not_zero_and_input_already_contains_cache",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_usage_chooses_top_level_or_steps_without_double_counting",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_valid_trial_binds_seal_plan_and_real_harbor_result_shape",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_harbor.HarborImportTests.test_workload_overrides_are_excluded_even_when_reward_is_present",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_a_single_pair_or_no_pairs_has_no_interval_and_cannot_recommend",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_attempts_are_averaged_within_tasks_rather_than_counted_as_extra_pairs",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_complete_positive_evidence_is_deterministic_and_seals_the_report",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_complete_sufficiently_sized_negative_interval_reports_regression",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_equality_and_explicit_regression_allowance_are_preserved",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_critical_threshold_regression_vetoes_a_positive_average",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_duplicate_trial_ids_within_or_across_runs_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_edited_run_and_manifest_identities_are_not_trusted",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_excluded_error_evidence_is_separate_from_missing_or_zero_scores",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_extra_valid_attempts_are_not_cherry_picked_into_a_task_mean",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_frozen_protocol_attempt_agent_and_bundle_mismatches_reject_comparison",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_missing_attempts_stay_missing_and_never_become_zero_rewards",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_pairing_uses_task_ids_and_preserves_manifest_order_after_result_reordering",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_positive_effect_below_the_declared_practical_improvement_is_inconclusive",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_same_requested_model_or_reused_job_identity_is_not_a_model_switch",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_status_reward_model_and_provenance_correspondences_are_strict",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_uncertainty_crossing_zero_does_not_support_a_switch",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_unknown_fields_boolean_numbers_and_nonfinite_values_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_unmapped_imported_evidence_is_visible_and_blocks_a_complete_comparison",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_comparison.PairedComparisonTests.test_usage_totals_preserve_unknowns_and_never_add_cached_input_twice",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_agent_version_and_attempts_are_part_of_protocol",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_archive_is_deterministic_and_refuses_overwrite",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_archive_transfer_preserves_sealed_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_boolean_attempts_and_ambiguous_model_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_changed_task_cannot_be_archived_under_old_manifest",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_cli_errors_do_not_echo_unknown_private_values",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_duplicate_json_keys_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_edited_plan_or_wrong_bundle_cannot_reuse_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_empty_suite_does_not_invent_example_tasks",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_json_publication_is_private_complete_and_refuses_overwrite",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_link_and_oversized_regular_inputs_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_model_change_preserves_protocol_but_changes_plan_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_nonfinite_and_invalid_unicode_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_provider_neutral_terminus_uses_its_pinned_framework_version",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_real_harbor_command_is_an_argv_with_no_shell_execution",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_local.LocalArtifactTests.test_validate_cli_has_no_writes_or_task_execution",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_ambient_git_redirection_and_trace_settings_do_not_escape_the_explicit_repo",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_bare_repositories_are_supported_and_nested_worktree_roots_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_byte_and_total_limits_are_enforced_before_blob_capture",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_committed_links_directories_and_gitlinks_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_data_policy_label_and_empty_selection_cannot_be_defaulted",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_dirty_worktree_untracked_files_and_index_are_preserved",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_duplicate_and_casefold_paths_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_explicit_file_order_and_executable_mode_are_preserved",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_literal_option_looking_and_space_paths_never_become_flags",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_missing_local_blob_fails_without_fetching_or_altering_the_repository",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_missing_selected_and_untracked_only_files_are_not_read_from_disk",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_non_utf8_nul_and_disallowed_controls_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_old_commit_selection_does_not_follow_later_branch_changes",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process",
+      "status": "ERROR"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_process_output_is_bounded_and_raw_stderr_never_enters_errors",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_replace_refs_do_not_substitute_a_different_committed_tree",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_secret_dot_traversal_glob_and_control_paths_fail_before_git",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_sha256_repository_uses_sha256_git_object_headers",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_snapshot_reads_committed_bytes_and_binds_git_header_hash",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_repository.RepositoryTests.test_strict_validation_checks_all_identities_and_detaches_caller_objects",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_acceptance_requires_explicit_boolean_owner_review",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_acceptance_uses_captured_reviewed_bytes_when_input_changes_before_bundle_write",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_acceptance_writes_a_real_verified_bundle_bound_to_the_review",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_arbitrary_response_metadata_and_trace_fields_are_not_retained",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_edited_task_request_review_or_extra_inventory_blocks_acceptance",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_failed_import_cleans_only_owned_outputs_and_preserves_foreign_additions",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_generated_content_is_strict_utf8_nul_free_and_bounded",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_generated_paths_secrets_ignored_files_and_case_collisions_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_import_and_acceptance_refuse_existing_outputs_and_nested_bundle_destination",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_import_maps_response_ids_and_preserves_provider_bytes_owner_metadata_and_policy",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_missing_duplicate_unknown_or_unused_selected_source_is_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_missing_or_blank_instructions_environment_and_graders_are_not_fabricated",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_provider_cannot_change_task_name_version_or_harbor_profile",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_rehashing_review_does_not_allow_owner_policy_or_grader_metadata_changes",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_request_artifact_limit_has_an_exact_small_fixture_boundary",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_request_binds_full_source_policy_and_normalizes_explicit_paths",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_request_identity_and_nested_snapshot_tampering_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_response_binding_and_exact_requested_task_set_are_required_before_output",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_response_limit_and_invalid_json_utf8_duplicate_keys_never_create_output",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation.GenerationTests.test_strict_owner_intent_rejects_unknown_fields_invalid_bounds_and_duplicate_ids",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_all_four_generation_commands_preserve_existing_output_files_or_directories",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_changed_generated_files_cannot_be_accepted_under_the_old_review_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_cli_pipeline_has_no_provider_harbor_or_pr_execution_and_errors_do_not_echo_private_data",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_generation_accept_requires_the_reviewed_flag_and_preserves_owner_policy",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_binds_response_to_request_snapshot_model_and_task_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_generation_import_creates_a_review_required_draft_without_accepting_or_executing_it",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_is_an_unsent_deterministic_handoff_preserving_source_and_policy",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_generation_request_rejects_unselected_source_and_missing_grader_requirements",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_invalid_snapshot_policy_is_finite_and_creates_no_artifact",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_missing_generated_grader_is_rejected_before_a_draft_can_be_created",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_reads_the_committed_revision_and_ignores_dirty_and_unselected_files",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_generation_cli.GenerationCliTests.test_snapshot_requires_explicit_file_selection_and_policy_before_capture",
+      "status": "ok"
+    }
+  ],
+  "unittestSummary": {
+    "tests": 128,
+    "durationSeconds": 87.776,
+    "okLine": false
+  },
+  "counts": {
+    "observed": 128,
+    "passed": 127,
+    "nonpassing": 1,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 1
+  },
+  "caseIdsExact": true,
+  "passed": false,
+  "supervisorExitCode": 0,
+  "moduleOutcomes": [
+    {
+      "module": "tests.unit.test_suite",
+      "expected": 20,
+      "passed": 20,
+      "nonpassing": []
+    },
+    {
+      "module": "tests.unit.test_harbor",
+      "expected": 20,
+      "passed": 20,
+      "nonpassing": []
+    },
+    {
+      "module": "tests.unit.test_comparison",
+      "expected": 20,
+      "passed": 20,
+      "nonpassing": []
+    },
+    {
+      "module": "tests.unit.test_local",
+      "expected": 16,
+      "passed": 16,
+      "nonpassing": []
+    },
+    {
+      "module": "tests.unit.test_repository",
+      "expected": 20,
+      "passed": 19,
+      "nonpassing": [
+        {
+          "id": "tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process",
+          "status": "ERROR"
+        }
+      ]
+    },
+    {
+      "module": "tests.unit.test_generation",
+      "expected": 20,
+      "passed": 20,
+      "nonpassing": []
+    },
+    {
+      "module": "tests.unit.test_generation_cli",
+      "expected": 12,
+      "passed": 12,
+      "nonpassing": []
+    }
+  ],
+  "sourceSnapshotInterpretation": "The 43 current source paths were frozen at d2c177 with exact hash/length/mode before the test and compared afterward. This is a new current-source snapshot; three status documents differ from the older43-input seal. The historical seal file itself remained unchanged.",
+  "historicalSealHashes": {
+    "docs/results/2026/10-28/source-manifest.json": "d07efa8aa18924aca015cfcfd4acd207084cf9c1a275da7892583ffbb37d340b",
+    "docs/results/2026/10-28/repository-generation-source.json": "40c3336e4d96893ae5455967e70010717be74a3d02bd0d097650c2a0dc223395",
+    "docs/results/2026/10-28/delivery-source.json": "2952c26017548c2bb9d921fb4ac1dd963606e6ad7369baaf36bbf794659035c4"
+  },
+  "historicalClosureQualification": {
+    "fixtureFiles": {
+      "selected": 7,
+      "allBytesUnchanged": true,
+      "literalCases": 128
+    },
+    "initial76": {
+      "pinnedCommit": "1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c",
+      "sealEntries": 23,
+      "unchangedVsCurrent": 21,
+      "changedVsCurrent": [
+        "personal_evals/cli.py",
+        "scripts/check.py"
+      ],
+      "staticRuntimeClosureFilesPinned": 15,
+      "staticRuntimeClosureFilesCurrent": 18,
+      "changedRuntimeClosure": [
+        "personal_evals/cli.py"
+      ],
+      "addedRuntimeClosure": [
+        "personal_evals/delivery.py",
+        "personal_evals/generation.py",
+        "personal_evals/repository.py"
+      ],
+      "pinnedSourceExecuted": false
+    },
+    "repository52": {
+      "pinnedCommit": "424c81fd033b8c1211e6f81044888dcd00297aaf",
+      "sealEntries": 30,
+      "unchangedVsCurrent": 28,
+      "changedVsCurrent": [
+        "personal_evals/cli.py",
+        "scripts/check.py"
+      ],
+      "staticRuntimeClosureFilesPinned": 16,
+      "staticRuntimeClosureFilesCurrent": 17,
+      "changedRuntimeClosure": [
+        "personal_evals/cli.py"
+      ],
+      "addedRuntimeClosure": [
+        "personal_evals/delivery.py"
+      ],
+      "pinnedSourceExecuted": false
+    },
+    "currentCombinedStaticClosureFiles": 21,
+    "method": "AST-only repository-local imports, including package initializers, read from the pinned Git sources; no product imports used for this comparison."
+  },
+  "firstFailure": {
+    "id": "tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process",
+    "status": "ERROR",
+    "exception": "FileNotFoundError",
+    "location": "tests/unit/test_repository.py:256",
+    "operation": "os.kill(int(pidfile.read_text()), 0)",
+    "actualObservation": "The test received its expected repository_git_timeout, then could not read the expected owned.pid file before asserting that the stub PID was gone.",
+    "excerpt": "ERROR: test_owned_git_deadline_kills_and_reaps_only_its_process (tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"[repository]/tests/unit/test_repository.py\", line 256, in test_owned_git_deadline_kills_and_reaps_only_its_process\n    os.kill(int(pidfile.read_text()), 0)\n                ~~~~~~~~~~~~~~~~~^^\n  File \"[python-runtime]/lib/python3.14/pathlib/__init__.py\", line 787, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"[python-runtime]/lib/python3.14/pathlib/__init__.py\", line 771, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '[owned-task]/tmpz_kde1dr/owned.pid'\n\n----------------------------------------------------------------------\nRan 128 tests in 87.776s\n\nFAILED (errors=1)\n",
+    "causeQualification": "The missing PID file is observed. The fixture starts a 0.2-second deadline before its stub acknowledges startup; this run does not establish why the acknowledgement was absent. It does not prove that Git, Python, POSIX or process cleanup is unavailable.",
+    "repairPerformed": false,
+    "rerunPerformed": false
+  },
+  "cleanupInterpretation": "The supervised test child was reaped, its original process group was gone, all fixture children had already been removed and the identity-checked parent temp root was deleted. Repository capture creates separately owned short-lived process sessions with its own cleanup; this receipt does not claim an independent global/descendant process inventory or a successful PID assertion in the failing case.",
+  "proofLimits": [
+    "This is a failed new current-source128 run, not a passing baseline and not execution proof for the historical76/52 pinned commits.",
+    "All seven fixture files remain unchanged, but the current CLI and its imported closure differ from those historic sources.",
+    "Only tiny authored local Git repositories were read/committed/cloned. No user repository, remote Git, account, real provider/model, Harbor/container/task or server/browser/database was invoked by the tests.",
+    "The independently passed offline20 delivery-plan packet was excluded from this invocation; inactive24 publisher fixtures and proposed activation files were not imported or activated.",
+    "No source or test was repaired, deadline relaxed, retry performed or additional suite run after the first observed failure.",
+    "The per-stream raw byte hashes preserve exact captured-output identity; committed text uses explicitly marked portable path projections."
+  ],
+  "publication": "Local result files only; no commit, push, branch, PR, deployment or publisher activation performed."
+}

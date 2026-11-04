@@ -243,17 +243,31 @@ class RepositoryTests(unittest.TestCase):
             self.capture(repo=self.repo / "nested")
 
     def test_owned_git_deadline_kills_and_reaps_only_its_process(self):
+        import signal
+
         stub = self.root / "owned-git"
-        pidfile = self.root / "owned.pid"
-        stub.write_text(f"#!{sys.executable}\nimport os,time\nfrom pathlib import Path\nPath({str(pidfile)!r}).write_text(str(os.getpid()))\ntime.sleep(2)\n")
+        stub.write_text(f"#!{sys.executable}\nimport time\ntime.sleep(2)\n")
         stub.chmod(0o700)
+        original_popen = subprocess.Popen
+        processes = []
+
+        def start_owned_process(*args, **kwargs):
+            process = original_popen(*args, **kwargs)
+            processes.append(process)
+            return process
+
         started = time.monotonic()
-        with patch("personal_evals.repository.shutil.which", return_value=str(stub)), patch("personal_evals.repository.GIT_DEADLINE_SECONDS", 0.2):
+        with patch("personal_evals.repository.shutil.which", return_value=str(stub)), patch("personal_evals.repository.GIT_DEADLINE_SECONDS", 0.2), \
+             patch("personal_evals.repository.subprocess.Popen", side_effect=start_owned_process):
             with self.assertRaisesRegex(UserError, "repository_git_timeout"):
                 _git(self.repo, ["rev-parse", "HEAD"], 4096)
         self.assertLess(time.monotonic() - started, 1.5)
+        self.assertEqual(len(processes), 1)
+        process = processes[0]
+        self.assertIsNotNone(process.returncode)
+        self.assertEqual(process.returncode, -signal.SIGKILL)
         with self.assertRaises(ProcessLookupError):
-            os.kill(int(pidfile.read_text()), 0)
+            os.kill(process.pid, 0)
 
     def test_process_output_is_bounded_and_raw_stderr_never_enters_errors(self):
         stub = self.root / "owned-output-git"

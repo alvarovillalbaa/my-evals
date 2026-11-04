@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "personal-evals.current-baseline-repair-source.v1",
+  "date": "2026-11-04",
+  "status": "authored source preparation; corrected case unrun",
+  "preparedFrom": "d2c177131ae79ea02443eddfeb1ecdc726d06271",
+  "sourcePinRequirement": "Execute only after the immutable published preparation commit containing this seal is supplied. Compare seal bytes with that commit and do not substitute a later HEAD.",
+  "excluded_prefixes": [
+    "docs/results/"
+  ],
+  "scope": {
+    "caseId": "tests.unit.test_repository.RepositoryTests.test_owned_git_deadline_kills_and_reaps_only_its_process",
+    "expectedCases": 1,
+    "baselineLiteralCases": 128,
+    "unchangedOtherBaselineCaseBodies": 127,
+    "newCasesAdded": 0,
+    "timeoutSeconds": 120,
+    "stdoutLimitBytes": 131072,
+    "stderrLimitBytes": 131072,
+    "bytecodeDisabled": true,
+    "publisherActive": false
+  },
+  "comparison": {
+    "baseNonResultsFiles": 50,
+    "unchangedBaseFiles": 49,
+    "modifiedBasePaths": [
+      "tests/unit/test_repository.py"
+    ],
+    "newPaths": [
+      "docs/proposals/current-baseline-repair.md"
+    ],
+    "completePreparedNonResultsFiles": 51,
+    "sourceBytes": 416995,
+    "historical43EntryManifestPreserved": true,
+    "historicalManifestOmittedTrackedPaths": [
+      ".gitignore",
+      "LICENSE",
+      "docs/proposals/local-checks.md",
+      "docs/proposals/repository-generation-checks.md",
+      "docs/references/generation.md",
+      "docs/references/git.md",
+      "docs/references/harbor.md"
+    ]
+  },
+  "failureReceipts": [
+    {
+      "path": "docs/results/2026/11-04/current-baseline-checks.json",
+      "sha256": "77bbdeaf4920f8216d75b661823dcec6f135e3ff74123f56e5db39dec6fcff44"
+    },
+    {
+      "path": "docs/results/2026/11-04/current-baseline-checks.md",
+      "sha256": "89778623037da3e741565d8e586a73947e94702fbfeaf84fae4ec7dbc68581e6"
+    }
+  ],
+  "source_files": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "bytes": 76,
+      "sha256": "8218965042bc0b760d588f677ff301e0283730e92b7e24e5ab909840d8ca7e3f",
+      "gitBlob": "be44b544f7576151de8e2972d03a223b25c9d1a2"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "bytes": 3457,
+      "sha256": "780ba6306601490ca7c7061baa87c19f71b5b1d4bbcb2137637098cfc86d38e5",
+      "gitBlob": "b0b4286ff863cc61573da9cda9cd9b4e64398ad0"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "bytes": 1078,
+      "sha256": "6e3ae862a0f98e9f377f98f71fd86160932dad7186416f5509a335703c6fe3b5",
+      "gitBlob": "7694388483b2d169819b727c2484e0e748498f4c"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "bytes": 9843,
+      "sha256": "9f24a6c1f8a9e8b5f5c03ee09867c929642f362daacc99c658ece4259d9b7575",
+      "gitBlob": "e98d3a3216696e12af8ffe53f6b33fdfed344d01"
+    },
+    {
+      "path": "docs/proposals/current-baseline-repair.md",
+      "mode": "100644",
+      "bytes": 2691,
+      "sha256": "4e8bce8784b2b20a06692499c79a930ef627e5d81eccb44e138fd4782996caeb",
+      "gitBlob": "d404169361731c4d48a26c4da4f80b868be875c3"
+    },
+    {
+      "path": "docs/proposals/github-delivery-activation.patch",
+      "mode": "100644",
+      "bytes": 2028,
+      "sha256": "61865d39ff84613eb1fda63de5f8f174ea8371b2172ae7ecd7580f3a0fc113a1",
+      "gitBlob": "df2f74dca29c492ae030701d1be45efa573b5d29"
+    },
+    {
+      "path": "docs/proposals/github-publisher.md",
+      "mode": "100644",
+      "bytes": 6266,
+      "sha256": "d41658c485281da034f5a6374157bed7d6635aaa7375841a5fb923bc74fde078",
+      "gitBlob": "ceb44b4a32d4e2ee59d20435131417c89c63b39d"
+    },
+    {
+      "path": "docs/proposals/github_delivery.py.proposed",
+      "mode": "100644",
+      "bytes": 34918,
+      "sha256": "d3e2ec4b6481df7cf75d4c0acc39dd649faf4aceb22aa5058145d03a5ecf6214",
+      "gitBlob": "97a26e4b0f19fd7c0243ae6a41f209a56eb34b15"
+    },
+    {
+      "path": "docs/proposals/local-checks.md",
+      "mode": "100644",
+      "bytes": 4203,
+      "sha256": "2f504f750bb3208df56965fd7f0dbc356396c439ac1f9333b761f3820f5b7bc4",
+      "gitBlob": "ebbcf528364db8e08efc6eef5938bb2f5e59537f"
+    },
+    {
+      "path": "docs/proposals/repository-generation-checks.md",
+      "mode": "100644",
+      "bytes": 3593,
+      "sha256": "25e186330d2a08235077ba2a3d868bc3550bf0e586a446b6fc01032940a89f27",
+      "gitBlob": "9f6567ecfc2fb4891390677afcd624b657f931f6"
+    },
+    {
+      "path": "docs/references/delivery.md",
+      "mode": "100644",
+      "bytes": 4753,
+      "sha256": "a78df6c4704af90c58d3148939c502e1753e98c0640dc2f621b3fd33728c21cc",
+      "gitBlob": "b9736a4d542a70d8930d02f7d780f6d8d9f16c07"
+    },
+    {
+      "path": "docs/references/formats.md",
+      "mode": "100644",
+      "bytes": 6555,
+      "sha256": "7d639b98f9966b37a402d3d01175f69b1b7cb2eccb92e19b301f0db7e93c3a2b",
+      "gitBlob": "5d4cbafaa112d5faada97559234a19ba7b416dad"
+    },
+    {
+      "path": "docs/references/generation.md",
+      "mode": "100644",
+      "bytes": 5556,
+      "sha256": "f1bc25da6da25bdbdd913b6704fc2827ddc2a3e88234256b415c8d82043401e6",
+      "gitBlob": "efc55bb6c744db011a41bec41d372e34e73f3eb2"
+    },
+    {
+      "path": "docs/references/git.md",
+      "mode": "100644",
+      "bytes": 7459,
+      "sha256": "a2452a21a66cfd3ec6176906e8c0069ef8e5c91c9a6a24cb4ecc37eddc057cd7",
+      "gitBlob": "15081ed152245896f4d9edb258000b132413ec1f"
+    },
+    {
+      "path": "docs/references/github.md",
+      "mode": "100644",
+      "bytes": 11698,
+      "sha256": "9fe798a102bdfac201224995f34f325a37c8fa10df78118b77f6d0a25f0bbdc8",
+      "gitBlob": "7f5a2d86094758287fd7ec9f7fea7b22d850dc94"
+    },
+    {
+      "path": "docs/references/harbor.md",
+      "mode": "100644",
+      "bytes": 11028,
+      "sha256": "f5e649408287779a9306133f997b9a882541ef3def6df38d7714a5a1a4d3a9c8",
+      "gitBlob": "30ab3016fb4f7ff6984731e132ab89463ab6d7d4"
+    },
+    {
+      "path": "docs/spec.md",
+      "mode": "100644",
+      "bytes": 4275,
+      "sha256": "4cd086905db37d97aaceba061de95b7ca81d56e35cfae7bb63355bb3bd22c4e5",
+      "gitBlob": "b3095bde6e92ed3a7fffedeff389d83088ac9fe8"
+    },
+    {
+      "path": "examples/delivery-intent.json",
+      "mode": "100644",
+      "bytes": 697,
+      "sha256": "5d968bbbaa21132cfead2aaedb434e47ae7063536abdc00d40abe3ef437f4570",
+      "gitBlob": "f46129ef9a8eb65f31076076cca436b7252cc11a"
+    },
+    {
+      "path": "examples/demo-text/environment/Dockerfile",
+      "mode": "100644",
+      "bytes": 35,
+      "sha256": "082dba0d5dd12e8a4dfb6b6d126de2d34eb75c789a72947d87da0721ea9b5b41",
+      "gitBlob": "1c05932167cf7f684ba2725f1df8fb24835cec47"
+    },
+    {
+      "path": "examples/demo-text/instruction.md",
+      "mode": "100644",
+      "bytes": 262,
+      "sha256": "a2f8c256a17b97be9f75e0ef9a9ba3f9358dd3294e8b0fc849ce1f48517bf570",
+      "gitBlob": "03b463a5c85e983f44a01d3b025f42ec39398b83"
+    },
+    {
+      "path": "examples/demo-text/task.toml",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "39ec861c533f5350fb1c96ac998c992178d4a036b2dec0ef4929930b26cbed61",
+      "gitBlob": "4e6001315839dd7417a7946a5a64676f05a3d503"
+    },
+    {
+      "path": "examples/demo-text/tests/test.sh",
+      "mode": "100644",
+      "bytes": 67,
+      "sha256": "128d2ac29b76a8dd1cf7b47dfe7abb40c4529911ece926ab6011e2684a89fed9",
+      "gitBlob": "24698361b02eed90bc16dc63162f431895a2ace1"
+    },
+    {
+      "path": "examples/demo-text/tests/verify.py",
+      "mode": "100644",
+      "bytes": 309,
+      "sha256": "9cda917ce20d833dfad3d06fd972e9e22ed2815ea00da37aad402c6eceac1080",
+      "gitBlob": "0887187269829d376f7a6d74f5f0f93d503cd4e3"
+    },
+    {
+      "path": "examples/generation-intent.json",
+      "mode": "100644",
+      "bytes": 1008,
+      "sha256": "a21aafcb8041b3b1a5df5c7112682babe54e5e2716e490d034f2be91b1ee8bcf",
+      "gitBlob": "747aacd20f06d00f6b386ee57bdff51d561ce298"
+    },
+    {
+      "path": "examples/source-policy.json",
+      "mode": "100644",
+      "bytes": 93,
+      "sha256": "78db661637830f9a92410d8c5854d99eb3b173bc6e72bee6664857ae3930e3be",
+      "gitBlob": "d1bcef66293559a5544d7998f90251e2420fca1a"
+    },
+    {
+      "path": "examples/suite.json",
+      "mode": "100644",
+      "bytes": 712,
+      "sha256": "78822889e90c9284c4fcf9c185138bb2e8132f9cd7036b1c714e968d73866271",
+      "gitBlob": "a445bba8893cfa26d0d5176ae2a21ee3d45ffa46"
+    },
+    {
+      "path": "personal_evals/__init__.py",
+      "mode": "100644",
+      "bytes": 101,
+      "sha256": "d96d320a09027feadb3350c382edf8138b7ce32db394adaf2c5b3900f15686a8",
+      "gitBlob": "ec785301a6a6207c52eb44434ca11b75d20a6d8e"
+    },
+    {
+      "path": "personal_evals/__main__.py",
+      "mode": "100644",
+      "bytes": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "gitBlob": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08"
+    },
+    {
+      "path": "personal_evals/archive.py",
+      "mode": "100644",
+      "bytes": 1482,
+      "sha256": "43275a35385b059a26e03d16a955e0a2aff28cd6b0d3350fce2980455c50f5a8",
+      "gitBlob": "ee55c9ab88670f108f4a255e743acd207db93ed2"
+    },
+    {
+      "path": "personal_evals/cli.py",
+      "mode": "100644",
+      "bytes": 8536,
+      "sha256": "a469b295f003e3b0862cdcbd78edf7a00f787cb93f923c3ea18324f7ad8ae858",
+      "gitBlob": "568bb17f736a52a3869a1e138d734787ec8438dd"
+    },
+    {
+      "path": "personal_evals/comparison.py",
+      "mode": "100644",
+      "bytes": 15355,
+      "sha256": "ff9fc0ea48f056ad3e8399785e7dbf7908b358b1917bc9f27c490f34da1e6a58",
+      "gitBlob": "1c3294a438c538d85fc9d0a063bf748556918a30"
+    },
+    {
+      "path": "personal_evals/delivery.py",
+      "mode": "100644",
+      "bytes": 13364,
+      "sha256": "2a7f5e4798be347c2993d747157b8527aa02644bdfd54df9fbe18767a25348ce",
+      "gitBlob": "c108f3797448494af33cd3885ea6cf21bc3e3cb5"
+    },
+    {
+      "path": "personal_evals/errors.py",
+      "mode": "100644",
+      "bytes": 206,
+      "sha256": "8ac824785799876934893e9e06a1d0e5e73fa5456dac44f0217ba5686330d137",
+      "gitBlob": "7be2984897947b2778761bfc5361c50bdbd05736"
+    },
+    {
+      "path": "personal_evals/generation.py",
+      "mode": "100644",
+      "bytes": 16083,
+      "sha256": "668b92346616659371edb9b021981104e87f0048f737fa31600c520eda28c17f",
+      "gitBlob": "71341d0018748ee1e37d8aac604820aaf28d0f36"
+    },
+    {
+      "path": "personal_evals/harbor.py",
+      "mode": "100644",
+      "bytes": 19085,
+      "sha256": "d51995c49627d9f0813d3ba5744806837d6e03256d468258f41377889773fbd0",
+      "gitBlob": "496eea0b776d932551a218f74d81b868df9da041"
+    },
+    {
+      "path": "personal_evals/jsonio.py",
+      "mode": "100644",
+      "bytes": 3793,
+      "sha256": "3e2cad27c8dc43891e3dbd138b5480736958cbffb18fa1b0ab32a66192b5aacc",
+      "gitBlob": "92aa2adb88a0f8911c918c5c2be2272af6f06b90"
+    },
+    {
+      "path": "personal_evals/planning.py",
+      "mode": "100644",
+      "bytes": 4589,
+      "sha256": "68fc49a849bbcba35af82907e98c7c1bdb4dd2bc58310cfab7d620edaaa2e4ac",
+      "gitBlob": "c39dbb86d29ff86360a0deafb96c99217076f448"
+    },
+    {
+      "path": "personal_evals/repository.py",
+      "mode": "100644",
+      "bytes": 13452,
+      "sha256": "2d46195a75d6fbf9be2fa9d4f9c0cb1f607b3308e0355fa05611650cf9bb51d6",
+      "gitBlob": "c09c9f75e854a4920dc72e2b16a5cee08e244531"
+    },
+    {
+      "path": "personal_evals/suite.py",
+      "mode": "100644",
+      "bytes": 18285,
+      "sha256": "edad2ed5b79607bd607ae854bbcecf3dee322d89c582c7121e352fdcc37b19dc",
+      "gitBlob": "eba73fe6f0ecb679b2ff788449c7fe0029c41673"
+    },
+    {
+      "path": "scripts/check.py",
+      "mode": "100644",
+      "bytes": 2391,
+      "sha256": "ae2384e884503f96e5e921b21cd7b464b7a27d7cc6733ee8044641078ad127fe",
+      "gitBlob": "d0a38a360a7e639206356f8b267738cf58aac182"
+    },
+    {
+      "path": "tests/__init__.py",
+      "mode": "100644",
+      "bytes": 72,
+      "sha256": "f6d27be760b383a5e3d10d86af7563abf91448304d192ddb21b2d6f58793218d",
+      "gitBlob": "bfe620e6c86c5843b6156813f878dd025418ad22"
+    },
+    {
+      "path": "tests/unit/__init__.py",
+      "mode": "100644",
+      "bytes": 40,
+      "sha256": "c569f732b2a663bed98f887988585949e41c96f4cc4c6e05555af4875e2f376d",
+      "gitBlob": "2fdda697ac6532feac55a08cdbf675bede263233"
+    },
+    {
+      "path": "tests/unit/test_comparison.py",
+      "mode": "100644",
+      "bytes": 20194,
+      "sha256": "745c0b2f273978ef42ad82a1510d607fad39b2972c97cdc69170c84d31309e0b",
+      "gitBlob": "286d6e110f0d967bb5be981844b1524d7c233e51"
+    },
+    {
+      "path": "tests/unit/test_delivery.py",
+      "mode": "100644",
+      "bytes": 20782,
+      "sha256": "faca887fe3afcd7e8149263b2081cbc6b978767da2892d170162d273dba22126",
+      "gitBlob": "d1ee0ceb361ee4b5e7430fc8fa5489476309bca1"
+    },
+    {
+      "path": "tests/unit/test_generation.py",
+      "mode": "100644",
+      "bytes": 22949,
+      "sha256": "3a972dfdbd6b2a966bce1e7c23eea2c86d22435c1eedd2ee7e1958c676019e4a",
+      "gitBlob": "56b2c69364aa54e4c98881a3f3233fcb1a6c9aeb"
+    },
+    {
+      "path": "tests/unit/test_generation_cli.py",
+      "mode": "100644",
+      "bytes": 19986,
+      "sha256": "5322fa58576c58f289a63af1371e779e2c9fe49fa62ee2aa0320885486e96d91",
+      "gitBlob": "7d9b9dbf4c8a68c745e05571b48315a70cf96712"
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py.proposed",
+      "mode": "100644",
+      "bytes": 34366,
+      "sha256": "442ee334f5ea019fa1bd56a397de0c3c5c66f65be9c9933f8eff4b64f90b66e8",
+      "gitBlob": "a94447ebd420d92f3cc483c0a22ef9fb8138ddfe"
+    },
+    {
+      "path": "tests/unit/test_harbor.py",
+      "mode": "100644",
+      "bytes": 15769,
+      "sha256": "88f914804b50f3fd2d35977d64d322545130fc5ef364e5f4053831c3809965d7",
+      "gitBlob": "a7386cd3022bb7425e0da4475f015a26fd891249"
+    },
+    {
+      "path": "tests/unit/test_local.py",
+      "mode": "100644",
+      "bytes": 8580,
+      "sha256": "93dab2317a4bd9a858166553ffbb4b8ad1ef0dc28589fcbeb187cef0dfaf80ea",
+      "gitBlob": "4b392743346ca5b58f2f1f4d3d864ca19b037cdb"
+    },
+    {
+      "path": "tests/unit/test_repository.py",
+      "mode": "100644",
+      "bytes": 15726,
+      "sha256": "830b3623ffb405a711575082634cd51412318d484cb63caec01c01ad0da42744",
+      "gitBlob": "0f0acdc535ab2aa959ecc5cc8956d030f642e24e"
+    },
+    {
+      "path": "tests/unit/test_suite.py",
+      "mode": "100644",
+      "bytes": 19024,
+      "sha256": "1cd5c51f267f593010cf01a7d0207a2afd093b9ebf10204d55ab71a0cb34663f",
+      "gitBlob": "6f3043ba63c881367c5fe15f34cd14882634d59f"
+    }
+  ]
+}
