@@ -33,7 +33,15 @@
 - The initial 76-case pending scope is frozen at commit `1081ca8c3aca64ea02e0818b8e27fbd855bb7e2c`.
   Do not execute it against changed successor sources as though that were the
   same approval. The 52 repository/generation cases remain separately pending
-  at `424c81fd033b8c1211e6f81044888dcd00297aaf`. The 20 delivery-plan and 24 inactive
-  publisher cases are a new 44-case scope; none of these scopes has run.
+  at `424c81fd033b8c1211e6f81044888dcd00297aaf`. Those 76/52 cases remain unrun.
+  The 20 offline delivery-plan cases passed on 4 November 2026 at
+  `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`; the
+  [canonical receipt](docs/results/2026/11-04/delivery-plan-checks.md) records
+  all 20 actual IDs and unchanged pre/post source. The 24 proposed publisher
+  cases remain unrun and inactive; this result does not activate the publisher.
+- This status-document edition changes only `AGENTS.md`, `README.md` and
+  `docs/proposals/github-publisher.md` among the original 43 sealed inputs.
+  The other 40 fingerprints remain unchanged. Preserve the historical seal;
+  its complete 43-input pre/post proof belongs to the tested source above.
 - Personal GitHub publication is authorized by the all-project goal. Keep
   canonical evidence in this repository's `docs/`; preserve existing work.

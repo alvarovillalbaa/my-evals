@@ -77,8 +77,10 @@ python3 -m personal_evals delivery-verify artifacts/delivery.json
 
 These commands perform no account lookup or remote write. `publish` is absent
 from the active CLI. Its [reviewed activation proposal](docs/proposals/github-publisher.md)
-includes create-only branches, destination checks and a durable recovery journal;
-activation and the 44 new fixture checks need their separate approvals.
+includes create-only branches, destination checks and a durable recovery journal.
+The [20 offline delivery-plan checks passed](docs/results/2026/11-04/delivery-plan-checks.md)
+on 4 November 2026. The 24 proposed publisher checks remain unrun; the publisher
+has not been activated.
 
 ## Plan and import real Harbor evidence
 
@@ -142,12 +144,21 @@ keeps its 76 authored cases pinned to the initial source; it does not authorize
 the subsequent repository/generation scope. Both remain separate from real
 framework/provider acceptance. The [repository/generation proposal](docs/proposals/repository-generation-checks.md)
 separately scopes its 52 new authored cases, which are also unexecuted.
-The [delivery proposal](docs/proposals/github-publisher.md) scopes 20 local-plan
-and 24 inactive publisher cases. They have not been executed either.
+The [delivery proposal](docs/proposals/github-publisher.md) separates 20 local-plan
+and 24 inactive publisher cases. The 20 offline cases passed once on existing
+CPython 3.14.7 at `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`, with no failures,
+errors or skips. All 43 original input bytes and modes matched before and after;
+the [actual result](docs/results/2026/11-04/delivery-plan-checks.json) retains
+identities, streams, limits and cleanup evidence. The 24 publisher cases and
+earlier 76/52 scopes remain unrun; live integrations remain unverified.
 The [initial receipt](docs/results/2026/10-28/initial-source.md) and
 [repository handoff receipt](docs/results/2026/10-28/repository-generation.md)
 record their checks, publication and proof limits; the
 [delivery receipt](docs/results/2026/10-28/delivery-source.md) records this increment.
+This later status edition changes three of the 43 sealed inputs (`AGENTS.md`,
+this README and the publisher proposal); the other 40 fingerprints, including
+all code and tests, remain unchanged. The historical seal is preserved rather
+than presented as an exact fingerprint of the later documentation edition.
 
 - `personal_evals/suite.py`: explicit selection, task/manifest identity and bundle verification.
 - `personal_evals/repository.py`, `generation.py`: committed source capture, generation handoff and explicit draft review.
@@ -156,7 +167,8 @@ record their checks, publication and proof limits; the
 - `personal_evals/delivery.py`: private, self-contained repository delivery plans.
 - `docs/proposals/github_delivery.py.proposed`: inactive authenticated publisher candidate.
 - `personal_evals/archive.py`, `jsonio.py`, `cli.py`: portable output and local commands.
-- `tests/unit/`: authored T2 fixtures only, pending execution approval.
+- `tests/unit/`: authored T2 fixtures; 20 offline delivery-plan cases passed,
+  while the other recorded scopes remain unrun.
 
 MIT licensed. The full product remains active until its required integrations
 and approved real-run acceptance are complete.

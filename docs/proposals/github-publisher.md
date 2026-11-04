@@ -1,12 +1,20 @@
 # Proposed authenticated GitHub publisher activation
 
-Last updated: 2026-10-28
+Last updated: 2026-11-04
 
 Status: **prepared source proposal; not activated**. The active CLI can prepare
 a local [delivery plan](../references/delivery.md). It has no `publish` command.
 The supplied AGENTS.md §14 requires approval before enabling the account/Auth
 integration and external-write path below. New fixture checks also require §7
 approval. No permission is inferred from the earlier 76/52-case requests.
+
+**Offline subset closed:** the 20 delivery-plan cases passed on 4 November 2026
+at `d031a159d0baead0a5bac7f38e777f4e1bd03e5f`, using existing CPython 3.14.7.
+The [canonical receipt](../results/2026/11-04/delivery-plan-checks.md) and
+[actual IDs/output](../results/2026/11-04/delivery-plan-checks.json) record one
+invocation, 20 passes, no failures/errors/skips, all 43 pre/post source guards
+and verified owned cleanup. The 24 publisher cases remain unrun and inactive;
+the original combined activation surface below was not applied.
 
 ## Exact activation surface
 
@@ -35,8 +43,8 @@ temporary owned directories and an in-process file-lock contention check. They
 do not start a child process, call the real `gh` executable or exercise the
 product subprocess transport. No browser,
 server, database, Harbor/container, provider, model, installation or CI is used.
-The earlier 76 and 52 checks are excluded. Approval of just the 20 offline cases
-would run `tests.unit.test_delivery` alone and leave the publisher inactive.
+The earlier 76 and 52 checks remain excluded and unrun. The completed offline
+subset ran `tests.unit.test_delivery` alone and left the publisher inactive.
 
 No package installation, new account, OAuth app, token grant, role assignment,
 provider setting, GitHub repository setting, CI configuration or paid enrollment
@@ -91,3 +99,8 @@ branch can remain after an error; receipts must report that state.
 
 The full [product contract](../spec.md), live provider generation, actual Harbor
 acceptance and real repository delivery remain open until independently verified.
+
+This status edition changes three of the original 43 sealed input fingerprints:
+`AGENTS.md`, `README.md` and this proposal. The other 40, including all code and
+tests, remain unchanged. The historical seal is intact; its complete pre/post
+proof applies to the tested source, not this later documentation edition.

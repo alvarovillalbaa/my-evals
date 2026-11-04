@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "date": "2026-11-04",
+  "project": "Personal Evals",
+  "dataTier": "T2 authored offline fixtures",
+  "sourceCommit": "d031a159d0baead0a5bac7f38e777f4e1bd03e5f",
+  "sourceCommitVerifiedBeforeAndAfter": true,
+  "workingTreeBefore": "clean",
+  "workingTreeAfterTests": "clean",
+  "proposal": "docs/proposals/github-publisher.md:38",
+  "sourceSeal": "docs/results/2026/10-28/delivery-source.json",
+  "authority": "The user's persistent approve-everything / keep-going / do-all-work authorization covered this focused local verification. Only the separately offered 20-case offline subset was selected.",
+  "scope": "Personal Evals offline delivery-plan 20 only",
+  "command": [
+    "python3",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "tests.unit.test_delivery"
+  ],
+  "runtime": {
+    "implementation": "cpython",
+    "version": "3.14.7",
+    "executableDisplay": "python3",
+    "platform": "darwin"
+  },
+  "startedAt": "2026-11-04T10:46:05.385241+00:00",
+  "limits": {
+    "testSeconds": 120,
+    "terminationGraceSeconds": 3,
+    "postKillDrainSeconds": 3,
+    "stdoutBytes": 131072,
+    "stderrBytes": 131072
+  },
+  "invocations": 1,
+  "timedOut": false,
+  "interrupted": false,
+  "forcedKill": false,
+  "outputLimitExceeded": false,
+  "processReaped": true,
+  "processGroupGone": true,
+  "sourcePreGuard": true,
+  "sourcePostGuard": true,
+  "cleanupVerified": true,
+  "sourceInputs": [
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "bytes": 2883,
+      "sha256": "05ea79eef8b0f1d18e0e5fd453d0b0eae028ba418c5f07fac844b6e7ba21f668"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "bytes": 8952,
+      "sha256": "c144c7c7d83333926305bf36e3eb2f4d1abb136833000aac915f4eeb080b1054"
+    },
+    {
+      "path": "docs/proposals/github-delivery-activation.patch",
+      "mode": "100644",
+      "bytes": 2028,
+      "sha256": "61865d39ff84613eb1fda63de5f8f174ea8371b2172ae7ecd7580f3a0fc113a1"
+    },
+    {
+      "path": "docs/proposals/github-publisher.md",
+      "mode": "100644",
+      "bytes": 5420,
+      "sha256": "78f6cb282c37845e330338bf6462dbc13fcc2d7958256d89a0ae7c87182c4586"
+    },
+    {
+      "path": "docs/proposals/github_delivery.py.proposed",
+      "mode": "100644",
+      "bytes": 34918,
+      "sha256": "d3e2ec4b6481df7cf75d4c0acc39dd649faf4aceb22aa5058145d03a5ecf6214"
+    },
+    {
+      "path": "docs/references/delivery.md",
+      "mode": "100644",
+      "bytes": 4753,
+      "sha256": "a78df6c4704af90c58d3148939c502e1753e98c0640dc2f621b3fd33728c21cc"
+    },
+    {
+      "path": "docs/references/formats.md",
+      "mode": "100644",
+      "bytes": 6555,
+      "sha256": "7d639b98f9966b37a402d3d01175f69b1b7cb2eccb92e19b301f0db7e93c3a2b"
+    },
+    {
+      "path": "docs/references/github.md",
+      "mode": "100644",
+      "bytes": 11698,
+      "sha256": "9fe798a102bdfac201224995f34f325a37c8fa10df78118b77f6d0a25f0bbdc8"
+    },
+    {
+      "path": "docs/spec.md",
+      "mode": "100644",
+      "bytes": 4275,
+      "sha256": "4cd086905db37d97aaceba061de95b7ca81d56e35cfae7bb63355bb3bd22c4e5"
+    },
+    {
+      "path": "examples/delivery-intent.json",
+      "mode": "100644",
+      "bytes": 697,
+      "sha256": "5d968bbbaa21132cfead2aaedb434e47ae7063536abdc00d40abe3ef437f4570"
+    },
+    {
+      "path": "examples/demo-text/environment/Dockerfile",
+      "mode": "100644",
+      "bytes": 35,
+      "sha256": "082dba0d5dd12e8a4dfb6b6d126de2d34eb75c789a72947d87da0721ea9b5b41"
+    },
+    {
+      "path": "examples/demo-text/instruction.md",
+      "mode": "100644",
+      "bytes": 262,
+      "sha256": "a2f8c256a17b97be9f75e0ef9a9ba3f9358dd3294e8b0fc849ce1f48517bf570"
+    },
+    {
+      "path": "examples/demo-text/task.toml",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "39ec861c533f5350fb1c96ac998c992178d4a036b2dec0ef4929930b26cbed61"
+    },
+    {
+      "path": "examples/demo-text/tests/test.sh",
+      "mode": "100644",
+      "bytes": 67,
+      "sha256": "128d2ac29b76a8dd1cf7b47dfe7abb40c4529911ece926ab6011e2684a89fed9"
+    },
+    {
+      "path": "examples/demo-text/tests/verify.py",
+      "mode": "100644",
+      "bytes": 309,
+      "sha256": "9cda917ce20d833dfad3d06fd972e9e22ed2815ea00da37aad402c6eceac1080"
+    },
+    {
+      "path": "examples/generation-intent.json",
+      "mode": "100644",
+      "bytes": 1008,
+      "sha256": "a21aafcb8041b3b1a5df5c7112682babe54e5e2716e490d034f2be91b1ee8bcf"
+    },
+    {
+      "path": "examples/source-policy.json",
+      "mode": "100644",
+      "bytes": 93,
+      "sha256": "78db661637830f9a92410d8c5854d99eb3b173bc6e72bee6664857ae3930e3be"
+    },
+    {
+      "path": "examples/suite.json",
+      "mode": "100644",
+      "bytes": 712,
+      "sha256": "78822889e90c9284c4fcf9c185138bb2e8132f9cd7036b1c714e968d73866271"
+    },
+    {
+      "path": "personal_evals/__init__.py",
+      "mode": "100644",
+      "bytes": 101,
+      "sha256": "d96d320a09027feadb3350c382edf8138b7ce32db394adaf2c5b3900f15686a8"
+    },
+    {
+      "path": "personal_evals/__main__.py",
+      "mode": "100644",
+      "bytes": 48,
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "personal_evals/archive.py",
+      "mode": "100644",
+      "bytes": 1482,
+      "sha256": "43275a35385b059a26e03d16a955e0a2aff28cd6b0d3350fce2980455c50f5a8"
+    },
+    {
+      "path": "personal_evals/cli.py",
+      "mode": "100644",
+      "bytes": 8536,
+      "sha256": "a469b295f003e3b0862cdcbd78edf7a00f787cb93f923c3ea18324f7ad8ae858"
+    },
+    {
+      "path": "personal_evals/comparison.py",
+      "mode": "100644",
+      "bytes": 15355,
+      "sha256": "ff9fc0ea48f056ad3e8399785e7dbf7908b358b1917bc9f27c490f34da1e6a58"
+    },
+    {
+      "path": "personal_evals/delivery.py",
+      "mode": "100644",
+      "bytes": 13364,
+      "sha256": "2a7f5e4798be347c2993d747157b8527aa02644bdfd54df9fbe18767a25348ce"
+    },
+    {
+      "path": "personal_evals/errors.py",
+      "mode": "100644",
+      "bytes": 206,
+      "sha256": "8ac824785799876934893e9e06a1d0e5e73fa5456dac44f0217ba5686330d137"
+    },
+    {
+      "path": "personal_evals/generation.py",
+      "mode": "100644",
+      "bytes": 16083,
+      "sha256": "668b92346616659371edb9b021981104e87f0048f737fa31600c520eda28c17f"
+    },
+    {
+      "path": "personal_evals/harbor.py",
+      "mode": "100644",
+      "bytes": 19085,
+      "sha256": "d51995c49627d9f0813d3ba5744806837d6e03256d468258f41377889773fbd0"
+    },
+    {
+      "path": "personal_evals/jsonio.py",
+      "mode": "100644",
+      "bytes": 3793,
+      "sha256": "3e2cad27c8dc43891e3dbd138b5480736958cbffb18fa1b0ab32a66192b5aacc"
+    },
+    {
+      "path": "personal_evals/planning.py",
+      "mode": "100644",
+      "bytes": 4589,
+      "sha256": "68fc49a849bbcba35af82907e98c7c1bdb4dd2bc58310cfab7d620edaaa2e4ac"
+    },
+    {
+      "path": "personal_evals/repository.py",
+      "mode": "100644",
+      "bytes": 13452,
+      "sha256": "2d46195a75d6fbf9be2fa9d4f9c0cb1f607b3308e0355fa05611650cf9bb51d6"
+    },
+    {
+      "path": "personal_evals/suite.py",
+      "mode": "100644",
+      "bytes": 18285,
+      "sha256": "edad2ed5b79607bd607ae854bbcecf3dee322d89c582c7121e352fdcc37b19dc"
+    },
+    {
+      "path": "scripts/check.py",
+      "mode": "100644",
+      "bytes": 2391,
+      "sha256": "ae2384e884503f96e5e921b21cd7b464b7a27d7cc6733ee8044641078ad127fe"
+    },
+    {
+      "path": "tests/__init__.py",
+      "mode": "100644",
+      "bytes": 72,
+      "sha256": "f6d27be760b383a5e3d10d86af7563abf91448304d192ddb21b2d6f58793218d"
+    },
+    {
+      "path": "tests/unit/__init__.py",
+      "mode": "100644",
+      "bytes": 40,
+      "sha256": "c569f732b2a663bed98f887988585949e41c96f4cc4c6e05555af4875e2f376d"
+    },
+    {
+      "path": "tests/unit/test_comparison.py",
+      "mode": "100644",
+      "bytes": 20194,
+      "sha256": "745c0b2f273978ef42ad82a1510d607fad39b2972c97cdc69170c84d31309e0b"
+    },
+    {
+      "path": "tests/unit/test_delivery.py",
+      "mode": "100644",
+      "bytes": 20782,
+      "sha256": "faca887fe3afcd7e8149263b2081cbc6b978767da2892d170162d273dba22126"
+    },
+    {
+      "path": "tests/unit/test_generation.py",
+      "mode": "100644",
+      "bytes": 22949,
+      "sha256": "3a972dfdbd6b2a966bce1e7c23eea2c86d22435c1eedd2ee7e1958c676019e4a"
+    },
+    {
+      "path": "tests/unit/test_generation_cli.py",
+      "mode": "100644",
+      "bytes": 19986,
+      "sha256": "5322fa58576c58f289a63af1371e779e2c9fe49fa62ee2aa0320885486e96d91"
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py.proposed",
+      "mode": "100644",
+      "bytes": 34366,
+      "sha256": "442ee334f5ea019fa1bd56a397de0c3c5c66f65be9c9933f8eff4b64f90b66e8"
+    },
+    {
+      "path": "tests/unit/test_harbor.py",
+      "mode": "100644",
+      "bytes": 15769,
+      "sha256": "88f914804b50f3fd2d35977d64d322545130fc5ef364e5f4053831c3809965d7"
+    },
+    {
+      "path": "tests/unit/test_local.py",
+      "mode": "100644",
+      "bytes": 8580,
+      "sha256": "93dab2317a4bd9a858166553ffbb4b8ad1ef0dc28589fcbeb187cef0dfaf80ea"
+    },
+    {
+      "path": "tests/unit/test_repository.py",
+      "mode": "100644",
+      "bytes": 15317,
+      "sha256": "676e43c0bd79dc0f691226a6acea0ad86a40397f43e4dad6c5c7e3ae96c51583"
+    },
+    {
+      "path": "tests/unit/test_suite.py",
+      "mode": "100644",
+      "bytes": 19024,
+      "sha256": "1cd5c51f267f593010cf01a7d0207a2afd093b9ebf10204d55ab71a0cb34663f"
+    }
+  ],
+  "sourceSealSha256": "2952c26017548c2bb9d921fb4ac1dd963606e6ad7369baaf36bbf794659035c4",
+  "expectedCaseIds": [
+    "tests.unit.test_delivery.DeliveryTests.test_actor_timestamp_and_pr_text_are_explicit_and_not_coerced",
+    "tests.unit.test_delivery.DeliveryTests.test_binary_bytes_full_inventory_and_independent_git_hashes_are_preserved",
+    "tests.unit.test_delivery.DeliveryTests.test_blob_content_length_hash_modes_and_git_identity_are_verified",
+    "tests.unit.test_delivery.DeliveryTests.test_branches_are_conservative_short_refs_and_distinct",
+    "tests.unit.test_delivery.DeliveryTests.test_bundle_change_after_initial_verification_is_rejected_during_capture",
+    "tests.unit.test_delivery.DeliveryTests.test_consent_requires_literal_true_before_any_bundle_read",
+    "tests.unit.test_delivery.DeliveryTests.test_exact_target_actor_time_pr_mode_and_purpose_bind_recovery_identity",
+    "tests.unit.test_delivery.DeliveryTests.test_expected_inventory_rejects_missing_extra_duplicate_and_unrooted_files",
+    "tests.unit.test_delivery.DeliveryTests.test_nfc_casefold_and_file_directory_collisions_are_detected",
+    "tests.unit.test_delivery.DeliveryTests.test_no_process_network_or_private_source_context_is_automatically_exported",
+    "tests.unit.test_delivery.DeliveryTests.test_noncanonical_base64_is_rejected_even_when_decoded_bytes_match",
+    "tests.unit.test_delivery.DeliveryTests.test_plan_and_embedded_manifest_validate_without_original_files",
+    "tests.unit.test_delivery.DeliveryTests.test_plan_byte_boundary_uses_small_fixtures_and_explicit_large_artifact_limit",
+    "tests.unit.test_delivery.DeliveryTests.test_prefix_is_an_explicit_safe_ascii_relative_namespace",
+    "tests.unit.test_delivery.DeliveryTests.test_private_output_is_complete_exclusive_and_preserves_existing_links",
+    "tests.unit.test_delivery.DeliveryTests.test_public_policy_restrictions_do_not_silently_change_requested_visibility_or_draft",
+    "tests.unit.test_delivery.DeliveryTests.test_rehashed_manifest_cannot_relabel_toml_and_manifest_bytes_are_canonical",
+    "tests.unit.test_delivery.DeliveryTests.test_repository_and_numeric_identity_inputs_are_strict_and_bounded",
+    "tests.unit.test_delivery.DeliveryTests.test_unknown_metadata_weakened_preconditions_and_retargeted_consent_are_rejected",
+    "tests.unit.test_delivery.DeliveryTests.test_validation_returns_detached_plan_and_manifest_without_rewriting_intent"
+  ],
+  "ownedTemporaryScope": "fresh private task root; fixture TemporaryDirectory children only",
+  "childEnvironmentKeys": [
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONNOUSERSITE",
+    "TEMP",
+    "TMP",
+    "TMPDIR",
+    "TZ"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 1.475897,
+  "pipesComplete": true,
+  "fixtureChildrenRemainingBeforeParentCleanup": [],
+  "temporaryRootAllocated": true,
+  "finishedAt": "2026-11-04T10:46:06.897078+00:00",
+  "stdout": {
+    "bytes": 0,
+    "capturedBytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "truncated": false,
+    "text": ""
+  },
+  "stderr": {
+    "bytes": 3847,
+    "capturedBytes": 3847,
+    "sha256": "9e3d4c46ed0cd468611d54e5a85640b3a541dec59496114c5f5afd8a9c080ed6",
+    "truncated": false,
+    "text": "test_actor_timestamp_and_pr_text_are_explicit_and_not_coerced (tests.unit.test_delivery.DeliveryTests.test_actor_timestamp_and_pr_text_are_explicit_and_not_coerced) ... ok\ntest_binary_bytes_full_inventory_and_independent_git_hashes_are_preserved (tests.unit.test_delivery.DeliveryTests.test_binary_bytes_full_inventory_and_independent_git_hashes_are_preserved) ... ok\ntest_blob_content_length_hash_modes_and_git_identity_are_verified (tests.unit.test_delivery.DeliveryTests.test_blob_content_length_hash_modes_and_git_identity_are_verified) ... ok\ntest_branches_are_conservative_short_refs_and_distinct (tests.unit.test_delivery.DeliveryTests.test_branches_are_conservative_short_refs_and_distinct) ... ok\ntest_bundle_change_after_initial_verification_is_rejected_during_capture (tests.unit.test_delivery.DeliveryTests.test_bundle_change_after_initial_verification_is_rejected_during_capture) ... ok\ntest_consent_requires_literal_true_before_any_bundle_read (tests.unit.test_delivery.DeliveryTests.test_consent_requires_literal_true_before_any_bundle_read) ... ok\ntest_exact_target_actor_time_pr_mode_and_purpose_bind_recovery_identity (tests.unit.test_delivery.DeliveryTests.test_exact_target_actor_time_pr_mode_and_purpose_bind_recovery_identity) ... ok\ntest_expected_inventory_rejects_missing_extra_duplicate_and_unrooted_files (tests.unit.test_delivery.DeliveryTests.test_expected_inventory_rejects_missing_extra_duplicate_and_unrooted_files) ... ok\ntest_nfc_casefold_and_file_directory_collisions_are_detected (tests.unit.test_delivery.DeliveryTests.test_nfc_casefold_and_file_directory_collisions_are_detected) ... ok\ntest_no_process_network_or_private_source_context_is_automatically_exported (tests.unit.test_delivery.DeliveryTests.test_no_process_network_or_private_source_context_is_automatically_exported) ... ok\ntest_noncanonical_base64_is_rejected_even_when_decoded_bytes_match (tests.unit.test_delivery.DeliveryTests.test_noncanonical_base64_is_rejected_even_when_decoded_bytes_match) ... ok\ntest_plan_and_embedded_manifest_validate_without_original_files (tests.unit.test_delivery.DeliveryTests.test_plan_and_embedded_manifest_validate_without_original_files) ... ok\ntest_plan_byte_boundary_uses_small_fixtures_and_explicit_large_artifact_limit (tests.unit.test_delivery.DeliveryTests.test_plan_byte_boundary_uses_small_fixtures_and_explicit_large_artifact_limit) ... ok\ntest_prefix_is_an_explicit_safe_ascii_relative_namespace (tests.unit.test_delivery.DeliveryTests.test_prefix_is_an_explicit_safe_ascii_relative_namespace) ... ok\ntest_private_output_is_complete_exclusive_and_preserves_existing_links (tests.unit.test_delivery.DeliveryTests.test_private_output_is_complete_exclusive_and_preserves_existing_links) ... ok\ntest_public_policy_restrictions_do_not_silently_change_requested_visibility_or_draft (tests.unit.test_delivery.DeliveryTests.test_public_policy_restrictions_do_not_silently_change_requested_visibility_or_draft) ... ok\ntest_rehashed_manifest_cannot_relabel_toml_and_manifest_bytes_are_canonical (tests.unit.test_delivery.DeliveryTests.test_rehashed_manifest_cannot_relabel_toml_and_manifest_bytes_are_canonical) ... ok\ntest_repository_and_numeric_identity_inputs_are_strict_and_bounded (tests.unit.test_delivery.DeliveryTests.test_repository_and_numeric_identity_inputs_are_strict_and_bounded) ... ok\ntest_unknown_metadata_weakened_preconditions_and_retargeted_consent_are_rejected (tests.unit.test_delivery.DeliveryTests.test_unknown_metadata_weakened_preconditions_and_retargeted_consent_are_rejected) ... ok\ntest_validation_returns_detached_plan_and_manifest_without_rewriting_intent (tests.unit.test_delivery.DeliveryTests.test_validation_returns_detached_plan_and_manifest_without_rewriting_intent) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 1.046s\n\nOK\n"
+  },
+  "actualCases": [
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_actor_timestamp_and_pr_text_are_explicit_and_not_coerced",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_binary_bytes_full_inventory_and_independent_git_hashes_are_preserved",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_blob_content_length_hash_modes_and_git_identity_are_verified",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_branches_are_conservative_short_refs_and_distinct",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_bundle_change_after_initial_verification_is_rejected_during_capture",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_consent_requires_literal_true_before_any_bundle_read",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_exact_target_actor_time_pr_mode_and_purpose_bind_recovery_identity",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_expected_inventory_rejects_missing_extra_duplicate_and_unrooted_files",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_nfc_casefold_and_file_directory_collisions_are_detected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_no_process_network_or_private_source_context_is_automatically_exported",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_noncanonical_base64_is_rejected_even_when_decoded_bytes_match",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_plan_and_embedded_manifest_validate_without_original_files",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_plan_byte_boundary_uses_small_fixtures_and_explicit_large_artifact_limit",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_prefix_is_an_explicit_safe_ascii_relative_namespace",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_private_output_is_complete_exclusive_and_preserves_existing_links",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_public_policy_restrictions_do_not_silently_change_requested_visibility_or_draft",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_rehashed_manifest_cannot_relabel_toml_and_manifest_bytes_are_canonical",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_repository_and_numeric_identity_inputs_are_strict_and_bounded",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_unknown_metadata_weakened_preconditions_and_retargeted_consent_are_rejected",
+      "status": "ok"
+    },
+    {
+      "id": "tests.unit.test_delivery.DeliveryTests.test_validation_returns_detached_plan_and_manifest_without_rewriting_intent",
+      "status": "ok"
+    }
+  ],
+  "unittestSummary": {
+    "tests": 20,
+    "durationSeconds": 1.046,
+    "okLine": true
+  },
+  "counts": {
+    "observed": 20,
+    "passed": 20,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "caseIdsExact": true,
+  "passed": true,
+  "supervisorExitCode": 0,
+  "sourceGuardInterpretation": "All 43 historical SHA-256 inputs matched the published seal before and after. Their exact byte lengths and Git executable modes were captured before and matched afterward. The historical seal itself also retained its exact SHA-256.",
+  "runtimeQualification": "Executable display uses portable basename python3; observed implementation/version and platform are recorded above. No machine-specific executable or temporary path is included.",
+  "verifiedBehavior": [
+    "Exact binary payloads, canonical bundle inventory, SHA-256 and independent Git blob identities survive offline plan capture and verification.",
+    "Literal sharing consent, destination/account/PR metadata, publication restrictions, recovery identity and detached validation are enforced against authored fixtures.",
+    "Malformed content, unsafe paths/branches, inventory or Unicode collisions, altered metadata and changed source bundles are rejected.",
+    "Private exclusive output preserves existing files and symlinks; failed publication leaves no output/temp residue in its authored fixture."
+  ],
+  "excludedScopes": {
+    "inactivePublisherCases": 24,
+    "initialCases": 76,
+    "repositoryGenerationCases": 52,
+    "publisherActivated": false,
+    "cliActivationPatchApplied": false,
+    "realAccountLookup": false,
+    "remoteDelivery": false
+  },
+  "proofLimits": [
+    "This is the offline delivery-plan fixture subset only, not acceptance of the full Personal Evals product.",
+    "The inactive authenticated publisher candidate and its 24 cases were not copied, imported or executed; no publish command was enabled.",
+    "The initial 76 and separate 52 repository/generation cases were not rerun or treated as covered by this result.",
+    "No installation, CI, server, browser, database, Harbor/container, model/provider or real GitHub/account action occurred in the test command.",
+    "Fixture hashes and synthetic validation do not prove a real provider output, task/grader semantics, destination authorization or live PR delivery.",
+    "The temporary root and supervised child process group were checked and removed; no global process or filesystem cleanup was performed."
+  ],
+  "publication": "Local evidence only; no commit, push, branch, PR or deployment performed by the check author."
+}
