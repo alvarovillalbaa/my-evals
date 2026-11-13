@@ -1,0 +1,5 @@
+schema_version = "1.4"
+
+[task]
+name = "personal/demo-text"
+version = "1.0.0"
