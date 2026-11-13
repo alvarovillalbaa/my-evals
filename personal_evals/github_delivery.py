@@ -372,7 +372,7 @@ def _commit_payload(plan, tree):
     actor = plan["actor"]
     person = {"name": actor["login"], "email": f"{actor['id']}+{actor['login']}@users.noreply.github.com", "date": plan["createdAt"]}
     return {"tree": tree, "parents": [plan["target"]["baseCommit"]],
-            "message": f"Add Personal Evals bundle {plan['bundleId']}\n\nPersonal-Evals-Delivery: {plan['planId']}\n",
+            "message": f"Add Personal Evals bundle {plan['bundleId']}\n\nPersonal-Evals-Delivery: {plan['planId']}",
             "author": person, "committer": dict(person)}
 
 
