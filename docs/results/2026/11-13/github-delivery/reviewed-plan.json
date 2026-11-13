@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "personal-evals-delivery-plan",
+  "bundleId": "eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77",
+  "planId": "0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d",
+  "target": {
+    "baseBranch": "main",
+    "baseCommit": "f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+    "newBranch": "qa/personal-evals-delivery-20261113-1",
+    "pathPrefix": "evals/qualification-20261113-1",
+    "repository": "alvarovillalbaa/my-evals",
+    "repositoryId": 1437479976,
+    "visibility": "public"
+  },
+  "actor": {
+    "id": 87529457,
+    "login": "alvarovillalbaa"
+  },
+  "createdAt": "2026-11-13T18:17:04Z",
+  "pullRequest": {
+    "body": "This disposable draft PR qualifies the real Personal Evals publisher using an authored format-demo task and a binary byte fixture. It contains no personal task data, model output or benchmark result. The publisher preserves the pinned base tree. This fixture will be closed without merging after exact remote readback and resume checks.",
+    "draft": true,
+    "title": "Qualify Personal Evals authored bundle delivery"
+  },
+  "publication": {
+    "bundleId": "eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77",
+    "operatorConfirmed": true,
+    "purpose": "Publish only the authored qualification bundle to the owning public repository, verify exact bytes and same-PR resume, then close the owned fixture without changing main.",
+    "targetFingerprint": "7cce7ad9cc028e0033dba0adbb7923374560b81c4f18d5b167b3316c414fd45c"
+  },
+  "preconditions": {
+    "baseUnchanged": true,
+    "newBranchAbsent": true,
+    "pathPrefixAbsent": true,
+    "visibilityMatches": true
+  },
+  "files": [
+    {
+      "path": "evals/qualification-20261113-1/bundle.json",
+      "mode": "100644",
+      "bytes": 1709,
+      "sha256": "b3d90f3e8955a7947bba85c78f3d9597c9e50f60986b5a3dda22a2b3841edc6a",
+      "gitBlob": "8c7802b804a3b6e1ae90ba58e088e052f65dde5d"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/environment/Dockerfile",
+      "mode": "100644",
+      "bytes": 35,
+      "sha256": "082dba0d5dd12e8a4dfb6b6d126de2d34eb75c789a72947d87da0721ea9b5b41",
+      "gitBlob": "1c05932167cf7f684ba2725f1df8fb24835cec47"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/environment/data.bin",
+      "mode": "100644",
+      "bytes": 10,
+      "sha256": "bf08337cd30123c9a25f0225cab78f5d0189f067bd88bd5340c188f1089e23a8",
+      "gitBlob": "1863c37bde66fbd372cdef94eebac26b7cd5e0dd"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/instruction.md",
+      "mode": "100644",
+      "bytes": 262,
+      "sha256": "a2f8c256a17b97be9f75e0ef9a9ba3f9358dd3294e8b0fc849ce1f48517bf570",
+      "gitBlob": "03b463a5c85e983f44a01d3b025f42ec39398b83"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/task.toml",
+      "mode": "100644",
+      "bytes": 77,
+      "sha256": "39ec861c533f5350fb1c96ac998c992178d4a036b2dec0ef4929930b26cbed61",
+      "gitBlob": "4e6001315839dd7417a7946a5a64676f05a3d503"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/tests/test.sh",
+      "mode": "100644",
+      "bytes": 67,
+      "sha256": "128d2ac29b76a8dd1cf7b47dfe7abb40c4529911ece926ab6011e2684a89fed9",
+      "gitBlob": "24698361b02eed90bc16dc63162f431895a2ace1"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/tests/verify.py",
+      "mode": "100644",
+      "bytes": 309,
+      "sha256": "9cda917ce20d833dfad3d06fd972e9e22ed2815ea00da37aad402c6eceac1080",
+      "gitBlob": "0887187269829d376f7a6d74f5f0f93d503cd4e3"
+    }
+  ],
+  "deliveryFileSha256": "f1b6904a422f4d9fdb038cc83f5dec08c5ce5574666dd3901e9f011b58fa6fa2"
+}

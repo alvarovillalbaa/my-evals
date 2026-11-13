@@ -1,0 +1,14 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest discover -s tests/unit -p test_github_commit_message.py -v",
+  "python": "3.14.7",
+  "exitCode": 0,
+  "cases": [
+    "test_github_commit_message.CommitMessageContractTests.test_message_repair_does_not_relax_tree_parent_or_authorship_identity",
+    "test_github_commit_message.CommitMessageContractTests.test_outgoing_message_matches_observed_github_form_without_terminal_newline",
+    "test_github_commit_message.CommitMessageContractTests.test_readback_remains_literal_and_rejects_extra_or_missing_message_content"
+  ],
+  "passed": 3,
+  "failed": 0,
+  "scope": "new authored T2 cases only; old 51 not replayed",
+  "capture": "Direct exec tool outcome; separate raw stdout/stderr were not retained"
+}

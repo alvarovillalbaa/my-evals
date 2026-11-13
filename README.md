@@ -8,8 +8,12 @@ repository files, prepares a generation handoff, validates supplied tasks for
 owner review, seals portable task bundles and imports/compares Harbor evidence.
 It also prepares binary-safe repository delivery plans without sending them.
 No provider is called by the handoff commands. The operator-invoked GitHub publisher
-has [51 focused local checks passed](docs/results/2026/11-04/publisher-activation-checks.md);
-live provider integration and PR acceptance remain unfinished in the [owning brief](docs/spec.md).
+has [51 historical local checks passed](docs/results/2026/11-04/publisher-activation-checks.md).
+A [real authored PR delivery](docs/results/2026/11-13/live-github-delivery.md)
+subsequently exposed and repaired a terminal-newline mismatch: three new
+regressions and one supervised-tool GitHub delivery/open/closed-resume profile
+passed. Native child connectivity, live provider generation and the full
+[owning brief](docs/spec.md) remain unfinished.
 
 Python 3.12+ on macOS/Linux; the local artifact tools use only the standard
 library; repository capture also uses the existing Git executable. Publishing
@@ -78,14 +82,19 @@ python3 -m personal_evals delivery-verify artifacts/delivery.json
 
 These commands perform no account lookup or remote write. Source now exposes
 `publish PLAN --journal PRIVATE_DIRECTORY --execute`, with optional `--resume`.
-It has not been used against a real account. The [source/check packet](docs/proposals/github-publisher.md)
+The default native transport remains unverified after a read-only connection
+failure. A separate [supervised real-service profile](docs/results/2026/11-13/live-github-delivery.md)
+created one authored draft PR, verified its seven downloaded files and retired
+the fixture without merging. The [source/check packet](docs/proposals/github-publisher.md)
 preserves create-only branches, destination checks and a private durable journal.
 An absent pending branch cannot be recreated; only positive exact PR recovery
 can resolve it. The [20 offline checks passed](docs/results/2026/11-04/delivery-plan-checks.md)
 on 4 November. The new 31-publisher plus 20-delivery regression packet
 [passed once on its exact source](docs/results/2026/11-04/publisher-activation-checks.md).
-Source/check approval authorizes no live account lookup, export or branch/PR
-mutation by this agent.
+Source/check approval alone authorizes no live account lookup, export or
+branch/PR mutation. The later [live scope](docs/proposals/live-github-delivery.md)
+records the owner's standing all-work/publication authorization and exact
+authored destination; private task publication still requires explicit consent.
 
 ## Plan and import real Harbor evidence
 

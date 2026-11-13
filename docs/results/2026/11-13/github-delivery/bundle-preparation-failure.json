@@ -1,0 +1,7 @@
+{
+  "code": "task_file_forbidden",
+  "exitCode": 2,
+  "reason": "Authored binary was placed outside admitted task roots; moved unchanged into environment/data.bin",
+  "binarySha256": "bf08337cd30123c9a25f0225cab78f5d0189f067bd88bd5340c188f1089e23a8",
+  "productChanged": false
+}

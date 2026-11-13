@@ -1,0 +1,1160 @@
+{
+  "kind": "personal-evals.live-github-audit",
+  "planId": "0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d",
+  "bundleId": "eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77",
+  "profile": "supervised-approved-gh-tool",
+  "defaultNativeTransportAccepted": false,
+  "source": "f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+  "fixedRuntime": {
+    "base": "f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+    "files": {
+      "personal_evals/__init__.py": {
+        "sha256": "d96d320a09027feadb3350c382edf8138b7ce32db394adaf2c5b3900f15686a8",
+        "bytes": 101
+      },
+      "personal_evals/__main__.py": {
+        "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+        "bytes": 48
+      },
+      "personal_evals/archive.py": {
+        "sha256": "43275a35385b059a26e03d16a955e0a2aff28cd6b0d3350fce2980455c50f5a8",
+        "bytes": 1482
+      },
+      "personal_evals/cli.py": {
+        "sha256": "9ddad20eab2eca64b03b8f02239fe7d44d70239aa93e218e8db4d3f6913adef5",
+        "bytes": 9125
+      },
+      "personal_evals/comparison.py": {
+        "sha256": "ff9fc0ea48f056ad3e8399785e7dbf7908b358b1917bc9f27c490f34da1e6a58",
+        "bytes": 15355
+      },
+      "personal_evals/delivery.py": {
+        "sha256": "2a7f5e4798be347c2993d747157b8527aa02644bdfd54df9fbe18767a25348ce",
+        "bytes": 13364
+      },
+      "personal_evals/errors.py": {
+        "sha256": "8ac824785799876934893e9e06a1d0e5e73fa5456dac44f0217ba5686330d137",
+        "bytes": 206
+      },
+      "personal_evals/generation.py": {
+        "sha256": "668b92346616659371edb9b021981104e87f0048f737fa31600c520eda28c17f",
+        "bytes": 16083
+      },
+      "personal_evals/github_delivery.py": {
+        "sha256": "121445c2b29350cae4e4491e225fb551bfaa90b8fc1df0bba7899997d2e69130",
+        "bytes": 35233
+      },
+      "personal_evals/harbor.py": {
+        "sha256": "d51995c49627d9f0813d3ba5744806837d6e03256d468258f41377889773fbd0",
+        "bytes": 19085
+      },
+      "personal_evals/jsonio.py": {
+        "sha256": "3e2cad27c8dc43891e3dbd138b5480736958cbffb18fa1b0ab32a66192b5aacc",
+        "bytes": 3793
+      },
+      "personal_evals/planning.py": {
+        "sha256": "68fc49a849bbcba35af82907e98c7c1bdb4dd2bc58310cfab7d620edaaa2e4ac",
+        "bytes": 4589
+      },
+      "personal_evals/repository.py": {
+        "sha256": "2d46195a75d6fbf9be2fa9d4f9c0cb1f607b3308e0355fa05611650cf9bb51d6",
+        "bytes": 13452
+      },
+      "personal_evals/suite.py": {
+        "sha256": "edad2ed5b79607bd607ae854bbcecf3dee322d89c582c7121e352fdcc37b19dc",
+        "bytes": 18285
+      }
+    },
+    "changed": [
+      "personal_evals/github_delivery.py"
+    ]
+  },
+  "unchangedOriginalFiles": 70,
+  "archive": {
+    "bytes": 3423,
+    "sha256": "dd20e7bbfebf8e2a2d18be45e51b3a93c88e3f95c9d04315f31ce71c950f45f2"
+  },
+  "phases": {
+    "initial": {
+      "outcome": {
+        "accepted": false,
+        "code": "github_object_mismatch",
+        "status": 0,
+        "profile": "supervised-approved-gh-tool"
+      },
+      "requests": [
+        {
+          "sequence": 1,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "profile": "approved-gh-tool"
+        },
+        {
+          "sequence": 2,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "profile": "approved-gh-tool"
+        },
+        {
+          "sequence": 3,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "profile": "approved-gh-tool"
+        },
+        {
+          "sequence": 4,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "profile": "approved-gh-tool"
+        },
+        {
+          "sequence": 5,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees/6ab7a0153e51b11514abaa10116e07617f430355",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "profile": "approved-gh-tool"
+        },
+        {
+          "sequence": 6,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/qa%2Fpersonal-evals-delivery-20261113-1",
+          "status": 404,
+          "exitCode": 1,
+          "payloadSha256": null,
+          "toolTextBytes": 1405,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": true
+        },
+        {
+          "sequence": 7,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1490,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 8,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1609,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 9,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1430,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 10,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/main",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1820,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 11,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/blobs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "79174288fc83a27fe7420310f4255392e990c6988fbf34b91bf2594debf1fce1",
+          "toolTextBytes": 1705,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 12,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/blobs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "344e21846de07c1d1caf9464fd501779bdd76b1654821f810cee15b463522b48",
+          "toolTextBytes": 1705,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 13,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/blobs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "cb2a5401d9b0e467a349693c0301dea7dc24140a821c2a49344c128e862cb141",
+          "toolTextBytes": 1706,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 14,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/blobs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "8e41b04ec6691e77d9290474a3875ebff07381408ae634b088f97d123adc3703",
+          "toolTextBytes": 1706,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 15,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/blobs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "e00453c890538a0e4a5866ccda864075fdfbab349fd5f1fe3f08dfe209601e21",
+          "toolTextBytes": 1706,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 16,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/blobs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "51ad646ea9cad3aac98a769cd0d310debfca237f9c5d956bf971b1a84d19ac57",
+          "toolTextBytes": 1704,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 17,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/blobs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "74a1efe85cedf8fd95d77d56fb14c69ed6acbf3e9fb7e496416b420bb7175643",
+          "toolTextBytes": 1706,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 18,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "2dfafc0b8a62652199b152e928113c4ccb11cdcdece21f8efbbdd23a5ca9455c",
+          "toolTextBytes": 3899,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 19,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees/9195e94a98d84afc9f098e42d63c2ad8f15eefa1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 3808,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 20,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "fc5302b0ba348cbd1d186cc91be7d911f2dea170e9bdd7303724f95338b2e244",
+          "toolTextBytes": 2907,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 21,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/a31ee951c6523610d17324deb2b6d95ec594634c",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 2810,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        }
+      ]
+    },
+    "resume-fixed": {
+      "outcome": {
+        "accepted": true,
+        "profile": "supervised-approved-gh-tool",
+        "result": {
+          "planId": "0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d",
+          "bundleId": "eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77",
+          "state": "open",
+          "pullRequest": {
+            "number": 1,
+            "url": "https://github.com/alvarovillalbaa/my-evals/pull/1",
+            "draft": true
+          },
+          "branch": "qa/personal-evals-delivery-20261113-1",
+          "headCommit": "2a1635d386f4cac82213d9967f30c060357fcea8",
+          "journalEvents": 27
+        }
+      },
+      "requests": [
+        {
+          "sequence": 1,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1489,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 2,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1608,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 3,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1431,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 4,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 2708,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 5,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees/6ab7a0153e51b11514abaa10116e07617f430355",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 3600,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 6,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/qa%2Fpersonal-evals-delivery-20261113-1",
+          "status": 404,
+          "exitCode": 1,
+          "payloadSha256": null,
+          "toolTextBytes": 1405,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": true
+        },
+        {
+          "sequence": 7,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1490,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 8,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1609,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 9,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1431,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 10,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/main",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1820,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 11,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "2dfafc0b8a62652199b152e928113c4ccb11cdcdece21f8efbbdd23a5ca9455c",
+          "toolTextBytes": 3898,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 12,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees/9195e94a98d84afc9f098e42d63c2ad8f15eefa1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 3809,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 13,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "6478f571a57ed4bc99a551941851f6467af31f7bde078aa6cd0efcae693f4615",
+          "toolTextBytes": 2908,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 14,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/2a1635d386f4cac82213d9967f30c060357fcea8",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 2810,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 15,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1490,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 16,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1609,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 17,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1431,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 18,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/main",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1820,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 19,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/qa%2Fpersonal-evals-delivery-20261113-1",
+          "status": 404,
+          "exitCode": 1,
+          "payloadSha256": null,
+          "toolTextBytes": 1405,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": true
+        },
+        {
+          "sequence": 20,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/git/refs",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "26f3c621e68591cd23e35b9afda234d94a52d0bca9750818166832c1b7fef04c",
+          "toolTextBytes": 2008,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 21,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/qa%2Fpersonal-evals-delivery-20261113-1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1933,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 22,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1490,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 23,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1608,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 24,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1430,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 25,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/pulls?state=all&head=alvarovillalbaa%3Aqa%2Fpersonal-evals-delivery-20261113-1&base=main&per_page=100&page=1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1443,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 26,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/main",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1820,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 27,
+          "method": "POST",
+          "path": "/repos/alvarovillalbaa/my-evals/pulls",
+          "status": 201,
+          "exitCode": 0,
+          "payloadSha256": "b497fe5fdf05497f0b7c07632e437ab3d4bc6d21807c745da2e936bbe04e2c8a",
+          "toolTextBytes": 18529,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 28,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/pulls/1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 18479,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        }
+      ]
+    },
+    "resume-open": {
+      "outcome": {
+        "accepted": false,
+        "code": "github_http_error",
+        "status": 503,
+        "profile": "supervised-approved-gh-tool"
+      },
+      "requests": [
+        {
+          "sequence": 1,
+          "method": "GET",
+          "path": "/user",
+          "status": 503,
+          "exitCode": 1,
+          "payloadSha256": null,
+          "toolTextBytes": 421,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": true
+        }
+      ]
+    },
+    "resume-open-2": {
+      "outcome": {
+        "accepted": true,
+        "profile": "supervised-approved-gh-tool",
+        "result": {
+          "planId": "0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d",
+          "bundleId": "eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77",
+          "state": "open",
+          "pullRequest": {
+            "number": 1,
+            "url": "https://github.com/alvarovillalbaa/my-evals/pull/1",
+            "draft": true
+          },
+          "branch": "qa/personal-evals-delivery-20261113-1",
+          "headCommit": "2a1635d386f4cac82213d9967f30c060357fcea8",
+          "journalEvents": 28
+        }
+      },
+      "requests": [
+        {
+          "sequence": 1,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1489,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 2,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1609,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 3,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1431,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 4,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 2709,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 5,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees/6ab7a0153e51b11514abaa10116e07617f430355",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 3600,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 6,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/qa%2Fpersonal-evals-delivery-20261113-1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1933,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 7,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/2a1635d386f4cac82213d9967f30c060357fcea8",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 2809,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 8,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/pulls/1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 18521,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        }
+      ]
+    },
+    "resume-closed": {
+      "outcome": {
+        "accepted": true,
+        "profile": "supervised-approved-gh-tool",
+        "result": {
+          "planId": "0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d",
+          "bundleId": "eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77",
+          "state": "closed",
+          "pullRequest": {
+            "number": 1,
+            "url": "https://github.com/alvarovillalbaa/my-evals/pull/1",
+            "draft": true
+          },
+          "branch": "qa/personal-evals-delivery-20261113-1",
+          "headCommit": "2a1635d386f4cac82213d9967f30c060357fcea8",
+          "journalEvents": 29
+        }
+      },
+      "requests": [
+        {
+          "sequence": 1,
+          "method": "GET",
+          "path": "/user",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1490,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 2,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1609,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 3,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/hash-algorithm",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 1430,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 4,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 2709,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 5,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/trees/6ab7a0153e51b11514abaa10116e07617f430355",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 3600,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 6,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/ref/heads/qa%2Fpersonal-evals-delivery-20261113-1",
+          "status": 404,
+          "exitCode": 1,
+          "payloadSha256": null,
+          "toolTextBytes": 1404,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": true
+        },
+        {
+          "sequence": 7,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/git/commits/2a1635d386f4cac82213d9967f30c060357fcea8",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 2810,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        },
+        {
+          "sequence": 8,
+          "method": "GET",
+          "path": "/repos/alvarovillalbaa/my-evals/pulls/1",
+          "status": 200,
+          "exitCode": 0,
+          "payloadSha256": null,
+          "toolTextBytes": 18541,
+          "profile": "approved-gh-tool",
+          "errorBodyOpaque": false
+        }
+      ]
+    }
+  },
+  "journalSeal": {
+    "events": [
+      {
+        "sequence": 1,
+        "event": "started",
+        "eventId": "45175ffbf26905e392f836f2610abea48a338eb04b5b05486c00e0a001864d48",
+        "previousEventId": null,
+        "fileSha256": "92e2472a4da302848df14829877588389d9ef3ddda5907c0463dba7dcf4c3e94"
+      },
+      {
+        "sequence": 2,
+        "event": "blob_pending",
+        "eventId": "c5daa5861c0f497f8330d68983cd8b69feb1f1ae65375db359175b1ffdf3575a",
+        "previousEventId": "45175ffbf26905e392f836f2610abea48a338eb04b5b05486c00e0a001864d48",
+        "fileSha256": "9a7f7f37e5dc947f150c833b0c9f165ac01275b37485f244f7c8020fc3ac4d4a"
+      },
+      {
+        "sequence": 3,
+        "event": "blob_verified",
+        "eventId": "9ca145611dae9eb66d0204f710c45628acd786de78d71f5dce23d91713c49203",
+        "previousEventId": "c5daa5861c0f497f8330d68983cd8b69feb1f1ae65375db359175b1ffdf3575a",
+        "fileSha256": "dce887db996d7654ff8a6a5f1e44f2e4f16e2d9007c9ed87ff0ae2fa74c6477a"
+      },
+      {
+        "sequence": 4,
+        "event": "blob_pending",
+        "eventId": "3f439f91682c507ea937d58d50f1a597549cf57d9450e9202dd3546e4480ee87",
+        "previousEventId": "9ca145611dae9eb66d0204f710c45628acd786de78d71f5dce23d91713c49203",
+        "fileSha256": "23e916d92b7960fa31c612f73254f45e866b52666ccd3125ae6c31dc9b1803e6"
+      },
+      {
+        "sequence": 5,
+        "event": "blob_verified",
+        "eventId": "a3c2a9b36ae12d06d71e7d1f60fccac5cd92ed267bdf928cb0c14c33ec81b276",
+        "previousEventId": "3f439f91682c507ea937d58d50f1a597549cf57d9450e9202dd3546e4480ee87",
+        "fileSha256": "dce83d65d8ffefbdc36ae1b4637cfb43e1dadc7d25fec900ab1d6e1b91d3d753"
+      },
+      {
+        "sequence": 6,
+        "event": "blob_pending",
+        "eventId": "a9fc31f42fb08cd8b724e6fce020e2527ff9935db54254202f1f81941b22d695",
+        "previousEventId": "a3c2a9b36ae12d06d71e7d1f60fccac5cd92ed267bdf928cb0c14c33ec81b276",
+        "fileSha256": "3e9ae66f620187e8ae86595e06d6f57c3698863260c74ad0512f371705e49b56"
+      },
+      {
+        "sequence": 7,
+        "event": "blob_verified",
+        "eventId": "866807935273c248e8291a7a648a29a79308d431e7bc0821060f20a92184c21f",
+        "previousEventId": "a9fc31f42fb08cd8b724e6fce020e2527ff9935db54254202f1f81941b22d695",
+        "fileSha256": "ff960c606c31809cd6e2bdac2c7f31776e7ba6721d4587af9f45e665ef8335d1"
+      },
+      {
+        "sequence": 8,
+        "event": "blob_pending",
+        "eventId": "a447e7d92e47515ae153b995f9f6add7b81befca00485b1d53302691c89e93dd",
+        "previousEventId": "866807935273c248e8291a7a648a29a79308d431e7bc0821060f20a92184c21f",
+        "fileSha256": "ba32125755e806e7511b322bdd8080b43a1f0059471937ae7850a97af92b355e"
+      },
+      {
+        "sequence": 9,
+        "event": "blob_verified",
+        "eventId": "97764badac57de0d231a5779f436b7fafca4f7fac9fbfdfaec62f86e2176ad24",
+        "previousEventId": "a447e7d92e47515ae153b995f9f6add7b81befca00485b1d53302691c89e93dd",
+        "fileSha256": "fb46ab90c000c7755a4fc2386d6ed7e64c31ccd71f01ea059d26652f4609ddf3"
+      },
+      {
+        "sequence": 10,
+        "event": "blob_pending",
+        "eventId": "3827397395659ffb3747128f6aa0c57c7dc59b4fcce65c5f2720e6412b507cc1",
+        "previousEventId": "97764badac57de0d231a5779f436b7fafca4f7fac9fbfdfaec62f86e2176ad24",
+        "fileSha256": "1b0a7c62a8c70ede2f75faa3cb39330ee5da15559652d6f03b0014e9e1d1c209"
+      },
+      {
+        "sequence": 11,
+        "event": "blob_verified",
+        "eventId": "25bcefe8dc78126c15787e1a8f54259553aa7718efac1e9f50ea9faf6cee7cfb",
+        "previousEventId": "3827397395659ffb3747128f6aa0c57c7dc59b4fcce65c5f2720e6412b507cc1",
+        "fileSha256": "d39ebfd88a27257b4e3c58f93cfdd91bf94e07b760fb3bd1096851bd76c9065b"
+      },
+      {
+        "sequence": 12,
+        "event": "blob_pending",
+        "eventId": "ab37063cc56bbf7da2c4d1a0eaafe0a0419b8ac661762c5f340a46bc69c220f3",
+        "previousEventId": "25bcefe8dc78126c15787e1a8f54259553aa7718efac1e9f50ea9faf6cee7cfb",
+        "fileSha256": "ff5315d0b6380916574c38bad45d863615dc345edac594de23a2ce7e08e4e7f2"
+      },
+      {
+        "sequence": 13,
+        "event": "blob_verified",
+        "eventId": "a4f16be7c1a173ae74c8f1c7a21fd9e6c1183a8ed3922bfacebd2577ebbd328e",
+        "previousEventId": "ab37063cc56bbf7da2c4d1a0eaafe0a0419b8ac661762c5f340a46bc69c220f3",
+        "fileSha256": "9edc7c2fe17079a35f5074dafe9813664c28fc1a30884307a5e3c6afb209462c"
+      },
+      {
+        "sequence": 14,
+        "event": "blob_pending",
+        "eventId": "0bbe71d847c4e0b3e856da8b9135b2026fafd9d20f0e33e71d1022c69be8fd41",
+        "previousEventId": "a4f16be7c1a173ae74c8f1c7a21fd9e6c1183a8ed3922bfacebd2577ebbd328e",
+        "fileSha256": "afd9947ab64b4c1aebed58fa453ea919b7cfef1716ea2a2ba718e3c7f2c4c33f"
+      },
+      {
+        "sequence": 15,
+        "event": "blob_verified",
+        "eventId": "b96d8f49ec4af12f422789fdf8da98ca697e4e599745d50bad4f0f68fa278ce7",
+        "previousEventId": "0bbe71d847c4e0b3e856da8b9135b2026fafd9d20f0e33e71d1022c69be8fd41",
+        "fileSha256": "88d4a83ec908dac13bc9a59d40ea99f4fee9b24cd746db25ad5cc12dd6b2a1cf"
+      },
+      {
+        "sequence": 16,
+        "event": "tree_pending",
+        "eventId": "dca1a25a71aa3acc9594f45bdefabe7771b85b0fbaca2723df616f7faaca5078",
+        "previousEventId": "b96d8f49ec4af12f422789fdf8da98ca697e4e599745d50bad4f0f68fa278ce7",
+        "fileSha256": "7610a95b1e6ac6416d4da30bef19a837223f6897d93ba941352fe6e565cb9869"
+      },
+      {
+        "sequence": 17,
+        "event": "tree_verified",
+        "eventId": "05fef1ab016361f8d9040451787a07c1a52c7b78c420dae7dd9893391837454a",
+        "previousEventId": "dca1a25a71aa3acc9594f45bdefabe7771b85b0fbaca2723df616f7faaca5078",
+        "fileSha256": "6a6819a337255b4cba88a248b13bd9e63805d1a6764e946439d566066fc78199"
+      },
+      {
+        "sequence": 18,
+        "event": "commit_pending",
+        "eventId": "388609e2c3907667c6feaa2556c257046e7e2fe6294c67058cf3e980eb144092",
+        "previousEventId": "05fef1ab016361f8d9040451787a07c1a52c7b78c420dae7dd9893391837454a",
+        "fileSha256": "cc030a321133bddfe7f7c14e63d31736b4b22def6bfeaeec9f04adac62c48f82"
+      },
+      {
+        "sequence": 19,
+        "event": "stopped",
+        "eventId": "80841d73d18a81a1a9264d6d5131f32d9b541ecb958aecf5f6869823dba94299",
+        "previousEventId": "388609e2c3907667c6feaa2556c257046e7e2fe6294c67058cf3e980eb144092",
+        "fileSha256": "60a1d7f15bd7467fb876deac3799a8184a4021efc56ace6c59bc78e733559bc7"
+      },
+      {
+        "sequence": 20,
+        "event": "tree_pending",
+        "eventId": "b67792c386468079690a6fcf32deda132838053955b4dc73dcb2a445b20849ee",
+        "previousEventId": "80841d73d18a81a1a9264d6d5131f32d9b541ecb958aecf5f6869823dba94299",
+        "fileSha256": "14c8a43c8c627576bbc3453e64b0f272408a409796137e9a29b4a37aafdbffb5"
+      },
+      {
+        "sequence": 21,
+        "event": "tree_verified",
+        "eventId": "b9bb964e5010dd5050e6fc8770fa4e0f938374b1f840a9b1da488685c3791194",
+        "previousEventId": "b67792c386468079690a6fcf32deda132838053955b4dc73dcb2a445b20849ee",
+        "fileSha256": "0480f41a874901d49fc18b369018f2eeddefece9183151e8f5db220169a3614e"
+      },
+      {
+        "sequence": 22,
+        "event": "commit_pending",
+        "eventId": "8036a0999d27bf71555fcabb1dd7eb6252fa158a80e2ef05561ffe6f268a6c09",
+        "previousEventId": "b9bb964e5010dd5050e6fc8770fa4e0f938374b1f840a9b1da488685c3791194",
+        "fileSha256": "a2411c4d1279685788d5b2e6c18076a685e9ecd921a1a59fce8ed1fca6acd6cf"
+      },
+      {
+        "sequence": 23,
+        "event": "commit_verified",
+        "eventId": "7cd92f1fa7f2aa1347ac94af5151dee511886f77c44159ed44a18523cd26c353",
+        "previousEventId": "8036a0999d27bf71555fcabb1dd7eb6252fa158a80e2ef05561ffe6f268a6c09",
+        "fileSha256": "e8de1000ced96820b34d89e407725fe822e8bda6601c0e5d1ee2c8ac94a8f376"
+      },
+      {
+        "sequence": 24,
+        "event": "branch_pending",
+        "eventId": "ffedbfbf109f39fad7656f3a9ff145969d44751e89302c824e2536b50623e7fe",
+        "previousEventId": "7cd92f1fa7f2aa1347ac94af5151dee511886f77c44159ed44a18523cd26c353",
+        "fileSha256": "9b0f79eda68d72b71ed0d182f37ca6838a4607437d0ab378de735756e9afef63"
+      },
+      {
+        "sequence": 25,
+        "event": "branch_verified",
+        "eventId": "5b05bc1a6dec769c4852e91951292b524155e06c384e8c47c5300af132926d49",
+        "previousEventId": "ffedbfbf109f39fad7656f3a9ff145969d44751e89302c824e2536b50623e7fe",
+        "fileSha256": "fba96f4f8f9baa511f96e49f81097a3cd1b855f43acb5f31f75a820e58ae1620"
+      },
+      {
+        "sequence": 26,
+        "event": "pr_pending",
+        "eventId": "bf4b2e995511b416c084d19311d7d2a0bb29245d9af29432f8f2c7e0c1ca1f98",
+        "previousEventId": "5b05bc1a6dec769c4852e91951292b524155e06c384e8c47c5300af132926d49",
+        "fileSha256": "eb980035dae12f1846a510f2cfe28af28f713281c1fa93c2b0a424a404680651"
+      },
+      {
+        "sequence": 27,
+        "event": "pr_verified",
+        "eventId": "55f40891dc1bac5b2057c4236936e04b0d2e3f5b843e59869fd1773e2fe40f6d",
+        "previousEventId": "bf4b2e995511b416c084d19311d7d2a0bb29245d9af29432f8f2c7e0c1ca1f98",
+        "fileSha256": "2c97c4162d210af7e72773d9d35efd95869f05bf828c002f67f5e59277dea815"
+      },
+      {
+        "sequence": 28,
+        "event": "stopped",
+        "eventId": "1001db3df798239144a505c5621f3a6250e0558f73ddafbd3cfb33e79b38b05a",
+        "previousEventId": "55f40891dc1bac5b2057c4236936e04b0d2e3f5b843e59869fd1773e2fe40f6d",
+        "fileSha256": "2491e48c389a60536f0a108b1952c75318607b74e007645c5fe1851b9d899116"
+      },
+      {
+        "sequence": 29,
+        "event": "pr_verified",
+        "eventId": "c0793f307eb2ccfba8b9fac1899a48f9656a8ce97ade41f36a49918b53809553",
+        "previousEventId": "1001db3df798239144a505c5621f3a6250e0558f73ddafbd3cfb33e79b38b05a",
+        "fileSha256": "1684fa04f92b22092ae61ce8e6d2a9019d356437eae129ad95ca03ddbdcb1c19"
+      }
+    ],
+    "counts": {
+      "started": 1,
+      "blob_pending": 7,
+      "blob_verified": 7,
+      "tree_pending": 2,
+      "tree_verified": 2,
+      "commit_pending": 2,
+      "stopped": 2,
+      "commit_verified": 1,
+      "branch_pending": 1,
+      "branch_verified": 1,
+      "pr_pending": 1,
+      "pr_verified": 2
+    },
+    "validatedLocally": true,
+    "rawJournalPublished": false
+  },
+  "independentVerification": {
+    "unchangedBaseFiles": 71,
+    "deliveredFiles": [
+      {
+        "path": "evals/qualification-20261113-1/bundle.json",
+        "bytes": 1709,
+        "sha256": "b3d90f3e8955a7947bba85c78f3d9597c9e50f60986b5a3dda22a2b3841edc6a",
+        "gitBlob": "8c7802b804a3b6e1ae90ba58e088e052f65dde5d"
+      },
+      {
+        "path": "evals/qualification-20261113-1/tasks/demo-text/environment/Dockerfile",
+        "bytes": 35,
+        "sha256": "082dba0d5dd12e8a4dfb6b6d126de2d34eb75c789a72947d87da0721ea9b5b41",
+        "gitBlob": "1c05932167cf7f684ba2725f1df8fb24835cec47"
+      },
+      {
+        "path": "evals/qualification-20261113-1/tasks/demo-text/environment/data.bin",
+        "bytes": 10,
+        "sha256": "bf08337cd30123c9a25f0225cab78f5d0189f067bd88bd5340c188f1089e23a8",
+        "gitBlob": "1863c37bde66fbd372cdef94eebac26b7cd5e0dd"
+      },
+      {
+        "path": "evals/qualification-20261113-1/tasks/demo-text/instruction.md",
+        "bytes": 262,
+        "sha256": "a2f8c256a17b97be9f75e0ef9a9ba3f9358dd3294e8b0fc849ce1f48517bf570",
+        "gitBlob": "03b463a5c85e983f44a01d3b025f42ec39398b83"
+      },
+      {
+        "path": "evals/qualification-20261113-1/tasks/demo-text/task.toml",
+        "bytes": 77,
+        "sha256": "39ec861c533f5350fb1c96ac998c992178d4a036b2dec0ef4929930b26cbed61",
+        "gitBlob": "4e6001315839dd7417a7946a5a64676f05a3d503"
+      },
+      {
+        "path": "evals/qualification-20261113-1/tasks/demo-text/tests/test.sh",
+        "bytes": 67,
+        "sha256": "128d2ac29b76a8dd1cf7b47dfe7abb40c4529911ece926ab6011e2684a89fed9",
+        "gitBlob": "24698361b02eed90bc16dc63162f431895a2ace1"
+      },
+      {
+        "path": "evals/qualification-20261113-1/tasks/demo-text/tests/verify.py",
+        "bytes": 309,
+        "sha256": "9cda917ce20d833dfad3d06fd972e9e22ed2815ea00da37aad402c6eceac1080",
+        "gitBlob": "0887187269829d376f7a6d74f5f0f93d503cd4e3"
+      }
+    ],
+    "independentAnonymousBytes": 2469,
+    "pr": "https://github.com/alvarovillalbaa/my-evals/pull/1",
+    "accepted": true
+  },
+  "fixtureRetired": {
+    "prNumber": 1,
+    "state": "closed",
+    "merged": false,
+    "branchAbsent": true
+  },
+  "paidOrModelOrHarborRun": false,
+  "accepted": true,
+  "sourceGuardScope": "71 original files checked before documentation updates; 14 fixed runtime fingerprints remain exact"
+}

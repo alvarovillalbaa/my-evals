@@ -1,0 +1,18 @@
+{
+  "kind": "native-gh-transport-diagnostic",
+  "exitCode": 1,
+  "stdoutBytes": 0,
+  "stderrBytes": 94,
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "eed65211f0fcee1b82c2661764250c1adaebcb36f0cb78a702d59632f056c439",
+  "firstLine": "absent-or-non-http",
+  "diagnostics": {
+    "error connecting": true,
+    "api.github.com": true,
+    "authentication": false,
+    "could not resolve": false,
+    "certificate": false,
+    "unknown api version": false
+  },
+  "excludedEnvironmentNames": []
+}

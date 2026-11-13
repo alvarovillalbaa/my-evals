@@ -1,0 +1,42 @@
+{
+  "message": {
+    "expected": "Add Personal Evals bundle eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77\n\nPersonal-Evals-Delivery: 0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d\n",
+    "actual": "Add Personal Evals bundle eb993e5043e89cc62aeb51ad63ae1d2dd47957c4bb44be8e0bb129a5f59d0a77\n\nPersonal-Evals-Delivery: 0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d"
+  },
+  "author": {
+    "expected": {
+      "name": "alvarovillalbaa",
+      "email": "87529457+alvarovillalbaa@users.noreply.github.com",
+      "date": "2026-11-13T18:17:04Z"
+    },
+    "actual": {
+      "name": "alvarovillalbaa",
+      "email": "87529457+alvarovillalbaa@users.noreply.github.com",
+      "date": "2026-11-13T18:17:04Z"
+    }
+  },
+  "committer": {
+    "expected": {
+      "name": "alvarovillalbaa",
+      "email": "87529457+alvarovillalbaa@users.noreply.github.com",
+      "date": "2026-11-13T18:17:04Z"
+    },
+    "actual": {
+      "name": "alvarovillalbaa",
+      "email": "87529457+alvarovillalbaa@users.noreply.github.com",
+      "date": "2026-11-13T18:17:04Z"
+    }
+  },
+  "tree": {
+    "expected": "9195e94a98d84afc9f098e42d63c2ad8f15eefa1",
+    "actual": "9195e94a98d84afc9f098e42d63c2ad8f15eefa1"
+  },
+  "parents": {
+    "expected": [
+      "f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f"
+    ],
+    "actual": [
+      "f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f"
+    ]
+  }
+}

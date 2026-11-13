@@ -1,0 +1,778 @@
+{
+  "sha": "9195e94a98d84afc9f098e42d63c2ad8f15eefa1",
+  "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/9195e94a98d84afc9f098e42d63c2ad8f15eefa1",
+  "tree": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be44b544f7576151de8e2972d03a223b25c9d1a2",
+      "size": 76,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/be44b544f7576151de8e2972d03a223b25c9d1a2"
+    },
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ab161e19a6330c0907a5601738af6b20863450d",
+      "size": 5343,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/0ab161e19a6330c0907a5601738af6b20863450d"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7694388483b2d169819b727c2484e0e748498f4c",
+      "size": 1078,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/7694388483b2d169819b727c2484e0e748498f4c"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3aba63ef01dffdbea04a4f195cd298b52476e78",
+      "size": 11890,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/d3aba63ef01dffdbea04a4f195cd298b52476e78"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4d9cf898b5d473828fafbc1d4ef6ce36d599bcf1",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/4d9cf898b5d473828fafbc1d4ef6ce36d599bcf1"
+    },
+    {
+      "path": "docs/proposals",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "590ec172f1a9a99f8fb8d78e3759ce0c411e7f8f",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/590ec172f1a9a99f8fb8d78e3759ce0c411e7f8f"
+    },
+    {
+      "path": "docs/proposals/current-baseline-repair.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ac16b971e100e42f10d0c5cbc7a6b70d7444400",
+      "size": 3284,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/7ac16b971e100e42f10d0c5cbc7a6b70d7444400"
+    },
+    {
+      "path": "docs/proposals/github-delivery-activation.patch",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df2f74dca29c492ae030701d1be45efa573b5d29",
+      "size": 2028,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/df2f74dca29c492ae030701d1be45efa573b5d29"
+    },
+    {
+      "path": "docs/proposals/github-publisher.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64047e6fd6afd17dbb27e4cb40c56d79df5b56a4",
+      "size": 7918,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/64047e6fd6afd17dbb27e4cb40c56d79df5b56a4"
+    },
+    {
+      "path": "docs/proposals/github_delivery.py.proposed",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "97a26e4b0f19fd7c0243ae6a41f209a56eb34b15",
+      "size": 34918,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/97a26e4b0f19fd7c0243ae6a41f209a56eb34b15"
+    },
+    {
+      "path": "docs/proposals/local-checks.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebbcf528364db8e08efc6eef5938bb2f5e59537f",
+      "size": 4203,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/ebbcf528364db8e08efc6eef5938bb2f5e59537f"
+    },
+    {
+      "path": "docs/proposals/repository-generation-checks.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9f6567ecfc2fb4891390677afcd624b657f931f6",
+      "size": 3593,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/9f6567ecfc2fb4891390677afcd624b657f931f6"
+    },
+    {
+      "path": "docs/references",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c4b4228b4b91975fe7b1bfc7883e373cc5371723",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/c4b4228b4b91975fe7b1bfc7883e373cc5371723"
+    },
+    {
+      "path": "docs/references/delivery.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c17a38e20542b9f5cea42628d9a87ee14cad41c",
+      "size": 5309,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/1c17a38e20542b9f5cea42628d9a87ee14cad41c"
+    },
+    {
+      "path": "docs/references/formats.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d4cbafaa112d5faada97559234a19ba7b416dad",
+      "size": 6555,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/5d4cbafaa112d5faada97559234a19ba7b416dad"
+    },
+    {
+      "path": "docs/references/generation.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "efc55bb6c744db011a41bec41d372e34e73f3eb2",
+      "size": 5556,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/efc55bb6c744db011a41bec41d372e34e73f3eb2"
+    },
+    {
+      "path": "docs/references/git.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15081ed152245896f4d9edb258000b132413ec1f",
+      "size": 7459,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/15081ed152245896f4d9edb258000b132413ec1f"
+    },
+    {
+      "path": "docs/references/github.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7dd149581db645c3b2394a12c0d538d10da75762",
+      "size": 12813,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/7dd149581db645c3b2394a12c0d538d10da75762"
+    },
+    {
+      "path": "docs/references/harbor.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30ab3016fb4f7ff6984731e132ab89463ab6d7d4",
+      "size": 11028,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/30ab3016fb4f7ff6984731e132ab89463ab6d7d4"
+    },
+    {
+      "path": "docs/results",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "47a8e1b09d3c43c077b71532244387d6b08722b3",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/47a8e1b09d3c43c077b71532244387d6b08722b3"
+    },
+    {
+      "path": "docs/results/2026",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9cf2207b23b6dee02168212cbd072acb6a86806a",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/9cf2207b23b6dee02168212cbd072acb6a86806a"
+    },
+    {
+      "path": "docs/results/2026/10-28",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d99156e382252d5e2ced2e430d94a90c18826460",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/d99156e382252d5e2ced2e430d94a90c18826460"
+    },
+    {
+      "path": "docs/results/2026/10-28/delivery-source.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "703a79a117e6811e9ba5613565f0056e04fd585a",
+      "size": 5891,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/703a79a117e6811e9ba5613565f0056e04fd585a"
+    },
+    {
+      "path": "docs/results/2026/10-28/delivery-source.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fb154d4316439e447a873f779c3511d3b15f5b4",
+      "size": 5668,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/2fb154d4316439e447a873f779c3511d3b15f5b4"
+    },
+    {
+      "path": "docs/results/2026/10-28/initial-source.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8c428955de0373e9603d95b5def435f1781df98",
+      "size": 5078,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/d8c428955de0373e9603d95b5def435f1781df98"
+    },
+    {
+      "path": "docs/results/2026/10-28/repository-generation-source.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b3a48c53ff3041e444d3b9ff2c81a63fcc9666f",
+      "size": 3331,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/2b3a48c53ff3041e444d3b9ff2c81a63fcc9666f"
+    },
+    {
+      "path": "docs/results/2026/10-28/repository-generation.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "040a1f5ee6320fa7701e3f56e98efae9aee563c2",
+      "size": 5239,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/040a1f5ee6320fa7701e3f56e98efae9aee563c2"
+    },
+    {
+      "path": "docs/results/2026/10-28/source-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3988c68aa0e2042745f4f2ba02554b9baf3ab0d6",
+      "size": 2453,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/3988c68aa0e2042745f4f2ba02554b9baf3ab0d6"
+    },
+    {
+      "path": "docs/results/2026/11-04",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b89177fbe2542ccd84dd1ed3672adece3f94d032",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/b89177fbe2542ccd84dd1ed3672adece3f94d032"
+    },
+    {
+      "path": "docs/results/2026/11-04/current-baseline-checks.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54013fb6e1e1bd3a945832a78b5cad8ef44d98aa",
+      "size": 93973,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/54013fb6e1e1bd3a945832a78b5cad8ef44d98aa"
+    },
+    {
+      "path": "docs/results/2026/11-04/current-baseline-checks.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e374aa8a7acaeed35986e28d1cb3ad8449f7ba0f",
+      "size": 3181,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/e374aa8a7acaeed35986e28d1cb3ad8449f7ba0f"
+    },
+    {
+      "path": "docs/results/2026/11-04/current-baseline-repair-checks.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c05cbc3323248eb011872a1442ecdc0bfd3c46d",
+      "size": 19072,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/5c05cbc3323248eb011872a1442ecdc0bfd3c46d"
+    },
+    {
+      "path": "docs/results/2026/11-04/current-baseline-repair-checks.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fb2fd240885125a2497e556f4e9b3209fdff0f5",
+      "size": 3344,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/8fb2fd240885125a2497e556f4e9b3209fdff0f5"
+    },
+    {
+      "path": "docs/results/2026/11-04/current-baseline-repair-source.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7506ca0e73cdd2f7fdafa5c39a8ec6bee5b723ef",
+      "size": 14481,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/7506ca0e73cdd2f7fdafa5c39a8ec6bee5b723ef"
+    },
+    {
+      "path": "docs/results/2026/11-04/delivery-plan-checks.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab06279b8054d464f57173c2a9a014b9adff7ccd",
+      "size": 22308,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/ab06279b8054d464f57173c2a9a014b9adff7ccd"
+    },
+    {
+      "path": "docs/results/2026/11-04/delivery-plan-checks.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "091af33ffaf04663e6de91acb15b20b149a0d981",
+      "size": 2549,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/091af33ffaf04663e6de91acb15b20b149a0d981"
+    },
+    {
+      "path": "docs/results/2026/11-04/publisher-activation-checks.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a1988c6df21ad73190ae30db21813de5cc84b52",
+      "size": 58059,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/8a1988c6df21ad73190ae30db21813de5cc84b52"
+    },
+    {
+      "path": "docs/results/2026/11-04/publisher-activation-checks.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ca3a58c8ca8dd5b3b36ef23e3f4a317f12a1390",
+      "size": 3806,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/2ca3a58c8ca8dd5b3b36ef23e3f4a317f12a1390"
+    },
+    {
+      "path": "docs/results/2026/11-04/publisher-activation-source.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c342b89fd9810fc9bc7549e81ebc0a4404d07f70",
+      "size": 25885,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/c342b89fd9810fc9bc7549e81ebc0a4404d07f70"
+    },
+    {
+      "path": "docs/spec.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5c60ea9d4040620e5b24b7ffb1bd9d0724a6ebe",
+      "size": 4666,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/a5c60ea9d4040620e5b24b7ffb1bd9d0724a6ebe"
+    },
+    {
+      "path": "evals",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "58e8bbfada2f813d256b372c47c56c6574c8eb16",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/58e8bbfada2f813d256b372c47c56c6574c8eb16"
+    },
+    {
+      "path": "evals/qualification-20261113-1",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1b6f7a3dbd52366efc415b9068d417303dc7a9bc",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/1b6f7a3dbd52366efc415b9068d417303dc7a9bc"
+    },
+    {
+      "path": "evals/qualification-20261113-1/bundle.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c7802b804a3b6e1ae90ba58e088e052f65dde5d",
+      "size": 1709,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/8c7802b804a3b6e1ae90ba58e088e052f65dde5d"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "68955d87b6ebd7dbd0eb1d673704e282434af33d",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/68955d87b6ebd7dbd0eb1d673704e282434af33d"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1dd55f2b1e969b32f7196b03f42b0224b78db55c",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/1dd55f2b1e969b32f7196b03f42b0224b78db55c"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/environment",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "83c7222a6c823dde98c2b57c3bf35e0096e32e8f",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/83c7222a6c823dde98c2b57c3bf35e0096e32e8f"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/environment/Dockerfile",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c05932167cf7f684ba2725f1df8fb24835cec47",
+      "size": 35,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/1c05932167cf7f684ba2725f1df8fb24835cec47"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/environment/data.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1863c37bde66fbd372cdef94eebac26b7cd5e0dd",
+      "size": 10,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/1863c37bde66fbd372cdef94eebac26b7cd5e0dd"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/instruction.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03b463a5c85e983f44a01d3b025f42ec39398b83",
+      "size": 262,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/03b463a5c85e983f44a01d3b025f42ec39398b83"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/task.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e6001315839dd7417a7946a5a64676f05a3d503",
+      "size": 77,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/4e6001315839dd7417a7946a5a64676f05a3d503"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f56083dc2868487aec89d8f1ec64c059ffbb0a76",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/f56083dc2868487aec89d8f1ec64c059ffbb0a76"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/tests/test.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "24698361b02eed90bc16dc63162f431895a2ace1",
+      "size": 67,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/24698361b02eed90bc16dc63162f431895a2ace1"
+    },
+    {
+      "path": "evals/qualification-20261113-1/tasks/demo-text/tests/verify.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0887187269829d376f7a6d74f5f0f93d503cd4e3",
+      "size": 309,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/0887187269829d376f7a6d74f5f0f93d503cd4e3"
+    },
+    {
+      "path": "examples",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ba2520b7b277130dc829102b6d792225c3a45c35",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/ba2520b7b277130dc829102b6d792225c3a45c35"
+    },
+    {
+      "path": "examples/delivery-intent.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f46129ef9a8eb65f31076076cca436b7252cc11a",
+      "size": 697,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/f46129ef9a8eb65f31076076cca436b7252cc11a"
+    },
+    {
+      "path": "examples/demo-text",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8b2ae49c8cda303d28b489aa87e623120f74e445",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/8b2ae49c8cda303d28b489aa87e623120f74e445"
+    },
+    {
+      "path": "examples/demo-text/environment",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ff24ee8f7af3e6ab19ff07ebed5cbc759a173fba",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/ff24ee8f7af3e6ab19ff07ebed5cbc759a173fba"
+    },
+    {
+      "path": "examples/demo-text/environment/Dockerfile",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c05932167cf7f684ba2725f1df8fb24835cec47",
+      "size": 35,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/1c05932167cf7f684ba2725f1df8fb24835cec47"
+    },
+    {
+      "path": "examples/demo-text/instruction.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03b463a5c85e983f44a01d3b025f42ec39398b83",
+      "size": 262,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/03b463a5c85e983f44a01d3b025f42ec39398b83"
+    },
+    {
+      "path": "examples/demo-text/task.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e6001315839dd7417a7946a5a64676f05a3d503",
+      "size": 77,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/4e6001315839dd7417a7946a5a64676f05a3d503"
+    },
+    {
+      "path": "examples/demo-text/tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f56083dc2868487aec89d8f1ec64c059ffbb0a76",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/f56083dc2868487aec89d8f1ec64c059ffbb0a76"
+    },
+    {
+      "path": "examples/demo-text/tests/test.sh",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "24698361b02eed90bc16dc63162f431895a2ace1",
+      "size": 67,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/24698361b02eed90bc16dc63162f431895a2ace1"
+    },
+    {
+      "path": "examples/demo-text/tests/verify.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0887187269829d376f7a6d74f5f0f93d503cd4e3",
+      "size": 309,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/0887187269829d376f7a6d74f5f0f93d503cd4e3"
+    },
+    {
+      "path": "examples/generation-intent.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "747aacd20f06d00f6b386ee57bdff51d561ce298",
+      "size": 1008,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/747aacd20f06d00f6b386ee57bdff51d561ce298"
+    },
+    {
+      "path": "examples/source-policy.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1bcef66293559a5544d7998f90251e2420fca1a",
+      "size": 93,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/d1bcef66293559a5544d7998f90251e2420fca1a"
+    },
+    {
+      "path": "examples/suite.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a445bba8893cfa26d0d5176ae2a21ee3d45ffa46",
+      "size": 712,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/a445bba8893cfa26d0d5176ae2a21ee3d45ffa46"
+    },
+    {
+      "path": "personal_evals",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "978782a42a42941bda5c510f694fb4211eac7bf9",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/978782a42a42941bda5c510f694fb4211eac7bf9"
+    },
+    {
+      "path": "personal_evals/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec785301a6a6207c52eb44434ca11b75d20a6d8e",
+      "size": 101,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/ec785301a6a6207c52eb44434ca11b75d20a6d8e"
+    },
+    {
+      "path": "personal_evals/__main__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08",
+      "size": 48,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/eb53e2f31b2f703ad32ef64b8a41faa3e7d18e08"
+    },
+    {
+      "path": "personal_evals/archive.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee55c9ab88670f108f4a255e743acd207db93ed2",
+      "size": 1482,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/ee55c9ab88670f108f4a255e743acd207db93ed2"
+    },
+    {
+      "path": "personal_evals/cli.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2bb8fdb2be55f79e22039840851d2b27283f0643",
+      "size": 9125,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/2bb8fdb2be55f79e22039840851d2b27283f0643"
+    },
+    {
+      "path": "personal_evals/comparison.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c3294a438c538d85fc9d0a063bf748556918a30",
+      "size": 15355,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/1c3294a438c538d85fc9d0a063bf748556918a30"
+    },
+    {
+      "path": "personal_evals/delivery.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c108f3797448494af33cd3885ea6cf21bc3e3cb5",
+      "size": 13364,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/c108f3797448494af33cd3885ea6cf21bc3e3cb5"
+    },
+    {
+      "path": "personal_evals/errors.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7be2984897947b2778761bfc5361c50bdbd05736",
+      "size": 206,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/7be2984897947b2778761bfc5361c50bdbd05736"
+    },
+    {
+      "path": "personal_evals/generation.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71341d0018748ee1e37d8aac604820aaf28d0f36",
+      "size": 16083,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/71341d0018748ee1e37d8aac604820aaf28d0f36"
+    },
+    {
+      "path": "personal_evals/github_delivery.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d25d0eaf49c1c3f607479594737b5fab12f2fc74",
+      "size": 35235,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/d25d0eaf49c1c3f607479594737b5fab12f2fc74"
+    },
+    {
+      "path": "personal_evals/harbor.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "496eea0b776d932551a218f74d81b868df9da041",
+      "size": 19085,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/496eea0b776d932551a218f74d81b868df9da041"
+    },
+    {
+      "path": "personal_evals/jsonio.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92aa2adb88a0f8911c918c5c2be2272af6f06b90",
+      "size": 3793,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/92aa2adb88a0f8911c918c5c2be2272af6f06b90"
+    },
+    {
+      "path": "personal_evals/planning.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c39dbb86d29ff86360a0deafb96c99217076f448",
+      "size": 4589,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/c39dbb86d29ff86360a0deafb96c99217076f448"
+    },
+    {
+      "path": "personal_evals/repository.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c09c9f75e854a4920dc72e2b16a5cee08e244531",
+      "size": 13452,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/c09c9f75e854a4920dc72e2b16a5cee08e244531"
+    },
+    {
+      "path": "personal_evals/suite.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eba73fe6f0ecb679b2ff788449c7fe0029c41673",
+      "size": 18285,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/eba73fe6f0ecb679b2ff788449c7fe0029c41673"
+    },
+    {
+      "path": "scripts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "117df313cb8e3d3f0e4f068bb7f0363cfacbc077",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/117df313cb8e3d3f0e4f068bb7f0363cfacbc077"
+    },
+    {
+      "path": "scripts/check.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63f6e7d8ef7ecbcb5f844841d2cdec7a3459e3ec",
+      "size": 2878,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/63f6e7d8ef7ecbcb5f844841d2cdec7a3459e3ec"
+    },
+    {
+      "path": "tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "54177b35e020babe62793a699ac88a90f7e50e62",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/54177b35e020babe62793a699ac88a90f7e50e62"
+    },
+    {
+      "path": "tests/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bfe620e6c86c5843b6156813f878dd025418ad22",
+      "size": 72,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/bfe620e6c86c5843b6156813f878dd025418ad22"
+    },
+    {
+      "path": "tests/unit",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e465efad24f26106e30e15721ae7b2a74c9e6710",
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/trees/e465efad24f26106e30e15721ae7b2a74c9e6710"
+    },
+    {
+      "path": "tests/unit/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fdda697ac6532feac55a08cdbf675bede263233",
+      "size": 40,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/2fdda697ac6532feac55a08cdbf675bede263233"
+    },
+    {
+      "path": "tests/unit/test_comparison.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "286d6e110f0d967bb5be981844b1524d7c233e51",
+      "size": 20194,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/286d6e110f0d967bb5be981844b1524d7c233e51"
+    },
+    {
+      "path": "tests/unit/test_delivery.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1ee0ceb361ee4b5e7430fc8fa5489476309bca1",
+      "size": 20782,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/d1ee0ceb361ee4b5e7430fc8fa5489476309bca1"
+    },
+    {
+      "path": "tests/unit/test_generation.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56b2c69364aa54e4c98881a3f3233fcb1a6c9aeb",
+      "size": 22949,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/56b2c69364aa54e4c98881a3f3233fcb1a6c9aeb"
+    },
+    {
+      "path": "tests/unit/test_generation_cli.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d9b9dbf4c8a68c745e05571b48315a70cf96712",
+      "size": 19986,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/7d9b9dbf4c8a68c745e05571b48315a70cf96712"
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce20f7cdd47bc7987f7aaf580a17934118f880fd",
+      "size": 34360,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/ce20f7cdd47bc7987f7aaf580a17934118f880fd"
+    },
+    {
+      "path": "tests/unit/test_github_delivery.py.proposed",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a94447ebd420d92f3cc483c0a22ef9fb8138ddfe",
+      "size": 34366,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/a94447ebd420d92f3cc483c0a22ef9fb8138ddfe"
+    },
+    {
+      "path": "tests/unit/test_github_delivery_regressions.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9cffa6d5621c327d168bb35c0a7b14e00c6559b",
+      "size": 6574,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/c9cffa6d5621c327d168bb35c0a7b14e00c6559b"
+    },
+    {
+      "path": "tests/unit/test_github_transport.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a94c5e8b50e1d12690743409868e23af4ba260cb",
+      "size": 9029,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/a94c5e8b50e1d12690743409868e23af4ba260cb"
+    },
+    {
+      "path": "tests/unit/test_harbor.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7386cd3022bb7425e0da4475f015a26fd891249",
+      "size": 15769,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/a7386cd3022bb7425e0da4475f015a26fd891249"
+    },
+    {
+      "path": "tests/unit/test_local.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b392743346ca5b58f2f1f4d3d864ca19b037cdb",
+      "size": 8580,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/4b392743346ca5b58f2f1f4d3d864ca19b037cdb"
+    },
+    {
+      "path": "tests/unit/test_repository.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f0acdc535ab2aa959ecc5cc8956d030f642e24e",
+      "size": 15726,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/0f0acdc535ab2aa959ecc5cc8956d030f642e24e"
+    },
+    {
+      "path": "tests/unit/test_suite.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f3043ba63c881367c5fe15f34cd14882634d59f",
+      "size": 19024,
+      "url": "https://api.github.com/repos/alvarovillalbaa/my-evals/git/blobs/6f3043ba63c881367c5fe15f34cd14882634d59f"
+    }
+  ],
+  "truncated": false
+}

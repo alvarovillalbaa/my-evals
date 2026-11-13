@@ -1,5 +1,14 @@
 # GitHub delivery contract and activation boundary
 
+Current live evidence: [13 November authored delivery](../results/2026/11-13/live-github-delivery.md).
+GitHub returned the first outgoing commit message without its final newline.
+The publisher now omits that newline when constructing the request and still
+compares the response literally. Authorship/tree/parent checks are unchanged.
+Only the supervised approved-tool profile passed; the default native child's
+connection failure remains unaccepted. The exact fixture PR is closed and its
+branch retired; the historical source/check authorization below is not the
+separate live authorization.
+
 Last updated: 2026-11-04
 
 This reference prepares the PR-delivery requirement in the

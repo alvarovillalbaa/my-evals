@@ -1,0 +1,69 @@
+"""Operator-owned transport to approved tools; no networking or credentials."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT / ('runtime' if sys.argv[1] == 'initial' else 'runtime-fixed')))
+from personal_evals.delivery import read_delivery_plan
+from personal_evals.github_delivery import GitHubError, publish_delivery
+
+class SupervisedApi:
+    def __init__(self, directory):
+        self.directory = directory
+        directory.mkdir(mode=0o700)
+        self.sequence = 0
+
+    def request(self, method, path, payload=None):
+        prefix = '/repos/alvarovillalbaa/my-evals'
+        if method not in ('GET', 'POST') or not (path == '/user' or path == prefix or path.startswith(prefix + '/')):
+            raise GitHubError(0, 'github_request_invalid')
+        if not re.fullmatch(r'[A-Za-z0-9_./?=&%:~-]+', path) or '..' in path:
+            raise GitHubError(0, 'github_request_invalid')
+        if method == 'POST' and path not in [prefix + tail for tail in ['/git/blobs','/git/trees','/git/commits','/git/refs','/pulls']]:
+            raise GitHubError(0, 'github_request_invalid')
+        self.sequence += 1
+        nonce = os.urandom(16).hex()
+        stem = f'{self.sequence:04d}'
+        if payload is not None:
+            data = json.dumps(payload, separators=(',', ':')).encode()
+            if len(data) > 65536: raise GitHubError(0, 'github_request_invalid')
+            p = self.directory / (stem + '.payload.json')
+            with p.open('xb') as f: f.write(data)
+            p.chmod(0o600)
+        request = {'sequence': self.sequence, 'nonce': nonce, 'method': method, 'path': path,
+                   'hasPayload': payload is not None, 'payloadSha256': hashlib.sha256(data).hexdigest() if payload is not None else None}
+        p = self.directory / (stem + '.request.json')
+        with p.open('x') as f: json.dump(request, f)
+        p.chmod(0o600)
+        print(json.dumps({'waiting': self.sequence, 'method': method, 'path': path}), flush=True)
+        response = self.directory / (stem + '.response.json')
+        deadline = time.monotonic() + 300
+        while not response.exists():
+            if time.monotonic() > deadline: raise GitHubError(0, 'github_timeout')
+            time.sleep(0.05)
+        stat = response.lstat()
+        if response.is_symlink() or stat.st_uid != os.getuid() or stat.st_size > 1048576:
+            raise GitHubError(0, 'github_protocol_invalid')
+        row = json.loads(response.read_bytes())
+        if row['sequence'] != self.sequence or row['nonce'] != nonce: raise GitHubError(0, 'github_protocol_invalid')
+        if not 200 <= row['status'] < 300: raise GitHubError(row['status'], 'github_http_error')
+        return row['body']
+
+if __name__ == '__main__':
+    label = sys.argv[1]
+    if label not in ['initial','resume-fixed','resume-open','resume-open-2','resume-closed']: raise SystemExit(2)
+    try:
+        result = publish_delivery(read_delivery_plan(ROOT / 'delivery.json'), ROOT / 'journal',
+            execute=True, resume=label != 'initial', api=SupervisedApi(ROOT / ('ipc-' + label)))
+        value = {'accepted': True, 'profile': 'supervised-approved-gh-tool', 'result': result}
+    except GitHubError as error:
+        value = {'accepted': False, 'code': error.code, 'status': error.status, 'profile': 'supervised-approved-gh-tool'}
+    p = ROOT / (label + '.result.json')
+    with p.open('x') as f: json.dump(value, f, indent=2); f.write('\n')
+    print(json.dumps(value), flush=True)
+    raise SystemExit(0 if value['accepted'] else 2)

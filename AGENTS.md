@@ -70,3 +70,11 @@
   these counts prove neither execution status nor unique coverage.
 - Personal GitHub publication is authorized by the all-project goal. Keep
   canonical evidence in this repository's `docs/`; preserve existing work.
+- The separate 13 November authored live scope is now qualified through the
+  supervised approved-gh-tool adapter; see `docs/results/2026/11-13/live-github-delivery.md`.
+  It found the actual terminal-newline mismatch. Only the outgoing message
+  changed; strict readback stays intact. Three new unit cases and one real
+  authored PR/open/closed-resume profile passed. The fixture PR is closed and
+  its exact branch absent. Default native child connectivity is still failed,
+  not silently replaced by this profile. Preserve its preflight failure, old
+  commit mismatch and HTTP503. No old suite or live packet replay is warranted.

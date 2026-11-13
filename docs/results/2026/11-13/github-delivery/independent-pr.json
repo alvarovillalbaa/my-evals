@@ -1,0 +1,29 @@
+{
+  "number": 1,
+  "title": "Qualify Personal Evals authored bundle delivery",
+  "body": "This disposable draft PR qualifies the real Personal Evals publisher using an authored format-demo task and a binary byte fixture. It contains no personal task data, model output or benchmark result. The publisher preserves the pinned base tree. This fixture will be closed without merging after exact remote readback and resume checks.\n\n<!-- personal-evals-delivery:0156385d69c94c0374a27d54740e8d5d6401d806309ae552f8fe57a57b34281d -->\n",
+  "state": "open",
+  "draft": true,
+  "merged": false,
+  "user": {
+    "id": 87529457,
+    "login": "alvarovillalbaa"
+  },
+  "head": {
+    "ref": "qa/personal-evals-delivery-20261113-1",
+    "sha": "2a1635d386f4cac82213d9967f30c060357fcea8",
+    "repo": {
+      "id": 1437479976,
+      "full_name": "alvarovillalbaa/my-evals"
+    }
+  },
+  "base": {
+    "ref": "main",
+    "sha": "f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+    "repo": {
+      "id": 1437479976,
+      "full_name": "alvarovillalbaa/my-evals"
+    }
+  },
+  "html_url": "https://github.com/alvarovillalbaa/my-evals/pull/1"
+}

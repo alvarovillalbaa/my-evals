@@ -1,0 +1,14 @@
+{
+  "pullRequest": {
+    "base": "f971eefacccc0ad2da69a08c5eaaadbfdfb1fa6f",
+    "closed_at": "2026-11-13T18:29:25Z",
+    "draft": true,
+    "head": "2a1635d386f4cac82213d9967f30c060357fcea8",
+    "merged": false,
+    "merged_at": null,
+    "number": 1,
+    "state": "closed"
+  },
+  "branchMatchingRefs": [],
+  "branchCheckedAfterClosedResume": true
+}

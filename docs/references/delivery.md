@@ -1,5 +1,11 @@
 # Reviewed bundle delivery
 
+The [13 November authored live profile](../results/2026/11-13/live-github-delivery.md)
+published one seven-file bundle through a supervised approved-tool adapter,
+verified anonymous bytes and same-PR recovery, then retired its fixture.
+The raw private plan/journal were not published. Default native connectivity,
+private-data consent and live generation remain separate gates.
+
 Last updated: 2026-11-04
 
 Delivery starts from an accepted [portable bundle](formats.md), not a generation

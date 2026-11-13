@@ -35,6 +35,14 @@ Its repaired [51-case local scope passed](results/2026/11-04/publisher-activatio
 once on its exact source, using authored fake APIs and an owned Python fake-gh
 executable. This does not verify real `gh`, authentication, GitHub, a provider,
 Harbor or full-product acceptance; no live PR acceptance is claimed.
+That paragraph describes the historical source/check scope. The separate
+[13 November live scope](results/2026/11-13/live-github-delivery.md) now accepts
+one authored portable-bundle PR delivery using a supervised approved-tool
+transport, independent seven-file anonymous byte verification and same-PR
+open/closed recovery. It exposed and repaired only an outgoing message newline.
+The default native child connection failed before writes and is not accepted
+by that alternative profile. Live generation, actual Harbor execution and
+model-switch evidence remain open; the full outcome table is not complete.
 No model result is fabricated
 and no live account, container, framework execution or deployment is implied by
 source publication.
