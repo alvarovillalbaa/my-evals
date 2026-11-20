@@ -1,5 +1,9 @@
 # Personal Evals
 
+<!-- project-family:start -->
+> **Project family:** [AI Research & Evaluation](https://github.com/alvarovillalbaa#ai-research-and-evaluation) · **Area:** Personal evaluations
+<!-- project-family:end -->
+
 Portable personal evaluations for deciding whether a new model or provider works
 better on your own tasks, using the real Harbor framework.
 
